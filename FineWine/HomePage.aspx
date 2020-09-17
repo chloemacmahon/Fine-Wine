@@ -28,16 +28,17 @@
                 <table style="width:100%;" >
                     <tr>
                         <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td style="text-align: right">&nbsp;
+                        <td style="text-align: right">
                             <asp:Button ID="btnLogIn" runat="server" Text="Log In" CssClass="buttonstyle" Height="31px" Width="82px" />
-&nbsp;
+                        </td>
+                        <td style="text-align: right">&nbsp;
+                            &nbsp;
                             <asp:Button ID="btnSignUp" runat="server" Text="Sign Up" CssClass="buttonstyle" Height="29px" Width="111px" />
 &nbsp; </td>
                     </tr>
                     <tr>
-                        <td>&nbsp;</td>
-                        <td class="auto-style1">Fine wine is a emerging wine in the global wine circuit. The company was started in 2013 and started with a production of sweet red wines , the company in 2016 then started to produce a variety of white and rose wines. Fine wine was originally sold locally but in 2017 started to export to surrounding companies which then progressed to other continents such as Europe and Asia. The wine continues to be sold at the wine farm where the public can sample and buy wines and where the reserve wine is held.</td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</td>
+                        <td class="auto-style1 backwhite">Fine wine is a emerging wine in the global wine circuit. The company was started in 2013 and started with a production of sweet red wines , the company in 2016 then started to produce a variety of white and rose wines. Fine wine was originally sold locally but in 2017 started to export to surrounding countries which then progressed to other continents such as Europe and Asia. The wine continues to be sold at the wine farm where the public can sample and buy wines and where the reserve wine is held.</td>
                         <td>&nbsp;</td>
                     </tr>
                     <tr>

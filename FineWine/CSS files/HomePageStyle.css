@@ -20,4 +20,9 @@ div {
     font-family: Century;
     font-size: large;
     background-color: antiquewhite;
+    text-align: right;
+}
+.backwhite {
+    background-color:floralwhite;
+    font-size: large;
 }
