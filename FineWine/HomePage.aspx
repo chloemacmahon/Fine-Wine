@@ -16,6 +16,16 @@
             background-attachment: scroll;
             background-position: center center;
         }
+        .newStyle3 {
+            font-family: "Bahnschrift Light";
+        }
+        .newStyle4 {
+            font-size: 100px;
+        }
+        .newStyle5 {
+            font-family: "Bahnschrift Light";
+            font-size: 85px;
+        }
     </style>
 </head>
     <body class="newStyle2">
@@ -23,17 +33,17 @@
         <div>
                 <div class="auto-style1">
                     <h1>
-                        Fine Wine</h1>
+                        Fine <span class="newStyle5">Wine</span></h1>
             </div>
                 <table style="width:100%;" >
                     <tr>
                         <td>&nbsp;</td>
                         <td style="text-align: right">
-                            <asp:Button ID="btnLogIn" runat="server" Text="Log In" CssClass="buttonstyle" Height="31px" Width="82px" />
+                            <asp:Button ID="btnLogIn" runat="server" Text="Log In" CssClass="buttonstyle" Height="31px" Width="82px" OnClick="btnLogIn_Click" />
                         </td>
                         <td style="text-align: right">&nbsp;
                             &nbsp;
-                            <asp:Button ID="btnSignUp" runat="server" Text="Sign Up" CssClass="buttonstyle" Height="29px" Width="111px" />
+                            <asp:Button ID="btnSignUp" runat="server" Text="Register Business" CssClass="buttonstyle" Height="29px" Width="111px" OnClick="btnSignUp_Click" />
 &nbsp; </td>
                     </tr>
                     <tr>
