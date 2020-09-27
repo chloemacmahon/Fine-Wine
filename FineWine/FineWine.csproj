@@ -70,6 +70,8 @@
     <Content Include="CSS files\HomePageStyle.css" />
     <Content Include="Global.asax" />
     <Content Include="HomePage.aspx" />
+    <Content Include="LogIn.aspx" />
+    <Content Include="Pictures\winecorks.jpg" />
     <Content Include="Pictures\Background1.jpg" />
     <Content Include="Pictures\Background2.jpg" />
     <Content Include="Pictures\Background3.jpg" />
@@ -80,6 +82,12 @@
     <Content Include="Pictures\Background8.jpg" />
     <Content Include="Pictures\Wine bottles 1.jpg" />
     <Content Include="Pictures\Wine bottles.jpg" />
+    <Content Include="Pictures\WineCorks.jfif" />
+    <Content Include="Pictures\WineCorks2.jfif" />
+    <Content Include="Pictures\WineCorks2.jpg" />
+    <Content Include="Pictures\WineCorks3.jpg" />
+    <Content Include="PlaceOrder.aspx" />
+    <Content Include="RegisterBusiness.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -93,7 +101,28 @@
     <Compile Include="HomePage.aspx.designer.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LogIn.aspx.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogIn.aspx.designer.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PlaceOrder.aspx.cs">
+      <DependentUpon>PlaceOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlaceOrder.aspx.designer.cs">
+      <DependentUpon>PlaceOrder.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegisterBusiness.aspx.cs">
+      <DependentUpon>RegisterBusiness.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegisterBusiness.aspx.designer.cs">
+      <DependentUpon>RegisterBusiness.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
