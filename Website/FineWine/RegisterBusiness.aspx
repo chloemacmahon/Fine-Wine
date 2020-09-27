@@ -136,7 +136,7 @@
                             <br />
                         </td>
                         <td class="auto-style4">
-                            <asp:Button ID="btnRegister" runat="server" BackColor="White" Text="Register Business" />
+                            <asp:Button ID="btnRegister" runat="server" BackColor="White" OnClick="btnRegister_Click" Text="Register Business" />
                         </td>
                         <td>
                             <asp:ValidationSummary ID="ValidationSummary1" runat="server" BackColor="Maroon" ForeColor="White" />
