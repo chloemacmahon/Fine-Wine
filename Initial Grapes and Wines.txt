@@ -1,0 +1,34 @@
+G R A P E S
+
+W H I T E   G R A P E S
+GRAPE           WINE INFO
+----------------------------------------------------------------------------------
+Airen           dry, white
+Arneis          crisp, floral, white
+Catarratto      acidity, white & aromas of ripe citrus, melon, passion fruit
+Chardonnay      crisp fruit flavor, white
+Furmint         acidity, complex flavors, dry varietal & sweet dessert wine
+----------------------------------------------------------------------------------
+R E D   G R A P E
+GRAPE           WINE INFO
+----------------------------------------------------------------------------------
+Agiorgitiko     fruit-filled, red
+Brachetto       low-alcohol, aromatic & light bodied, red
+Ciliegiolo      aroma of cherries, light meduim bodied varietal, red
+Corvina         acidity, cherry and herbaceous flavors, red
+Merlot          soft tannins, intense fruit flavors, red
+----------------------------------------------------------------------------------
+
+W I N E S
+WINE                    GRAPES              COLOR
+----------------------------------------------------------------------------------
+Dry White               Airen               white
+White Floral            Arneis              white
+White Fruit             Catarratto          white
+Chardonnay Crisp        Chardonnay          white
+Dry Furmint             Furmint             white
+Red Fruit               Agriorgitiko        red
+Low Red                 Brachetto           red
+Cherry I                Ciliegiolo          red
+Cherry II               Corvina             red
+Red Merlot              Merlot              red
