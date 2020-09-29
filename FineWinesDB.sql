@@ -1,3 +1,5 @@
+USE [|DataDirectory|\FINEWINES.MDF]
+
 CREATE TABLE GRAPE(
 	Grape_ID	varchar(15)	PRIMARY KEY,
 	Name		varchar(20),
@@ -56,7 +58,7 @@ CREATE TABLE CITY_TOWN(
 CREATE TABLE ADDRESS(
 	Address_ID		int		IDENTITY(1,1) PRIMARY KEY,
 	Suburb_ID		int		FOREIGN KEY REFERENCES SUBURB(Suburb_ID),
-	City_Town_ID	int		FOREIGN KEY REFERENCES CITY/TOWN(City_Town_ID),
+	City_Town_ID	int		FOREIGN KEY REFERENCES CITY_TOWN(City_Town_ID),
 	Street_Number	int,
 	Street_Name		varchar(25),
 	Zip_Code		varchar(15)
