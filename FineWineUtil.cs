@@ -17,6 +17,7 @@ namespace FineWineUtil
 		public bool connected = false;
 		public sqlVisual visual;
 
+		// initialization of the sql control.
 		public sqlControl()
 		{
 			connection = new SqlConnection();
@@ -27,6 +28,7 @@ namespace FineWineUtil
 			sqlVisual visual = new sqlVisual(this);
 		}
 
+		// building of the connection string. this is private so it cannot be called externally. use connect database to call externally.
 		private string buildConnectionString(string databaseFilename = "database.mdf")
 		{
 			connectionString = "";
@@ -39,6 +41,7 @@ namespace FineWineUtil
             return connectionString;
 		}
 
+		// external method for connecting the database.
 		public void connectDatabase(string databaseFilename = "database.mdf")
 		{
 			connection = new SqlConnection(buildConnectionString(databaseFilename));
