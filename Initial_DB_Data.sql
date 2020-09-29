@@ -67,8 +67,35 @@ INSERT INTO WINE (Wine_ID, Grape_ID, Name, Wine_Type, Description)
 VALUES ('redm6253', 'merl9010', 'Red Merlot', 'Red Wine', 'Merlot with a soft tannis & intense fruit flavor.');
 
 /* S T O C K S */
-/* Wines */
+-- Dry White
 INSERT INTO STOCK (Stock_ID, Wine_ID, Production_Year, Stock_On_Hand, Stock_Sold, Unit_Price, Selling_Price)
-VALUES ('stock_id', 'wine_id', 'year', stock, '');
+VALUES ('dryw2011', 'dryw8758', 2011, 102, 23, 60.00, 90.00);
+-- White Floral
+INSERT INTO STOCK (Stock_ID, Wine_ID, Production_Year, Stock_On_Hand, Stock_Sold, Unit_Price, Selling_Price)
+VALUES ('whit2012', 'whit1290', 2012, 94, 31, 75.00, 105.00);
+-- White Fruit
+INSERT INTO STOCK (Stock_ID, Wine_ID, Production_Year, Stock_On_Hand, Stock_Sold, Unit_Price, Selling_Price)
+VALUES ('whit2010', 'whit0927', 2010, 113, 43, 50.00, 80.00);
+-- Chardonnay Crisp
+INSERT INTO STOCK (Stock_ID, Wine_ID, Production_Year, Stock_On_Hand, Stock_Sold, Unit_Price, Selling_Price)
+VALUES ('char2011', 'char2188', 2011, 221, 53, 30.00, 50.00);
+-- Dry Furmint
+INSERT INTO STOCK (Stock_ID, Wine_ID, Production_Year, Stock_On_Hand, Stock_Sold, Unit_Price, Selling_Price)
+VALUES ('dryf2012', 'dryf2190', 2012, 81, 47, 55.00, 80.00);
+-- Red Fruit
+INSERT INTO STOCK (Stock_ID, Wine_ID, Production_Year, Stock_On_Hand, Stock_Sold, Unit_Price, Selling_Price)
+VALUES ('redf2011', 'redf9271', 2011, 132, 65, 60.00, 90.00);
+-- Low Red
+INSERT INTO STOCK (Stock_ID, Wine_ID, Production_Year, Stock_On_Hand, Stock_Sold, Unit_Price, Selling_Price)
+VALUES ('lowr2011', 'lowr1270', 2011, 78, 22, 40.00, 65.00);
+-- Cherry I
+INSERT INTO STOCK (Stock_ID, Wine_ID, Production_Year, Stock_On_Hand, Stock_Sold, Unit_Price, Selling_Price)
+VALUES ('cher2010', 'cher1208', 2010, 112, 34, 55.00, 75.00);
+-- Cherry II
+INSERT INTO STOCK (Stock_ID, Wine_ID, Production_Year, Stock_On_Hand, Stock_Sold, Unit_Price, Selling_Price)
+VALUES ('cher2013', 'cher0297', 2013, 82, 19, 60.00, 85.00);
+-- Red Merlot
+INSERT INTO STOCK (Stock_ID, Wine_ID, Production_Year, Stock_On_Hand, Stock_Sold, Unit_Price, Selling_Price)
+VALUES ('redm2010', 'redm6253', 2010, 231, 122, 30.00, 50.00);
 
--- Still busy working on this.
+-- still busy hey...
