@@ -1,5 +1,14 @@
 /* Add Initial Data To DataBase */
 
+/*
+
+    I used a site provided by one of the team members to choose between different
+    types of grapes for Fine Wine. I also got the properties of the grapes from that
+    site which is useful as it indicates the wine type and properties of the wines in
+    which these grapes will be used.
+
+*/
+
 /* G R A P E S */
 /* White */
 -- Airen
@@ -33,6 +42,55 @@ VALUES ('corv1229', 'Corvina', 'Red Grape', 'Acidity, Cherry and Herbaceous Flav
 -- Merlot
 INSERT INTO GRAPE (Grape_ID, Name, Grape_Type, Description)
 VALUES ('merl9010', 'Merlot', 'Red Grape', 'Soft Tannis, Intense Fruit Flavors');
+
+/*
+
+    Accoriding to a certain source, a grape vine can produce up to 40 clusters of
+    grapes which adds up to approx 100 x 40 which is 4000 grapes per vine. Another
+    source states that a single vine may produce up to 10 bottles of wine.
+
+    According to this research, I will create random data for the grape harvest.
+
+    I am using the Amount_Planted field to account for the amount of grape vines planted,
+    as grapes cannot be planted and it would not make sence, if you are unhappy with this,
+    it can in some sence be seen as a grape that is planted and that produces more grapes.
+
+    Assuming Fine-Wines makes equal amounts of their wine, they have equal amount of vines
+    for each type of grape.
+
+*/
+
+/* H A R V E S T */ --!!!!!!!!!! CHECK HARVEST_IDs !!!!!!!!!!--
+-- Airen
+INSERT INTO HARVEST (Harvest_ID, Grape_ID, Amount_Planted, Date_Planted, Estimated_Harvest, Actual Harvest)
+VALUES ('str', 'aire2183', 25, 2019, 92000, 91028);
+-- Arneis
+INSERT INTO HARVEST (Harvest_ID, Grape_ID, Amount_Planted, Date_Planted, Estimated_Harvest, Actual Harvest)
+VALUES ('str', 'arne1208', 20, 2019, 64740, 64293);
+-- Catarratto
+INSERT INTO HARVEST (Harvest_ID, Grape_ID, Amount_Planted, Date_Planted, Estimated_Harvest, Actual Harvest)
+VALUES ('str', 'cata0281', 21, 2019, 72570, 54783);
+-- Chardonnay
+INSERT INTO HARVEST (Harvest_ID, Grape_ID, Amount_Planted, Date_Planted, Estimated_Harvest, Actual Harvest)
+VALUES ('str', 'char8372', 20, 2019, 68080, 65743);
+-- Furmint
+INSERT INTO HARVEST (Harvest_ID, Grape_ID, Amount_Planted, Date_Planted, Estimated_Harvest, Actual Harvest)
+VALUES ('str', 'furm9463', 20, 2019, 65320, 64301);
+-- Agiorgiriko
+INSERT INTO HARVEST (Harvest_ID, Grape_ID, Amount_Planted, Date_Planted, Estimated_Harvest, Actual Harvest)
+VALUES ('str', 'agio7186', 22, 2019, 76070, 76124);
+-- Brachetto
+INSERT INTO HARVEST (Harvest_ID, Grape_ID, Amount_Planted, Date_Planted, Estimated_Harvest, Actual Harvest)
+VALUES ('str', 'brac9270', 20, 2019, 66200, 65491);
+-- Ciliegiolo
+INSERT INTO HARVEST (Harvest_ID, Grape_ID, Amount_Planted, Date_Planted, Estimated_Harvest, Actual Harvest)
+VALUES ('str', 'cili0831', 20, 2019, 63450, 63892);
+-- Corvina
+INSERT INTO HARVEST (Harvest_ID, Grape_ID, Amount_Planted, Date_Planted, Estimated_Harvest, Actual Harvest)
+VALUES ('str', 'corv1229', 23, 2019, 79833, 78932);
+-- Merlot
+INSERT INTO HARVEST (Harvest_ID, Grape_ID, Amount_Planted, Date_Planted, Estimated_Harvest, Actual Harvest)
+VALUES ('str', 'merl9010', 21, 2019, 72340, 72507);
 
 /* W I N E S */
 -- Dry White
@@ -97,5 +155,3 @@ VALUES ('cher2013', 'cher0297', 2013, 82, 19, 60.00, 85.00);
 -- Red Merlot
 INSERT INTO STOCK (Stock_ID, Wine_ID, Production_Year, Stock_On_Hand, Stock_Sold, Unit_Price, Selling_Price)
 VALUES ('redm2010', 'redm6253', 2010, 231, 122, 30.00, 50.00);
-
--- still busy hey...
