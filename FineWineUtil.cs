@@ -1,13 +1,1569 @@
 ﻿using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace FineWineUtil
 {
 
-    public class sqlControl // management of sql and database strictly
+	/*
+	
+	INSERT ADD DELETE CODE
+
+	I coded this to be called to modify data in the database.
+
+	*/
+
+	public static class Insert_Add_Delete_Code
+	{
+
+		/* G R A P E S */
+
+		// coding to add a new grape
+		public static void AddNewGrape(string name, string grape_type, string description, string connection)
+		{
+			string grape_id = "";
+			if (name.Length >= 4)
+			{
+				grape_id = name.Substring(0, 4);
+			}
+			else
+			{
+				grape_id = name;
+				for (int i = 0; i < (4 - grape_id.Length); i++)
+				{
+					grape_id += "x";
+				}
+			}
+			grape_id = grape_id.ToLower();
+			Random r = new Random();
+			grape_id += r.Next(0, 10).ToString();
+			grape_id += r.Next(0, 10).ToString();
+			grape_id += r.Next(0, 10).ToString();
+			grape_id += r.Next(0, 10).ToString();
+
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("INSERT INTO GRAPE (Grape_ID, Name, Grape_Type, Description) VALUES (@ID, @NAME, @TYPE, @DESC)", c.connection);
+				cmd.Parameters.AddWithValue("@ID", grape_id);
+				cmd.Parameters.AddWithValue("@NAME", name);
+				cmd.Parameters.AddWithValue("@TYPE", grape_type);
+				cmd.Parameters.AddWithValue("@DESC", description);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Grape (" + grape_id + ") successfully added to the DataBase");
+		}
+
+		// coding to update a grape entirely
+		public static void UpdateEntireGrape(string grape_id, string name, string grape_type, string description, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE GRAPE SET Name=@NAME, Grape_Type=@TYPE, Description=@DESC WHERE (Grape_ID='" + grape_id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@NAME", name);
+				cmd.Parameters.AddWithValue("@TYPE", grape_type);
+				cmd.Parameters.AddWithValue("@DESC", description);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Grape (" + grape_id + ") successfully updated in the DataBase");
+		}
+
+		// coding to update grape name
+		public static void UpdateEntireGrape(string grape_id, string name, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE GRAPE SET Name=@NAME WHERE (Grape_ID='" + grape_id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@NAME", name);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Grape (" + grape_id + ") successfully update in the DataBase");
+		}
+
+		// coding to update grape type
+		public static void UpdateGrapeType(string grape_id, string grape_type, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE GRAPE SET Grape_Type=@TYPE WHERE (Grape_ID='" + grape_id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@TYPE", grape_type);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Grape (" + grape_id + ") successfully update in the DataBase");
+		}
+
+		// coding to update grape description
+		public static void UpdateGrapeDescription(string grape_id, string description, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE GRAPE SET Description=@DESC WHERE (Grape_ID='" + grape_id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@DESC", description);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Grape (" + grape_id + ") successfully update in the DataBase");
+		}
+
+		// delete grape
+		public static void DeleteGrape(string id, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("DELETE FROM GRAPE WHERE (Grape_ID='" + id + "')", c.connection);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Grape (" + id + ") successfully deleted from the DataBase");
+		}
+
+
+		/* W I N E S */
+
+		// coding to add a new wine
+		public static void AddNewWine(string grape_id, string name, string wine_type, string description, string connection)
+		{
+			string id = "";
+			if (name.Length >= 4)
+			{
+				id = name.Substring(0, 4);
+			}
+			else
+			{
+				id = name;
+				for (int i = 0; i < (4 - id.Length); i++)
+				{
+					id += "x";
+				}
+			}
+			id = id.ToLower();
+			Random r = new Random();
+			id += r.Next(0, 10).ToString();
+			id += r.Next(0, 10).ToString();
+			id += r.Next(0, 10).ToString();
+			id += r.Next(0, 10).ToString();
+
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("INSERT INTO WINE (Wine_ID, Grape_ID, Name, Wine_Type, Description) VALUES (@ID, @G_ID, @NAME, @TYPE, @DESC)", c.connection);
+				cmd.Parameters.AddWithValue("@ID", id);
+				cmd.Parameters.AddWithValue("@G_ID", grape_id);
+				cmd.Parameters.AddWithValue("@NAME", name);
+				cmd.Parameters.AddWithValue("@TYPE", wine_type);
+				cmd.Parameters.AddWithValue("@DESC", description);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Wine (" + id + ") successfully added to the DataBase");
+		}
+
+		// update entire wine
+		public static void UpdateEntireWine(string id, string grape_id, string name, string wine_type, string description, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE WINE SET Grape_ID=@G_ID, Name=@NAME, Wine_Type=@TYPE, Description=@DESC WHERE (Wine_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@G_ID", grape_id);
+				cmd.Parameters.AddWithValue("@NAME", name);
+				cmd.Parameters.AddWithValue("@TYPE", wine_type);
+				cmd.Parameters.AddWithValue("@DESC", description);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Wine (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update wine grape id
+		public static void UpdateWineGrapeID(string id, string grape_id, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE WINE SET Grape_ID=@G_ID WHERE (Wine_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@G_ID", grape_id);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Wine (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update wine name
+		public static void UpdateWineName(string id, string name, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE WINE SET Name=@NAME WHERE (Wine_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@NAME", name);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Wine (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update wine type
+		public static void UpdateWineType(string id, string wine_type, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE WINE SET Wine_Type=@TYPE WHERE (Wine_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@TYPE", wine_type);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Wine (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update wine description
+		public static void UpdateWineDescription(string id, string description, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE WINE SET Description=@DESC WHERE (Wine_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@DESC", description);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Wine (" + id + ") successfully updated in the DataBase");
+		}
+
+		// delete wine
+		public static void DeleteWine(string id, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("DELETE FROM WINE WHERE (Wine_ID='" + id + "')", c.connection);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Wine (" + id + ") successfully deleted from the DataBase");
+		}
+
+
+		/* H A R V E S T */
+
+		// add a new harvest
+		public static void AddNewHarvest(string grape_id, int amount_planted, DateTime date_planted, int est_harvest, int act_harvest, string connection)
+		{
+			string id = "";
+			if (grape_id.Length >= 4)
+			{
+				id = grape_id.Substring(0, 4);
+			}
+			else
+			{
+				id = grape_id;
+				for (int i = 0; i < (4 - id.Length); i++)
+				{
+					id += "x";
+				}
+			}
+			id = id.ToLower();
+			id += date_planted.Year.ToString() + "_";
+			Random r = new Random();
+			id += r.Next(0, 10).ToString();
+			id += r.Next(0, 10).ToString();
+			id += r.Next(0, 10).ToString();
+
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("INSERT INTO HARVEST VALUES (@ID, @G_ID, @AMT, @DATE, @EST, @ACT)", c.connection);
+				cmd.Parameters.AddWithValue("@ID", id);
+				cmd.Parameters.AddWithValue("@G_ID", grape_id);
+				cmd.Parameters.AddWithValue("@AMT", amount_planted);
+				cmd.Parameters.AddWithValue("@DATE", date_planted.Date.ToString());
+				cmd.Parameters.AddWithValue("@EST", est_harvest);
+				cmd.Parameters.AddWithValue("@ACT", act_harvest);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Havrvest (" + id + ") successfully added to the DataBase");
+		}
+
+		// update entire harvest
+		public static void UpdateEntireHarvest(string id, string grape_id, int amount_planted, DateTime date_planted, int est_harvest, int act_harvest, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE HARVEST SET Grape_ID=@G_ID, Amount_Planted=@AMT, Date_Planted=@DATE, Estimated_Harvest=@EST, Actual_Harvest=@ACT WHERE (Harvest_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@G_ID", grape_id);
+				cmd.Parameters.AddWithValue("@AMT", amount_planted);
+				cmd.Parameters.AddWithValue("@DATE", date_planted.Date.ToString());
+				cmd.Parameters.AddWithValue("@EST", est_harvest);
+				cmd.Parameters.AddWithValue("@ACT", act_harvest);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Havrvest (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update harvest grape id
+		public static void UpdateHarvestGrapeID(string id, string grape_id, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE HARVEST SET Grape_ID=@G_ID WHERE (Harvest_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@G_ID", grape_id);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Havrvest (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update harvest amount planted
+		public static void UpdateHarvestAmountPlanted(string id, int amount, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE HARVEST SET Amount_Planted=@VAL WHERE (Harvest_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", amount);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Havrvest (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update harvest date planted
+		public static void UpdateHarvestDatePlanted(string id, DateTime date_planted, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE HARVEST SET Date_Planted=@VAL WHERE (Harvest_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", date_planted.Date.ToString());
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Havrvest (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update harvest estimated harvest
+		public static void UpdateHarvestEstimatedHarvest(string id, int est, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE HARVEST SET Estimated_Harvest=@VAL WHERE (Harvest_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", est);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Havrvest (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update harvest actual harvest
+		public static void UpdateHarvestActualHarvest(string id, int actual_harvest, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE HARVEST SET Actual_Harvest=@VAL WHERE (Harvest_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", actual_harvest);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Havrvest (" + id + ") successfully updated in the DataBase");
+		}
+
+		// delete harvest
+		public static void DeleteHarvest(string id, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("DELETE FROM Harvest WHERE (Harvest_ID='" + id + "')", c.connection);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Harvest (" + id + ") successfully deleted from the DataBase");
+		}
+
+
+		/* W I N E   P R O D U C T I O N */
+
+		// add a new wine production
+		public static void AddNewWineProduction(string wine_id, string harvest_id, int est_prod, int act_prod, int mat_period, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("INSERT INTO WINE_PRODUCTION VALUES (@WINE_ID, @HARVEST_ID, @EST, @ACT, @MAT)", c.connection);
+				cmd.Parameters.AddWithValue("@WINE_ID", wine_id);
+				cmd.Parameters.AddWithValue("@HARVEST_ID", harvest_id);
+				cmd.Parameters.AddWithValue("@EST", est_prod);
+				cmd.Parameters.AddWithValue("@ACT", act_prod);
+				cmd.Parameters.AddWithValue("@MAT", mat_period);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Wine Production successfully added to the DataBase");
+		}
+
+		// update entire wine production
+		public static void UpdateEntireWineProduction(string wine_id, string harvest_id, int est_prod, int act_prod, int mat_period, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE WINE_PRODUCTION SET Wine_ID=@WINE_ID, Harvest_ID=@HARVEST_ID, Estimated_Production=@EST, Actual_Production=@ACT, Maturation_Period=@MAT WHERE (Wine_ID='"+wine_id+"') AND (Harvest_ID='"+harvest_id+"')", c.connection);
+				cmd.Parameters.AddWithValue("@WINE_ID", wine_id);
+				cmd.Parameters.AddWithValue("@HARVEST_ID", harvest_id);
+				cmd.Parameters.AddWithValue("@EST", est_prod);
+				cmd.Parameters.AddWithValue("@ACT", act_prod);
+				cmd.Parameters.AddWithValue("@MAT", mat_period);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Wine Production successfully added to the DataBase");
+		}
+
+		// delete wine production
+		public static void DeleteWineProducion(string wine_id, string harvest_id, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("DELETE FROM WINE_PRODUCTION WHERE (Wine_ID='"+wine_id+"') AND (Harvest_ID='" + harvest_id + "')", c.connection);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Wine production successfully deleted from the DataBase");
+		}
+
+
+		/* S T O C K */
+
+		// add a new stock
+		public static void AddNewStock(string wine_id, DateTime year, int stock_on_hand, int sold, double unit_price, double selling_price, string connection)
+		{
+			string id = "";
+			if (wine_id.Length >= 4)
+			{
+				id = wine_id.Substring(0, 4);
+			}
+			else
+			{
+				id = wine_id;
+				for (int i = 0; i < (4 - id.Length); i++)
+				{
+					id += "x";
+				}
+			}
+			id = id.ToLower();
+			id += year.Year.ToString();
+
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("INSERT INTO STOCK VALUES (@ID, @WINE_ID, @YEAR, @STOCK, @SOLD, @UNIT_PRICE, @SELL_PRICE)", c.connection);
+				cmd.Parameters.AddWithValue("@ID", id);
+				cmd.Parameters.AddWithValue("@WINE_ID", wine_id);
+				cmd.Parameters.AddWithValue("@YEAR", year.Date.ToString());
+				cmd.Parameters.AddWithValue("@STOCK", stock_on_hand);
+				cmd.Parameters.AddWithValue("@SOLD", sold);
+				cmd.Parameters.AddWithValue("@UNIT_PRICE", unit_price);
+				cmd.Parameters.AddWithValue("@SELL_PRICE", selling_price);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Stock (" + id + ") successfully added to the DataBase");
+		}
+
+		// update entire stock
+		public static void UpdateEntireStock(string id, string wine_id, DateTime year, int stock_on_hand, int sold, double unit_price, double selling_price, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE STOCK SET Wine_ID=@WINE_ID, Production_Year=@YEAR, Stock_On_Hand=@STOCK, Stock_Sold=@SOLD, Unit_Price=@UNIT_PRICE, Selling_Price=@SELL_PRICE WHERE (Stock_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@WINE_ID", wine_id);
+				cmd.Parameters.AddWithValue("@YEAR", year.Date.ToString());
+				cmd.Parameters.AddWithValue("@STOCK", stock_on_hand);
+				cmd.Parameters.AddWithValue("@SOLD", sold);
+				cmd.Parameters.AddWithValue("@UNIT_PRICE", unit_price);
+				cmd.Parameters.AddWithValue("@SELL_PRICE", selling_price);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Stock (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update stock wine id
+		public static void UpdateStockWineID(string id, string wine_id, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE STOCK SET Wine_ID=@WINE_ID WHERE (Stock_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@WINE_ID", wine_id);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Stock (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update stock production year
+		public static void UpdateStockProductionYear(string id, DateTime year, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE STOCK SET Production_Year=@VAL WHERE (Stock_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", year.Date.ToString());
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Stock (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update stock stock on hand
+		public static void UpdateStockStockOnHand(string id, int stock_on_hand, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE STOCK SET Stock_On_Hand=@VAL WHERE (Stock_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", stock_on_hand);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Stock (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update stock stock sold
+		public static void UpdateStockStockSold(string id, int sold, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE STOCK SET Stock_Sold=@VAL WHERE (Stock_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", sold);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Stock (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update stock unit price
+		public static void UpdateStockUnitPrice(string id, double unit_price, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE STOCK SET Unit_Price=@VAL WHERE (Stock_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", unit_price);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Stock (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update stock selling price
+		public static void UpdateStockSellingPrice(string id, double selling_price, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE STOCK SET Selling_Price=@VAL WHERE (Stock_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", selling_price);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Stock (" + id + ") successfully updated in the DataBase");
+		}
+
+		// delete stock
+		public static void DeleteStock(string id, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("DELETE FROM STOCK WHERE (Stock_ID='" + id + "')", c.connection);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Stock (" + id + ") successfully deleted from the DataBase");
+		}
+
+
+		/* S U B U R B */
+
+		// add new suburb
+		public static void AddNewSuburb(int id, string name, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("INSERT INTO SUBURB VALUES (@ID, @NAME)", c.connection);
+				cmd.Parameters.AddWithValue("@ID", id);
+				cmd.Parameters.AddWithValue("@NAME", name);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Suburb (" + id.ToString() + ") successfully added to the DataBase");
+		}
+
+		// update suburb name
+		public static void UpdateSuburbName(int id, string name, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE SUBURB SET Name=@NAME WHERE (Suburb_ID='"+id+"')", c.connection);
+				cmd.Parameters.AddWithValue("@NAME", name);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Suburb (" + id.ToString() + ") successfully updated in the DataBase");
+		}
+
+		// delete suburb
+		public static void DeleteSuburb(int id, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("DELETE FROM SUBURB WHERE (Suburb_ID=" + id.ToString() + ")", c.connection);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Stock (" + id.ToString() + ") successfully deleted from the DataBase");
+		}
+
+
+		/* C I T Y   T O W N */
+
+		// add new city town
+		public static void AddNewCityTown(int id, string name, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("INSERT INTO CITY_TOWN VALUES (@ID, @NAME)", c.connection);
+				cmd.Parameters.AddWithValue("@ID", id);
+				cmd.Parameters.AddWithValue("@NAME", name);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("City Town (" + id.ToString() + ") successfully added to the DataBase");
+		}
+
+		// update city town name
+		public static void UpdateCityTownName(int id, string name, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE CITY_TOWN SET Name=@NAME WHERE (City_Town_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@NAME", name);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("City Town (" + id.ToString() + ") successfully updated in the DataBase");
+		}
+
+		// delete city town
+		public static void DeleteCityTown(int id, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("DELETE FROM CITY_TOWN WHERE (City_Town_ID=" + id.ToString() + ")", c.connection);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("City Town (" + id.ToString() + ") successfully deleted from the DataBase");
+		}
+
+
+		/* A D D R E S S */
+
+		// add new address
+		public static void AddNewAddress(int id, int suburb_id, int city_id, int street_no, string street_name, string zip, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("INSERT INTO ADDRESS VALUES (@ID, @SUB_ID, @CITY_ID, @STREET_NO, @STREET_NAME, @ZIP)", c.connection);
+				cmd.Parameters.AddWithValue("@ID", id);
+				cmd.Parameters.AddWithValue("@SUB_ID", suburb_id);
+				cmd.Parameters.AddWithValue("@CITY_ID", city_id);
+				cmd.Parameters.AddWithValue("@STREET_NO", street_no);
+				cmd.Parameters.AddWithValue("@STREET_NAME", street_name);
+				cmd.Parameters.AddWithValue("@ZIP", zip);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Address (" + id.ToString() + ") successfully added to the DataBase");
+		}
+
+		// update address suburb id
+		public static void UpdateAddressSuburbID(int id, int suburb_id, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE ADDRESS SET Suburb_ID=@VAL WHERE (Address_ID=" + id.ToString() + ")", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", suburb_id);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Address (" + id.ToString() + ") successfully updated in the DataBase");
+		}
+
+		// update address city town id
+		public static void UpdateAddressCityTownID(int id, int city_id, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE ADDRESS SET City_Town_ID=@VAL WHERE (Address_ID=" + id.ToString() + ")", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", city_id);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Address (" + id.ToString() + ") successfully updated in the DataBase");
+		}
+
+		// update address street number
+		public static void UpdateAddressStreetNumber(int id, int street_no, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE ADDRESS SET Street_Number=@VAL WHERE (Address_ID=" + id.ToString() + ")", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", street_no);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Address (" + id.ToString() + ") successfully updated in the DataBase");
+		}
+
+		// update address street name
+		public static void UpdateAddressStreetName(int id, string street_name, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE ADDRESS SET Street_Name=@VAL WHERE (Address_ID=" + id.ToString() + ")", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", street_name);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Address (" + id.ToString() + ") successfully updated in the DataBase");
+		}
+
+		// update address zip code
+		public static void UpdateAddressZipCode(int id, string zip, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE ADDRESS SET Zip_Code=@VAL WHERE (Address_ID=" + id.ToString() + ")", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", zip);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Address (" + id.ToString() + ") successfully updated in the DataBase");
+		}
+
+		// delete address
+		public static void DeleteAddress(int id, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("DELETE FROM ADDRESS WHERE (Address_ID=" + id.ToString() + ")", c.connection);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Address (" + id.ToString() + ") successfully deleted from the DataBase");
+		}
+
+
+		/* B U S I N E S S */
+
+		// add new business
+		public static void AddNewBusiness(string id, int address_id, string business_name, string password, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("INSERT INTO BUSINESS VALUES (@ID, @ADDRESS_ID, @NAME, @PASSWORD)", c.connection);
+				cmd.Parameters.AddWithValue("@ID", id);
+				cmd.Parameters.AddWithValue("@ADDRESS_ID", address_id);
+				cmd.Parameters.AddWithValue("@NAME", business_name);
+				cmd.Parameters.AddWithValue("@PASSWORD", password);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Business (" + id + ") successfully added to the DataBase");
+		}
+
+		// update business address id
+		public static void UpdateBusinessAddressID(string id, int address_id, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE BUSINESS SET Address_ID=@VAL WHERE (Business_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", id);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Business (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update business business name
+		public static void UpdateBusinessBusinessName(string id, string name, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE BUSINESS SET Business_Name=@VAL WHERE (Business_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", name);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Business (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update business password
+		public static void UpdateBusinessPassword(string id, string password, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE BUSINESS SET Password=@VAL WHERE (Business_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", password);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Business (" + id + ") successfully updated in the DataBase");
+		}
+
+		// delete business
+		public static void DeleteBusiness(string id, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("DELETE FROM BUSINESS WHERE (Business_ID='" + id + "')", c.connection);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Business (" + id + ") successfully deleted from the DataBase");
+		}
+
+
+		/* S A L E S   O R D E R */
+
+		// add new sales order
+		public static void AddNewSalesOrder(string id, string business_id, DateTime sales_date, DateTime sales_time, int qty, double total, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("INSERT INTO SALES_ORDER (@ID, @BUSINESS_ID, @SALES_DATE, @SALES_TIME, @QTY, @TOTAL)", c.connection);
+				cmd.Parameters.AddWithValue("@ID", id);
+				cmd.Parameters.AddWithValue("@BUSINESS_ID", business_id);
+				cmd.Parameters.AddWithValue("@SALES_DATE", sales_date.Date.ToString());
+				cmd.Parameters.AddWithValue("@SALES_TIME", sales_time.TimeOfDay.ToString());
+				cmd.Parameters.AddWithValue("@QTY", qty);
+				cmd.Parameters.AddWithValue("@TOTAL", total);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Sales order (" + id + ") successfully added to the DataBase");
+		}
+
+		// update sales order business id
+		public static void UpdateSalesOrderBusinessID(string id, string business_id, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE SALES_ORDER SET Business_ID=@VAL WHERE (Sales_Order_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", business_id);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Sales order (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update sales order sales date
+		public static void UpdateSalesOrderSalesDate(string id, DateTime sales_date, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE SALES_ORDER SET Sales_Date=@VAL WHERE (Sales_Order_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", sales_date.Date.ToString());
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Sales order (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update sales order sales time
+		public static void UpdateSalesOrderSalesTime(string id, DateTime sales_time, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE SALES_ORDER SET Sales_Time=@VAL WHERE (Sales_Order_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", sales_time.TimeOfDay.ToString());
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Sales order (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update sales order quantity bought
+		public static void UpdateSalesOrderQuantityBought(string id, int qty, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE SALES_ORDER SET Quantity_Bought=@VAL WHERE (Sales_Order_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", qty);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Sales order (" + id + ") successfully updated in the DataBase");
+		}
+
+		// update sales order sales total
+		public static void UpdateSalesOrderSalesTotal(string id, double total, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("UPDATE SALES_ORDER SET Sales_Total=@VAL WHERE (Sales_Order_ID='" + id + "')", c.connection);
+				cmd.Parameters.AddWithValue("@VAL", total);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Sales order (" + id + ") successfully updated in the DataBase");
+		}
+
+		// delete sales order
+		public static void DeleteSalesOrder(string id, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("DELETE FROM SALES_ORDER WHERE (Sales_Order_ID='" + id + "')", c.connection);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Sales order (" + id + ") successfully deleted from the DataBase");
+		}
+
+
+		/* S A L E S */
+
+		// add new sales
+		public static void AddNewSales(string sales_order_id, string stock_id, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("INSERT INTO SALES (@SALES_ORDER_ID, @STOCK_ID)", c.connection);
+				cmd.Parameters.AddWithValue("@SALES_ORDER_ID", sales_order_id);
+				cmd.Parameters.AddWithValue("@STOCK_ID", stock_id);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Sales successfully added to the DataBase");
+		}
+
+		// delete sales
+		public static void DeleteSales(string sales_order_id, string stock_id, string connection)
+		{
+			sqlControl c = new sqlControl();
+			c.connectDatabaseStr(connection);
+
+			try
+			{
+				c.open();
+				SqlCommand cmd = new SqlCommand("DELETE FROM SALES WHERE (Sales_Order_ID='" + sales_order_id + "') AND (Stock_ID='"+stock_id+"')", c.connection);
+				cmd.ExecuteNonQuery();
+				c.close();
+			}
+			catch (SqlException error)
+			{
+				messages.errorInternal("SQL Error:\n\n" + error.Message);
+				return;
+			}
+
+			messages.info("Sales successfully deleted from the DataBase");
+		}
+	}
+
+	/*
+	
+	SQL CONTROL
+
+	I coded this class to make working with the database easier and to make
+	less code required to do what would normally require more code.
+
+	*/
+
+	public class sqlControl // management of sql and database strictly
 	{
 
 		public SqlConnection connection;
@@ -28,7 +1584,7 @@ namespace FineWineUtil
 			sqlVisual visual = new sqlVisual(this);
 		}
 
-		// building of the connection string. this is private so it cannot be called externally. use connect database to call externally.
+		/*
 		private string buildConnectionString(string databaseFilename = "database.mdf")
 		{
 			connectionString = "";
@@ -40,8 +1596,9 @@ namespace FineWineUtil
 			connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + ";Integrated Security=True";
             return connectionString;
 		}
+		*/
 
-		// external method for connecting the database.
+		/*
 		public void connectDatabase(string databaseFilename = "database.mdf")
 		{
 			connection = new SqlConnection(buildConnectionString(databaseFilename));
@@ -57,10 +1614,30 @@ namespace FineWineUtil
 			}
 			connected = true;
 			connection.Close();
-            
+
+		}
+		*/
+
+		// external method for connecting the database with a pre built connection string.
+		public void connectDatabaseStr(string connection_string)
+		{
+			connection = new SqlConnection(connection_string);
+			connected = false;
+			try
+			{
+				connection.Open();
+			}
+			catch (Exception)
+			{
+				messages.errorInternal("Unable to connect to the database using connection-string '" + connection_string + "'");
+				return;
+			}
+			connected = true;
+			connection.Close();
+
 		}
 
-        public bool containsItem(object item, string field, string table)
+		public bool containsItem(object item, string field, string table)
         {
             bool b = false;
             foreach (object o in getFieldItems(field, table))
@@ -233,6 +1810,15 @@ namespace FineWineUtil
 
     }
 
+	/*
+	
+	SQL VISUAL
+
+	This is to be used along with the SQL CONTROL class in order to easily integrate
+	the SQL CONTROL database with the user interface like visual components.
+
+	*/
+
 	public class sqlVisual // management of sql and database visuals
 	{
 
@@ -265,6 +1851,15 @@ namespace FineWineUtil
         }
 
     }
+
+	/*
+	
+	SQL HANDLING
+
+	This class is similar to the handling class except is specifically coded for handling when
+	it comes to working with SQL statements and code.
+
+	*/
 
 	public static class sqlHandling
 	{
@@ -308,6 +1903,15 @@ namespace FineWineUtil
 
 	}
 
+	/*
+	
+	SQL VISUAL OBJECTS
+
+	This is a simple enumeration I coded to work with the SQL VISUAL class in order to
+	specify types of components used, etc.
+
+	*/
+
 	public enum sqlVisualObjects{
 		DbGrid,				// used with a datagridview
 		ListT,			// used with a listbox (record items are seperated by \t)
@@ -315,6 +1919,15 @@ namespace FineWineUtil
 		TextT,            // used with a string (record items are separated by \t)
 		TextC           // used with a string (record items are separated by ,)
 	}
+
+	/*
+	
+	MESSAGES
+
+	This is a simple class I coded to save time so that I would not have to use the
+	long way of MessageBox.Show(...) when I want to show icons like the info or error icon.
+
+	*/
 
 	public static class messages
 	{
@@ -346,7 +1959,16 @@ namespace FineWineUtil
 
 	}
 
-    public static class handling
+	/*
+	
+	HANDLING
+
+	I coded this class to make string handling less work and to make certain actions easier to do
+	without needing to do too much thinking.
+
+	*/
+
+	public static class handling
     {
 
         public static string symbols = "~`!@#$%^&*()_+-={}[]\\|:;\"'<>?,./ ";
@@ -429,6 +2051,16 @@ namespace FineWineUtil
         }
 
     }
+
+	/*
+	
+	IO FILE
+
+	I coded this class to make the use of text files and files in general easier,
+	this is for use with things like saving configurations to the local machine as
+	well as to save and export reports.
+
+	*/
 
 	public class ioFile
 	{
