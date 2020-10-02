@@ -68,102 +68,83 @@ namespace FineWineUtil
 			messages.info("Grape (" + grape_id + ") successfully added to the DataBase");
 		}
 
-		// coding to update a grape entirely
-		public static void UpdateEntireGrape(string grape_id, string name, string grape_type, string description, string connection)
-		{
-			sqlControl c = new sqlControl();
-			c.connectDatabaseStr(connection);
+        // coding to update a grape entirely
+        public static void UpdateEntireGrape(string grape_id, string name, string grape_type, string description, string connection)
+        {
+            sqlControl c = new sqlControl();
+            c.connectDatabaseStr(connection);
 
-			try
-			{
-				c.open();
-				SqlCommand cmd = new SqlCommand("UPDATE GRAPE SET Name=@NAME, Grape_Type=@TYPE, Description=@DESC WHERE (Grape_ID='" + grape_id + "')", c.connection);
-				cmd.Parameters.AddWithValue("@NAME", name);
-				cmd.Parameters.AddWithValue("@TYPE", grape_type);
-				cmd.Parameters.AddWithValue("@DESC", description);
-				cmd.ExecuteNonQuery();
-				c.close();
-			}
-			catch (SqlException error)
-			{
-				messages.errorInternal("SQL Error:\n\n" + error.Message);
-				return;
-			}
+            try
+            {
+                c.open();
+                //SQL command string that changes when variables are present 
+                string sqlCommand = "UPDATE GRAPE SET ";
+                Boolean fName = !String.IsNullOrEmpty(name), fType = !String.IsNullOrEmpty(grape_type), fDescrip = !String.IsNullOrEmpty(description);
+                //Adds variables to command line if present 
+                if (fName)
+                {
+                    sqlCommand += " Name = @Name ,";
+                }
+                if (fType)
+                {
+                    sqlCommand += " Grape_Type=@TYPE ,";
+                }
+                if (fDescrip)
+                {
+                    sqlCommand += " Description=@DESC ,";
+                }
+                sqlCommand = sqlCommand.Remove(sqlCommand.Length - 2);
+                sqlCommand = sqlCommand + "WHERE (Grape_ID='" + grape_id + "')";
+                c.open();
+                SqlCommand cmd = new SqlCommand(sqlCommand, c.connection);
 
-			messages.info("Grape (" + grape_id + ") successfully updated in the DataBase");
-		}
+                if (fName)
+                {
+                    cmd.Parameters.AddWithValue("@NAME", name);
+                }
+                if (fType)
+                {
+                    cmd.Parameters.AddWithValue("@TYPE", grape_type);
+                }
+                if (fDescrip)
+                {
+                    cmd.Parameters.AddWithValue("@DESC", description);
+                }
 
-		// coding to update grape name
-		public static void UpdateEntireGrape(string grape_id, string name, string connection)
-		{
-			sqlControl c = new sqlControl();
-			c.connectDatabaseStr(connection);
+                cmd.ExecuteNonQuery();
+                c.close();
+                messages.info("Grape (" + grape_id + ") successfully update in the DataBase");
 
-			try
-			{
-				c.open();
-				SqlCommand cmd = new SqlCommand("UPDATE GRAPE SET Name=@NAME WHERE (Grape_ID='" + grape_id + "')", c.connection);
-				cmd.Parameters.AddWithValue("@NAME", name);
-				cmd.ExecuteNonQuery();
-				c.close();
-			}
-			catch (SqlException error)
-			{
-				messages.errorInternal("SQL Error:\n\n" + error.Message);
-				return;
-			}
+            }
+            catch (SqlException error)
+            {
+                messages.errorInternal("SQL Error:\n\n" + error.Message);
+                return;
+            }
 
-			messages.info("Grape (" + grape_id + ") successfully update in the DataBase");
-		}
+            messages.info("Grape (" + grape_id + ") successfully updated in the DataBase");
+        }
 
-		// coding to update grape type
-		public static void UpdateGrapeType(string grape_id, string grape_type, string connection)
-		{
-			sqlControl c = new sqlControl();
-			c.connectDatabaseStr(connection);
+        // coding to update grape name
+        public static void UpdateEntireGrape(string grape_id, string name, string connection)
+        { //Calling update entire grape function
+            UpdateEntireGrape(grape_id, name, "", "", connection);
+        }
 
-			try
-			{
-				c.open();
-				SqlCommand cmd = new SqlCommand("UPDATE GRAPE SET Grape_Type=@TYPE WHERE (Grape_ID='" + grape_id + "')", c.connection);
-				cmd.Parameters.AddWithValue("@TYPE", grape_type);
-				cmd.ExecuteNonQuery();
-				c.close();
-			}
-			catch (SqlException error)
-			{
-				messages.errorInternal("SQL Error:\n\n" + error.Message);
-				return;
-			}
+        // coding to update grape type
+        public static void UpdateGrapeType(string grape_id, string grape_type, string connection)
+        { //Calling update entire grape function
+            UpdateEntireGrape(grape_id, "", grape_type, "", connection);
+        }
 
-			messages.info("Grape (" + grape_id + ") successfully update in the DataBase");
-		}
-
-		// coding to update grape description
-		public static void UpdateGrapeDescription(string grape_id, string description, string connection)
-		{
-			sqlControl c = new sqlControl();
-			c.connectDatabaseStr(connection);
-
-			try
-			{
-				c.open();
-				SqlCommand cmd = new SqlCommand("UPDATE GRAPE SET Description=@DESC WHERE (Grape_ID='" + grape_id + "')", c.connection);
-				cmd.Parameters.AddWithValue("@DESC", description);
-				cmd.ExecuteNonQuery();
-				c.close();
-			}
-			catch (SqlException error)
-			{
-				messages.errorInternal("SQL Error:\n\n" + error.Message);
-				return;
-			}
-
-			messages.info("Grape (" + grape_id + ") successfully update in the DataBase");
-		}
-
-		// delete grape
-		public static void DeleteGrape(string id, string connection)
+        // coding to update grape description
+        public static void UpdateGrapeDescription(string grape_id, string description, string connection)
+        {
+            //Calling update entire grape function
+            UpdateEntireGrape(grape_id, "", "", description, connection);
+        }
+        // delete grape
+        public static void DeleteGrape(string id, string connection)
 		{
 			sqlControl c = new sqlControl();
 			c.connectDatabaseStr(connection);
