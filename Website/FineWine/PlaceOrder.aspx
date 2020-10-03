@@ -38,12 +38,17 @@
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style1">&nbsp;&nbsp;&nbsp; Amount to order:
+                    <asp:TextBox ID="txtBottelstoOrder" runat="server" Width="110px"></asp:TextBox>
+&nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtBottelstoOrder" ErrorMessage="Please enter a valid number of bottels to order" ValidationExpression="/d"></asp:RegularExpressionValidator>
+                </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style1">
+                    <asp:Button ID="btnOrder" runat="server" Text="Order" />
+                </td>
                 <td>&nbsp;</td>
             </tr>
         </table>
