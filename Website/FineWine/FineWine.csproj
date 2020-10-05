@@ -67,7 +67,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\FineWines.mdf" />
+    <Content Include="App_Data\FineWines_log.ldf">
+      <DependentUpon>FineWines.mdf</DependentUpon>
+    </Content>
+    <Content Include="BrowseStock.aspx" />
     <Content Include="CSS files\HomePageStyle.css" />
+    <Content Include="FineWinesDB.sql" />
     <Content Include="Global.asax" />
     <Content Include="HomePage.aspx" />
     <Content Include="LogIn.aspx" />
@@ -88,9 +94,26 @@
     <Content Include="Pictures\WineCorks3.jpg" />
     <Content Include="PlaceOrder.aspx" />
     <Content Include="RegisterBusiness.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WebsiteStyle.css" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrowseStock.aspx.cs">
+      <DependentUpon>BrowseStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BrowseStock.aspx.designer.cs">
+      <DependentUpon>BrowseStock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FineWines.Master.cs">
+      <DependentUpon>FineWines.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FineWines.Master.designer.cs">
+      <DependentUpon>FineWines.Master</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -125,6 +148,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FineWines.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -134,7 +158,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

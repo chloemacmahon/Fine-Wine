@@ -11,17 +11,7 @@ namespace FineWine
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        protected void btnLogIn_Click(object sender, EventArgs e)
-        {
-            Server.Transfer("LogIn.aspx");
-        }
-
-        protected void btnSignUp_Click(object sender, EventArgs e)
-        {
-            Server.Transfer("RegisterBusiness.aspx");
+            MultiView1.SetActiveView(View1);
         }
     }
 }
