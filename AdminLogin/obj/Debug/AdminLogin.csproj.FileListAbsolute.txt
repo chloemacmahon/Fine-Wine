@@ -1,0 +1,9 @@
+C:\Users\z3sto\Desktop\MyNWU\CMPG 223\Project\AdminLogin\obj\Debug\AdminLogin.csprojAssemblyReference.cache
+C:\Users\z3sto\Desktop\MyNWU\CMPG 223\Project\AdminLogin\obj\Debug\AdminLogin.Form1.resources
+C:\Users\z3sto\Desktop\MyNWU\CMPG 223\Project\AdminLogin\obj\Debug\AdminLogin.Properties.Resources.resources
+C:\Users\z3sto\Desktop\MyNWU\CMPG 223\Project\AdminLogin\obj\Debug\AdminLogin.csproj.GenerateResource.cache
+C:\Users\z3sto\Desktop\MyNWU\CMPG 223\Project\AdminLogin\bin\Debug\AdminLogin.exe.config
+C:\Users\z3sto\Desktop\MyNWU\CMPG 223\Project\AdminLogin\bin\Debug\AdminLogin.exe
+C:\Users\z3sto\Desktop\MyNWU\CMPG 223\Project\AdminLogin\bin\Debug\AdminLogin.pdb
+C:\Users\z3sto\Desktop\MyNWU\CMPG 223\Project\AdminLogin\obj\Debug\AdminLogin.exe
+C:\Users\z3sto\Desktop\MyNWU\CMPG 223\Project\AdminLogin\obj\Debug\AdminLogin.pdb
