@@ -18,5 +18,10 @@ namespace FineWine
         {
             Server.Transfer("RegisterBusiness.aspx");
         }
+
+        protected void btnLogIn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
