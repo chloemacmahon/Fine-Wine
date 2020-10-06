@@ -32,16 +32,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminLogin));
             this.panel1 = new System.Windows.Forms.Panel();
             this.chkBoxShowPassword = new System.Windows.Forms.CheckBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.deleteMeWhenDone = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.grapesFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
+            this.deleteMeWhenDone.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,43 +75,12 @@
             this.chkBoxShowPassword.UseVisualStyleBackColor = true;
             this.chkBoxShowPassword.CheckedChanged += new System.EventHandler(this.chkBoxShowPassword_CheckedChanged);
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Mongolian Baiti", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ImageIndex = 0;
-            this.button2.ImageList = this.imageList1;
-            this.button2.Location = new System.Drawing.Point(215, 121);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(176, 32);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Exit";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "exit.png");
             this.imageList1.Images.SetKeyName(1, "user.png");
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Mongolian Baiti", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.ImageIndex = 1;
-            this.button1.ImageList = this.imageList1;
-            this.button1.Location = new System.Drawing.Point(21, 121);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(176, 32);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Login";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // txtPassword
             // 
@@ -163,22 +135,69 @@
             this.label1.Text = "Login";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // deleteMeWhenDone
+            // 
+            this.deleteMeWhenDone.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.deleteMeWhenDone.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.grapesFormToolStripMenuItem});
+            this.deleteMeWhenDone.Name = "deleteMeWhenDone";
+            this.deleteMeWhenDone.Size = new System.Drawing.Size(165, 28);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::AdminLogin.Properties.Resources.padlock;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Location = new System.Drawing.Point(133, 4);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(60, 49);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Mongolian Baiti", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ImageIndex = 0;
+            this.button2.ImageList = this.imageList1;
+            this.button2.Location = new System.Drawing.Point(215, 121);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(176, 32);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Exit";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Mongolian Baiti", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.ImageIndex = 1;
+            this.button1.ImageList = this.imageList1;
+            this.button1.Location = new System.Drawing.Point(21, 121);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(176, 32);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Login";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // grapesFormToolStripMenuItem
+            // 
+            this.grapesFormToolStripMenuItem.Name = "grapesFormToolStripMenuItem";
+            this.grapesFormToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.grapesFormToolStripMenuItem.Text = "Grapes_Form";
+            this.grapesFormToolStripMenuItem.Click += new System.EventHandler(this.grapesFormToolStripMenuItem_Click);
             // 
             // AdminLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(432, 241);
+            this.ContextMenuStrip = this.deleteMeWhenDone;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
@@ -188,6 +207,7 @@
             this.Text = "Administrator Login";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.deleteMeWhenDone.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -207,6 +227,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.CheckBox chkBoxShowPassword;
+        private System.Windows.Forms.ContextMenuStrip deleteMeWhenDone;
+        private System.Windows.Forms.ToolStripMenuItem grapesFormToolStripMenuItem;
     }
 }
 
