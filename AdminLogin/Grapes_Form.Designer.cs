@@ -286,6 +286,7 @@
             this.btnDelete.Text = "Delete Grape";
             this.toolTips.SetToolTip(this.btnDelete, "Delete the grape with the selected ID.");
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // cbIDs
             // 

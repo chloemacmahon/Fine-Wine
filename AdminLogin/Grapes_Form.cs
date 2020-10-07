@@ -160,7 +160,7 @@ namespace AdminLogin
             int count = control.getRecordCountWhere("GRAPE", "(Name LIKE '%" + txtName.Text + "%')");
             if (txtName.Text.Length == 0 || txtType.Text.Length == 0 || txtDescription.Text.Length == 0)
             {
-                messages.error("Not all field are filled.");
+                messages.error("Not all fields are filled.");
                 log("Grape addition cancelled");
                 return;
             }
@@ -193,7 +193,7 @@ namespace AdminLogin
             }
             if (txtName.Text.Length == 0 || txtType.Text.Length == 0 || txtDescription.Text.Length == 0)
             {
-                messages.error("Not all field are filled.");
+                messages.error("Not all fields are filled.");
                 log("Update cancelled");
                 return;
             }
@@ -204,6 +204,19 @@ namespace AdminLogin
             }
             Insert_Add_Delete_Code.UpdateEntireGrape(txtID.Text, txtName.Text, txtType.Text, txtDescription.Text, connection_string);
             log("Grape has been updated");
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int count = control.getRecordCountWhere("GRAPE", "(Name LIKE '%" + cbIDs.Text + "%')");
+            if (count == 0)
+            {
+                messages.error("There is no grape with the ID '" + cbIDs.Text + "'!");
+                log("Deletion cancelled");
+                return;
+            }
+            Insert_Add_Delete_Code.DeleteGrape(cbIDs.Text, connection_string);
+            log("Grape has been deleted");
         }
     }
 }

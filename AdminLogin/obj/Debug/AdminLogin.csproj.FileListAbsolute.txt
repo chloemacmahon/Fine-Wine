@@ -18,3 +18,4 @@ C:\Git\Andries Git\Fine-Wine\AdminLogin\obj\Debug\AdminLogin.csproj.GenerateReso
 C:\Git\Andries Git\Fine-Wine\AdminLogin\obj\Debug\AdminLogin.csproj.CoreCompileInputs.cache
 C:\Git\Andries Git\Fine-Wine\AdminLogin\obj\Debug\AdminLogin.exe
 C:\Git\Andries Git\Fine-Wine\AdminLogin\obj\Debug\AdminLogin.pdb
+C:\Git\Andries Git\Fine-Wine\AdminLogin\obj\Debug\AdminLogin.Wines_Form.resources
