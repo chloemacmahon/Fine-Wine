@@ -31,12 +31,21 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabOverview = new System.Windows.Forms.TabPage();
+            this.lbGrapes = new System.Windows.Forms.ListBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnSearchOverview = new System.Windows.Forms.Button();
+            this.btnRefreshOverview = new System.Windows.Forms.Button();
             this.tabManage = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtLog = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.pnlID = new System.Windows.Forms.Panel();
+            this.btnRefreshInfo = new System.Windows.Forms.Button();
+            this.btnRefreshIDs = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.cbIDs = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,11 +60,9 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTips = new System.Windows.Forms.ToolTip(this.components);
-            this.txtLog = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnRefreshIDs = new System.Windows.Forms.Button();
-            this.btnRefreshInfo = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
+            this.tabOverview.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.tabManage.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.pnlID.SuspendLayout();
@@ -75,6 +82,8 @@
             // 
             // tabOverview
             // 
+            this.tabOverview.Controls.Add(this.lbGrapes);
+            this.tabOverview.Controls.Add(this.groupBox2);
             this.tabOverview.Location = new System.Drawing.Point(4, 25);
             this.tabOverview.Name = "tabOverview";
             this.tabOverview.Padding = new System.Windows.Forms.Padding(3);
@@ -82,6 +91,64 @@
             this.tabOverview.TabIndex = 0;
             this.tabOverview.Text = "Overview";
             this.tabOverview.UseVisualStyleBackColor = true;
+            // 
+            // lbGrapes
+            // 
+            this.lbGrapes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbGrapes.FormattingEnabled = true;
+            this.lbGrapes.ItemHeight = 16;
+            this.lbGrapes.Location = new System.Drawing.Point(8, 76);
+            this.lbGrapes.Name = "lbGrapes";
+            this.lbGrapes.Size = new System.Drawing.Size(776, 340);
+            this.lbGrapes.TabIndex = 1;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.txtSearch);
+            this.groupBox2.Controls.Add(this.btnSearchOverview);
+            this.groupBox2.Controls.Add(this.btnRefreshOverview);
+            this.groupBox2.Location = new System.Drawing.Point(8, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(776, 67);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Controls";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.Location = new System.Drawing.Point(381, 27);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(298, 22);
+            this.txtSearch.TabIndex = 2;
+            this.toolTips.SetToolTip(this.txtSearch, "What to search for in the overview.");
+            // 
+            // btnSearchOverview
+            // 
+            this.btnSearchOverview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearchOverview.Location = new System.Drawing.Point(685, 27);
+            this.btnSearchOverview.Name = "btnSearchOverview";
+            this.btnSearchOverview.Size = new System.Drawing.Size(75, 23);
+            this.btnSearchOverview.TabIndex = 1;
+            this.btnSearchOverview.Text = "Search";
+            this.toolTips.SetToolTip(this.btnSearchOverview, "Search the overview.");
+            this.btnSearchOverview.UseVisualStyleBackColor = true;
+            this.btnSearchOverview.Click += new System.EventHandler(this.btnSearchOverview_Click);
+            // 
+            // btnRefreshOverview
+            // 
+            this.btnRefreshOverview.Location = new System.Drawing.Point(18, 27);
+            this.btnRefreshOverview.Name = "btnRefreshOverview";
+            this.btnRefreshOverview.Size = new System.Drawing.Size(75, 23);
+            this.btnRefreshOverview.TabIndex = 0;
+            this.btnRefreshOverview.Text = "Refresh";
+            this.toolTips.SetToolTip(this.btnRefreshOverview, "Refresh the overview completely.");
+            this.btnRefreshOverview.UseVisualStyleBackColor = true;
+            this.btnRefreshOverview.Click += new System.EventHandler(this.btnRefreshOverview_Click);
             // 
             // tabManage
             // 
@@ -99,6 +166,30 @@
             this.tabManage.Text = "Manage";
             this.tabManage.UseVisualStyleBackColor = true;
             this.tabManage.Click += new System.EventHandler(this.tabManage_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(399, 183);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(32, 17);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Log";
+            // 
+            // txtLog
+            // 
+            this.txtLog.AcceptsReturn = true;
+            this.txtLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLog.Location = new System.Drawing.Point(399, 203);
+            this.txtLog.Multiline = true;
+            this.txtLog.Name = "txtLog";
+            this.txtLog.ReadOnly = true;
+            this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtLog.Size = new System.Drawing.Size(374, 198);
+            this.txtLog.TabIndex = 4;
+            this.txtLog.WordWrap = false;
             // 
             // groupBox1
             // 
@@ -134,6 +225,7 @@
             this.btnUpdate.Text = "Update";
             this.toolTips.SetToolTip(this.btnUpdate, "Update the grape with the selected ID to reflect the current details/properties.");
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnAdd
             // 
@@ -144,6 +236,7 @@
             this.btnAdd.Text = "Add";
             this.toolTips.SetToolTip(this.btnAdd, "Add a new grape with the current properties/details.");
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // pnlID
             // 
@@ -160,6 +253,28 @@
             this.pnlID.Name = "pnlID";
             this.pnlID.Size = new System.Drawing.Size(755, 52);
             this.pnlID.TabIndex = 2;
+            // 
+            // btnRefreshInfo
+            // 
+            this.btnRefreshInfo.Location = new System.Drawing.Point(490, 13);
+            this.btnRefreshInfo.Name = "btnRefreshInfo";
+            this.btnRefreshInfo.Size = new System.Drawing.Size(103, 24);
+            this.btnRefreshInfo.TabIndex = 8;
+            this.btnRefreshInfo.Text = "Refresh Info";
+            this.toolTips.SetToolTip(this.btnRefreshInfo, "Refresh the selected grape\'s information.");
+            this.btnRefreshInfo.UseVisualStyleBackColor = true;
+            this.btnRefreshInfo.Click += new System.EventHandler(this.btnRefreshInfo_Click);
+            // 
+            // btnRefreshIDs
+            // 
+            this.btnRefreshIDs.Location = new System.Drawing.Point(380, 13);
+            this.btnRefreshIDs.Name = "btnRefreshIDs";
+            this.btnRefreshIDs.Size = new System.Drawing.Size(104, 24);
+            this.btnRefreshIDs.TabIndex = 7;
+            this.btnRefreshIDs.Text = "Refresh ID\'s";
+            this.toolTips.SetToolTip(this.btnRefreshIDs, "Refresh the grape ID\'s.");
+            this.btnRefreshIDs.UseVisualStyleBackColor = true;
+            this.btnRefreshIDs.Click += new System.EventHandler(this.btnRefreshIDs_Click);
             // 
             // btnDelete
             // 
@@ -180,6 +295,7 @@
             this.cbIDs.Name = "cbIDs";
             this.cbIDs.Size = new System.Drawing.Size(242, 24);
             this.cbIDs.TabIndex = 5;
+            this.cbIDs.SelectedIndexChanged += new System.EventHandler(this.cbIDs_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -302,62 +418,21 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Grape Name";
             // 
-            // txtLog
-            // 
-            this.txtLog.AcceptsReturn = true;
-            this.txtLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLog.Location = new System.Drawing.Point(399, 203);
-            this.txtLog.Multiline = true;
-            this.txtLog.Name = "txtLog";
-            this.txtLog.ReadOnly = true;
-            this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtLog.Size = new System.Drawing.Size(374, 198);
-            this.txtLog.TabIndex = 4;
-            this.txtLog.WordWrap = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(399, 183);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 17);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Log";
-            // 
-            // btnRefreshIDs
-            // 
-            this.btnRefreshIDs.Location = new System.Drawing.Point(380, 13);
-            this.btnRefreshIDs.Name = "btnRefreshIDs";
-            this.btnRefreshIDs.Size = new System.Drawing.Size(104, 24);
-            this.btnRefreshIDs.TabIndex = 7;
-            this.btnRefreshIDs.Text = "Refresh ID\'s";
-            this.toolTips.SetToolTip(this.btnRefreshIDs, "Refresh the grape ID\'s.");
-            this.btnRefreshIDs.UseVisualStyleBackColor = true;
-            // 
-            // btnRefreshInfo
-            // 
-            this.btnRefreshInfo.Location = new System.Drawing.Point(490, 13);
-            this.btnRefreshInfo.Name = "btnRefreshInfo";
-            this.btnRefreshInfo.Size = new System.Drawing.Size(103, 24);
-            this.btnRefreshInfo.TabIndex = 8;
-            this.btnRefreshInfo.Text = "Refresh Info";
-            this.toolTips.SetToolTip(this.btnRefreshInfo, "Refresh the selected grape\'s information.");
-            this.btnRefreshInfo.UseVisualStyleBackColor = true;
-            this.btnRefreshInfo.Click += new System.EventHandler(this.btnRefreshInfo_Click);
-            // 
             // Grapes_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabControl1);
+            this.Enabled = false;
             this.Name = "Grapes_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Grapes";
             this.Load += new System.EventHandler(this.Grapes_Form_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabOverview.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.tabManage.ResumeLayout(false);
             this.tabManage.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -397,5 +472,10 @@
         private System.Windows.Forms.TextBox txtLog;
         private System.Windows.Forms.Button btnRefreshIDs;
         private System.Windows.Forms.Button btnRefreshInfo;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ListBox lbGrapes;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnSearchOverview;
+        private System.Windows.Forms.Button btnRefreshOverview;
     }
 }
