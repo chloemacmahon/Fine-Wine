@@ -1,4 +1,4 @@
-USE [C:\USERS\LIZA\DOCUMENTS\2020\SEM 2\CMPG 223\GROUP PROJECT\NEW FOLDER\WEBSITE\FINEWINE\APP_DATA\FINEWINES.MDF]
+USE [C:\Users\chloe\Documents\University\CMPG 223\Final Project\Fine-Wine\Website\FineWine\App_Data\FineWines.mdf]
 
 CREATE TABLE GRAPE(
 	Grape_ID	varchar(15)	PRIMARY KEY,

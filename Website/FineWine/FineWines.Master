@@ -29,8 +29,8 @@
                     <li><a href="RegisterBusiness.aspx">REGISTER BUSINESS</a></li>
                     <li><a href="BrowseStock.aspx">STOCK</a></li>
                 </ul>
-                <div id="content">
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <div id="content" style="background-image:url('Pictures/Wine bottles 1.jpg')">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" >
                     </asp:ContentPlaceHolder>
         </div>
             </div>

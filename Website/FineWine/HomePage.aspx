@@ -9,3 +9,16 @@
                     </asp:Content>
 
 
+<asp:Content ID="Content2" runat="server" contentplaceholderid="head">
+    <style type="text/css">
+    .newStyle1 {
+        background-image: url('Pictures/Wine bottles 1.jpg');
+    }
+    .newStyle2 {
+        background-image: url('Pictures/Wine bottles 1.jpg');
+    }
+</style>
+</asp:Content>
+
+
+

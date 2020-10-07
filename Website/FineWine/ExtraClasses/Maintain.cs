@@ -198,9 +198,8 @@ namespace FineWinesWeb
             connect.Close();
             return city;
         }
-        
 
-        public List<string> displaySuburb(string cityID, string cityName)
+        public List<string> displaySuburb(string cityID)
         {
             connect.Open();
             string sqlSelect = "SELECT * FROM SUBURB WHERE City_Town_ID = '" + cityID + "'";
@@ -231,6 +230,7 @@ namespace FineWinesWeb
             connect.Close();
             return business;
         }
+
         //display all records of selected table with condition
         public List<string> displaySelect(string tablename, List<string> id)
         {
