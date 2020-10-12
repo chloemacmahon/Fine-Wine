@@ -76,6 +76,7 @@
     <Content Include="CSS files\LogInSignUp.css" />
     <Content Include="FineWinesDB.sql" />
     <Content Include="Global.asax" />
+    <Content Include="Grapes.aspx" />
     <Content Include="HomePage.aspx" />
     <Content Include="LogIn.aspx" />
     <Content Include="Pictures\winecorks.jpg" />
@@ -118,6 +119,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Grapes.aspx.cs">
+      <DependentUpon>Grapes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Grapes.aspx.designer.cs">
+      <DependentUpon>Grapes.aspx</DependentUpon>
     </Compile>
     <Compile Include="HomePage.aspx.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
