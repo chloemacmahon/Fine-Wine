@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="FineWines.master.cs" Inherits="FineWinesWeb.FineWines" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Fine Wines Distributors</title>
+    <link href="WebsiteStyle.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            left: 8px;
+            top: 22px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <header id="header">
+            <h1>Fine Wines Distributors</h1>
+        </header> 
+        <div id="page-container" class="auto-style1">
+            <div id="content-wrap">
+                <ul id ="nav">
+                    <li><a href="HomePage.aspx">HOME</a></li>
+                    <li><a href="LogIn.aspx">LOGIN</a></li>
+                    <li><a href="RegisterBusiness.aspx">REGISTER BUSINESS</a></li>
+                    <li><a href="BrowseStock.aspx">STOCK</a></li>
+                    <li><a href="Grapes.aspx">Grapes</a></li>
+                </ul>
+                <div id="content" style="background-image:url('Pictures/Wine bottles 1.jpg')">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" >
+                    </asp:ContentPlaceHolder>
+        </div>
+            </div>
+            <footer id="footer">
+                Fine Wines Distributors PTY(Ltd.)&nbsp;&nbsp;Est.2013
+            </footer>
+            </div> 
+    </form> 
+       
+</body>
+</html>
+
+

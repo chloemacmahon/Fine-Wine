@@ -1,4 +1,4 @@
-USE [|DataDirectory|\FINEWINES.MDF]
+
 
 CREATE TABLE GRAPE(
 	Grape_ID	varchar(15)	PRIMARY KEY,
@@ -45,20 +45,26 @@ CREATE TABLE STOCK(
 	Selling_Price 	money
 );
 
-CREATE TABLE SUBURB(
-	Suburb_ID	int		IDENTITY(1,1) PRIMARY KEY,
-	Name		varchar(25)
+CREATE TABLE COUNTRY(
+  Country_ID	int		IDENTITY(1,1) PRIMARY KEY,
+  Name			varchar(30)
+);
+
+CREATE TABLE REGION(
+	Region_ID	int		IDENTITY(1,1) PRIMARY KEY,
+	Country_ID	int  	FOREIGN KEY REFERENCES COUNTRY(Country_ID),
+	Name		varchar(30)	 NOT NULL
 );
 
 CREATE TABLE CITY_TOWN(
 	City_Town_ID	int		IDENTITY(1,1) PRIMARY KEY,
-	Name			varchar(15)
+	Region_ID		int		FOREIGN KEY REFERENCES REGION(Region_ID),
+	Name			varchar(30)	NOT NULL
 );
 
 CREATE TABLE ADDRESS(
-	Address_ID		int		IDENTITY(1,1) PRIMARY KEY,
-	Suburb_ID		int		FOREIGN KEY REFERENCES SUBURB(Suburb_ID),
-	City_Town_ID	int		FOREIGN KEY REFERENCES CITY_TOWN(City_Town_ID),
+	Address_ID		varchar(15)		PRIMARY KEY,
+	City_Town_ID	int				FOREIGN KEY REFERENCES CITY_TOWN(City_Town_ID),
 	Street_Number	int,
 	Street_Name		varchar(25),
 	Zip_Code		varchar(15)
@@ -66,7 +72,7 @@ CREATE TABLE ADDRESS(
 
 CREATE TABLE BUSINESS(
 	Business_ID		varchar(15)	PRIMARY KEY,
-	Address_ID		int			FOREIGN KEY REFERENCES ADDRESS(Address_ID),
+	Address_ID		varchar(15)	FOREIGN KEY REFERENCES ADDRESS(Address_ID),
 	Business_Name	varchar(15),
 	Password 		varchar(15)
 );
@@ -87,4 +93,6 @@ CREATE TABLE SALES(
 	FOREIGN KEY (Sales_Order_ID) REFERENCES Sales_Order(Sales_Order_ID),
 	FOREIGN KEY (Stock_ID) REFERENCES Stock(Stock_ID)
 );
+
+
 

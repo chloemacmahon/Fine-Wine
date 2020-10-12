@@ -1,4 +1,5 @@
-﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -67,8 +68,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\FineWines.mdf" />
+    <Content Include="App_Data\FineWines_log.ldf">
+      <DependentUpon>FineWines.mdf</DependentUpon>
+    </Content>
+    <Content Include="BrowseStock.aspx" />
     <Content Include="CSS files\HomePageStyle.css" />
+    <Content Include="CSS files\LogInSignUp.css" />
+    <Content Include="FineWinesDB.sql" />
     <Content Include="Global.asax" />
+    <Content Include="Grapes.aspx" />
     <Content Include="HomePage.aspx" />
     <Content Include="LogIn.aspx" />
     <Content Include="Pictures\winecorks.jpg" />
@@ -88,11 +97,36 @@
     <Content Include="Pictures\WineCorks3.jpg" />
     <Content Include="PlaceOrder.aspx" />
     <Content Include="RegisterBusiness.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WebsiteStyle.css" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrowseStock.aspx.cs">
+      <DependentUpon>BrowseStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BrowseStock.aspx.designer.cs">
+      <DependentUpon>BrowseStock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExtraClasses\Maintain.cs" />
+    <Compile Include="FineWines.Master.cs">
+      <DependentUpon>FineWines.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FineWines.Master.designer.cs">
+      <DependentUpon>FineWines.Master</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Grapes.aspx.cs">
+      <DependentUpon>Grapes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Grapes.aspx.designer.cs">
+      <DependentUpon>Grapes.aspx</DependentUpon>
     </Compile>
     <Compile Include="HomePage.aspx.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
@@ -125,6 +159,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FineWines.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -134,7 +169,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
@@ -175,4 +209,3 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-</Project>
