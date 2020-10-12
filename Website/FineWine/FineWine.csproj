@@ -1,5 +1,4 @@
-
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -74,10 +73,15 @@
     </Content>
     <Content Include="BrowseStock.aspx" />
     <Content Include="CSS files\HomePageStyle.css" />
+
+    <Content Include="App_Data\dbo.CITY_TOWN.data.sql" />
+    <Content Include="App_Data\dbo.COUNTRY.data.sql" />
+    <Content Include="App_Data\dbo.REGION.data.sql" />
+
     <Content Include="CSS files\LogInSignUp.css" />
+
     <Content Include="FineWinesDB.sql" />
     <Content Include="Global.asax" />
-    <Content Include="Grapes.aspx" />
     <Content Include="HomePage.aspx" />
     <Content Include="LogIn.aspx" />
     <Content Include="Pictures\winecorks.jpg" />
@@ -120,13 +124,6 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Grapes.aspx.cs">
-      <DependentUpon>Grapes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Grapes.aspx.designer.cs">
-      <DependentUpon>Grapes.aspx</DependentUpon>
     </Compile>
     <Compile Include="HomePage.aspx.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
@@ -209,3 +206,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+</Project>
