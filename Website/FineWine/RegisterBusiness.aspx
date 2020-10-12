@@ -1,8 +1,19 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/FineWines.Master" AutoEventWireup="true" CodeBehind="RegisterBusiness.aspx.cs" Inherits="FineWine.RegisterBusiness" %>
 
-<asp:Content ID="Content1" runat="server" contentplaceholderid="ContentPlaceHolder1">
-    <h3>Register Business</h3>
-    <table class="auto-style1">
+<asp:Content ID="Content1" runat="server" contentplaceholderid="ContentPlaceHolder1" >
+    
+    <table class="newStyle1" style="width:100%;height:100%">
+        <tr>
+            <td>
+                <h3 class="newStyle1">Register Business</h3>
+            </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+        </tr>
         <tr>
             <td class="auto-style7">Business Name:</td>
             <td class="auto-style5">
@@ -79,6 +90,7 @@
                 <asp:ValidationSummary ID="ValidationSummary2" runat="server" BackColor="Maroon" ForeColor="White" />
                 <asp:ValidationSummary ID="ValidationSummary3" runat="server" BackColor="Maroon" ForeColor="White" />
                 <asp:ValidationSummary ID="ValidationSummary4" runat="server" BackColor="Maroon" ForeColor="White" />
+                <asp:Label ID="lblError" runat="server" BackColor="Red" Enabled="False" ForeColor="White"></asp:Label>
             </td>
         </tr>
     </table>

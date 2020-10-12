@@ -73,9 +73,13 @@
     </Content>
     <Content Include="BrowseStock.aspx" />
     <Content Include="CSS files\HomePageStyle.css" />
+
     <Content Include="App_Data\dbo.CITY_TOWN.data.sql" />
     <Content Include="App_Data\dbo.COUNTRY.data.sql" />
     <Content Include="App_Data\dbo.REGION.data.sql" />
+
+    <Content Include="CSS files\LogInSignUp.css" />
+
     <Content Include="FineWinesDB.sql" />
     <Content Include="Global.asax" />
     <Content Include="HomePage.aspx" />
@@ -110,6 +114,7 @@
     <Compile Include="BrowseStock.aspx.designer.cs">
       <DependentUpon>BrowseStock.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ExtraClasses\Maintain.cs" />
     <Compile Include="FineWines.Master.cs">
       <DependentUpon>FineWines.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

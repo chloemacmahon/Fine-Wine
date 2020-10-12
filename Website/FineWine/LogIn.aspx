@@ -25,7 +25,9 @@
             <br />
             <asp:Button ID="btnRegister" runat="server" BackColor="White" CssClass="btn" OnClick="btnRegister_Click" Text="Register Business" />
         </td>
-        <td>&nbsp;</td>
+        <td>
+            <asp:Label ID="lblError" runat="server" BackColor="Red" Enabled="False" ForeColor="White"></asp:Label>
+        </td>
     </tr>
 </table>
 </asp:Content>
