@@ -100,6 +100,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="WebsiteStyle.css" />
+    <Content Include="Wine.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrowseStock.aspx.cs">
@@ -155,6 +156,13 @@
     </Compile>
     <Compile Include="RegisterBusiness.aspx.designer.cs">
       <DependentUpon>RegisterBusiness.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Wine.aspx.cs">
+      <DependentUpon>Wine.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Wine.aspx.designer.cs">
+      <DependentUpon>Wine.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
