@@ -40,8 +40,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.deleteMeWhenDone = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.grapesFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.winesFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
+            this.deleteMeWhenDone.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +59,7 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(11, 60);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(411, 171);
             this.panel1.TabIndex = 0;
@@ -64,7 +68,7 @@
             // 
             this.chkBoxShowPassword.AutoSize = true;
             this.chkBoxShowPassword.Location = new System.Drawing.Point(225, 90);
-            this.chkBoxShowPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkBoxShowPassword.Margin = new System.Windows.Forms.Padding(4);
             this.chkBoxShowPassword.Name = "chkBoxShowPassword";
             this.chkBoxShowPassword.Size = new System.Drawing.Size(129, 21);
             this.chkBoxShowPassword.TabIndex = 8;
@@ -78,7 +82,7 @@
             this.button2.ImageIndex = 0;
             this.button2.ImageList = this.imageList1;
             this.button2.Location = new System.Drawing.Point(215, 121);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(176, 32);
             this.button2.TabIndex = 6;
@@ -102,7 +106,7 @@
             this.button1.ImageIndex = 1;
             this.button1.ImageList = this.imageList1;
             this.button1.Location = new System.Drawing.Point(21, 121);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(176, 32);
             this.button1.TabIndex = 5;
@@ -113,7 +117,7 @@
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(191, 60);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(163, 22);
@@ -122,7 +126,7 @@
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(191, 17);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(163, 22);
             this.txtUsername.TabIndex = 3;
@@ -163,31 +167,56 @@
             this.label1.Text = "Login";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // deleteMeWhenDone
+            // 
+            this.deleteMeWhenDone.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.deleteMeWhenDone.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.grapesFormToolStripMenuItem,
+            this.winesFormToolStripMenuItem});
+            this.deleteMeWhenDone.Name = "deleteMeWhenDone";
+            this.deleteMeWhenDone.Size = new System.Drawing.Size(211, 80);
+            // 
+            // grapesFormToolStripMenuItem
+            // 
+            this.grapesFormToolStripMenuItem.Name = "grapesFormToolStripMenuItem";
+            this.grapesFormToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.grapesFormToolStripMenuItem.Text = "Grapes_Form";
+            this.grapesFormToolStripMenuItem.Click += new System.EventHandler(this.grapesFormToolStripMenuItem_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::AdminLogin.Properties.Resources.padlock;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Location = new System.Drawing.Point(133, 4);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(60, 49);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            // 
+            // winesFormToolStripMenuItem
+            // 
+            this.winesFormToolStripMenuItem.Name = "winesFormToolStripMenuItem";
+            this.winesFormToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.winesFormToolStripMenuItem.Text = "Wines_Form";
+            this.winesFormToolStripMenuItem.Click += new System.EventHandler(this.winesFormToolStripMenuItem_Click);
             // 
             // AdminLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(432, 241);
+            this.ContextMenuStrip = this.deleteMeWhenDone;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AdminLogin";
             this.Text = "Administrator Login";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.deleteMeWhenDone.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -207,6 +236,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.CheckBox chkBoxShowPassword;
+        private System.Windows.Forms.ContextMenuStrip deleteMeWhenDone;
+        private System.Windows.Forms.ToolStripMenuItem grapesFormToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem winesFormToolStripMenuItem;
     }
 }
 

@@ -33,5 +33,15 @@ namespace AdminLogin
         {
             Close();
         }
+
+        private void grapesFormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Grapes_Form().Show();
+        }
+
+        private void winesFormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Wines_Form().Show();
+        }
     }
 }
