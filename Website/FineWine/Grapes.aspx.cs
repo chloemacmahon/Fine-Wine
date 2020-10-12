@@ -28,7 +28,6 @@ namespace FineWine
         protected void Page_Load(object sender, EventArgs e)
         {
             connectDatabase();
-            MultiView1.SetActiveView(View4);
         }
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -84,32 +83,31 @@ namespace FineWine
             }
             else if (radlistGrapeOptions.SelectedIndex == 1)
             {
-                MultiView1.SetActiveView(View2);
+                MultiView1.SetActiveView(View1);
                 connect.Open();
-                string sqlSelect = "SELECT * FROM GRAPE";
+                string sqlSelect = "SELECT * FROM Grapes";
                 command = new SqlCommand(sqlSelect, connect);
                 ds = new DataSet();
                 adapt = new SqlDataAdapter();
                 adapt.SelectCommand = command;
                 adapt.Fill(ds, "GRAPE");
-                
+                GridViewUpdate.DataBind();
                 GridViewUpdate.DataSource = ds;
                 GridViewUpdate.DataMember = "GRAPE";
-                GridViewUpdate.DataBind();
             }
             else if (radlistGrapeOptions.SelectedIndex == 2)
             {
-                MultiView1.SetActiveView(View3);
+                MultiView1.SetActiveView(View1);
                 connect.Open();
-                string sqlSelect = "SELECT * FROM GRAPE";
+                string sqlSelect = "SELECT * FROM Grapes";
                 command = new SqlCommand(sqlSelect, connect);
                 ds = new DataSet();
                 adapt = new SqlDataAdapter();
                 adapt.SelectCommand = command;
                 adapt.Fill(ds, "GRAPE");
+                GridViewDelete.DataBind();
                 GridViewDelete.DataSource = ds;
                 GridViewDelete.DataMember = "GRAPE";
-                GridViewUpdate.DataBind();
             }
         }
     }

@@ -2,21 +2,18 @@
 
 <asp:Content ID="Content1" runat="server" contentplaceholderid="ContentPlaceHolder1">
     <h2>Grapes</h2>
-    <p>&nbsp;</p>
+    <p>
+        <asp:RadioButtonList ID="radlistGrapeOptions" runat="server" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged1">
+            <asp:ListItem>Insert</asp:ListItem>
+            <asp:ListItem>Update</asp:ListItem>
+            <asp:ListItem>Delete</asp:ListItem>
+        </asp:RadioButtonList>
+    </p>
     <table style="width:100%;">
        <tr>
             <td>&nbsp;</td>
             <td>
                 <asp:MultiView ID="MultiView1" runat="server">
-                    <br />
-                    <asp:View ID="View4" runat="server">
-                        <asp:RadioButtonList ID="radlistGrapeOptions" runat="server" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged1">
-                            <asp:ListItem>Insert</asp:ListItem>
-                            <asp:ListItem>Update</asp:ListItem>
-                            <asp:ListItem>Delete</asp:ListItem>
-                        </asp:RadioButtonList>
-                    </asp:View>
-                    <br />
                     <br />
                     <asp:View ID="View1" runat="server">
                         Name:&nbsp;
