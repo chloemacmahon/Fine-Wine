@@ -101,15 +101,7 @@ namespace FineWinesWeb
             string sqlDelete = "DELETE FROM " + tableName + " WHERE ";
             if(tableName == "GRAPE")
             {
-                List<string> wines = showWinesByGrape(id[0]);
-                if (wines.Count == 0)
-                {
-                    sqlDelete += "Grape_ID LIKE '" + id[0] + "'";
-                }
-                else
-                {
-                    sqlDelete = "";
-                }
+                sqlDelete += "Grape_ID LIKE '" + id[0] + "'";
             }
             else if(tableName == "WINE")
             {
@@ -189,22 +181,7 @@ namespace FineWinesWeb
             connect.Close();
             return result;
         }
-        //Display all wines made by grape 
-        public List<string> showWinesByGrape(string grapeID)
-        {
-            connect.Open();
-            List<string> wine = new List<string>();
-            string sqlWine = "SELECT * FROM WINE WHERE Grape_ID = '"+ grapeID + "'";
-            command = new SqlCommand(sqlWine, connect);
-            reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                string output = reader.GetValue(0) + "," + reader.GetValue(1);
-                wine.Add(output);
-            }
-            connect.Close();
-            return wine;
-        }
+
         //display all cities in database divided by ,
         public List<string> displayCity()
         {

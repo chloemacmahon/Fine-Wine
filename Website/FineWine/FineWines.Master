@@ -28,7 +28,6 @@
                     <li><a href="LogIn.aspx">LOGIN</a></li>
                     <li><a href="RegisterBusiness.aspx">REGISTER BUSINESS</a></li>
                     <li><a href="BrowseStock.aspx">STOCK</a></li>
-                    <li><a href="Grapes.aspx">Grapes</a></li>
                 </ul>
                 <div id="content" style="background-image:url('Pictures/Wine bottles 1.jpg')">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" >
