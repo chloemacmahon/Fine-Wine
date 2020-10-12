@@ -4,13 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using FineWinesWeb;
 using System.Data.SqlClient;
 using System.Data;
+using FineWinesWeb;
 
 namespace FineWine
 {
-    public partial class Grapes : System.Web.UI.Page
+    public partial class Wine : System.Web.UI.Page
     {
         Maintain objMain = new Maintain();
         SqlConnection connect;
@@ -27,64 +27,32 @@ namespace FineWine
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            connectDatabase();
             MultiView1.SetActiveView(View4);
-        }
-
-        protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
+            connectDatabase();
         }
 
         protected void btnInsert_Click(object sender, EventArgs e)
-        {//Add grape to database 
+        {
             try
             {
-                string[] grapeInfo = new string[3];
-                grapeInfo[0] = txtGrapeName.Text;
-                grapeInfo[1] = txtType.Text;
-                grapeInfo[2] = txtDescrption.Text;
-                objMain.insertStock("GRAPE", grapeInfo);
+                string[] arrWineInfo = new string[4];
+                arrWineInfo[0] = txtGrapeName.Text;
+                arrWineInfo[1] = GridViewInsert.Rows[GridViewInsert.SelectedIndex].Cells[0].ToString();
+                arrWineInfo[2] = txtType.Text;
+                arrWineInfo[3] = txtDescrption.Text;
+                objMain.insertStock("WINE",arrWineInfo);
             }
             catch
             {
-                lblError.Text = "A error occured please try again later";
-            }
-        }
 
-        protected void btnUpdate_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        protected void btnDelete_Click(object sender, EventArgs e)
-        {
-            if(!(GridViewDelete.SelectedIndex < 0))
-            {
-                string selectedPrimaryKey = GridViewDelete.Rows[GridViewDelete.SelectedIndex].Cells[0].ToString();
-                string[] arrPrimaryKey = new string[2];
-                arrPrimaryKey[0] = selectedPrimaryKey;
-                try
-                {
-                    objMain.deleteStock("GRAPE", arrPrimaryKey);
-                }
-                catch
-                {
-
-                }
             }
         }
 
         protected void RadioButtonList1_SelectedIndexChanged1(object sender, EventArgs e)
         {
-            if(radlistGrapeOptions.SelectedIndex == 0)
+            if (radlistGrapeOptions.SelectedIndex == 0)
             {
                 MultiView1.SetActiveView(View1);
-                
-            }
-            else if (radlistGrapeOptions.SelectedIndex == 1)
-            {
-                MultiView1.SetActiveView(View2);
                 connect.Open();
                 string sqlSelect = "SELECT * FROM GRAPE";
                 command = new SqlCommand(sqlSelect, connect);
@@ -92,24 +60,58 @@ namespace FineWine
                 adapt = new SqlDataAdapter();
                 adapt.SelectCommand = command;
                 adapt.Fill(ds, "GRAPE");
-                
+                GridViewInsert.DataSource = ds;
+                GridViewInsert.DataMember = "GRAPE";
+                GridViewInsert.DataBind();
+
+            }
+            else if (radlistGrapeOptions.SelectedIndex == 1)
+            {
+                MultiView1.SetActiveView(View2);
+                connect.Open();
+                string sqlSelect = "SELECT * FROM WINE";
+                command = new SqlCommand(sqlSelect, connect);
+                ds = new DataSet();
+                adapt = new SqlDataAdapter();
+                adapt.SelectCommand = command;
+                adapt.Fill(ds, "WINE");
+
                 GridViewUpdate.DataSource = ds;
-                GridViewUpdate.DataMember = "GRAPE";
+                GridViewUpdate.DataMember = "WINE";
                 GridViewUpdate.DataBind();
             }
             else if (radlistGrapeOptions.SelectedIndex == 2)
             {
                 MultiView1.SetActiveView(View3);
                 connect.Open();
-                string sqlSelect = "SELECT * FROM GRAPE";
+                string sqlSelect = "SELECT * FROM WINE";
                 command = new SqlCommand(sqlSelect, connect);
                 ds = new DataSet();
                 adapt = new SqlDataAdapter();
                 adapt.SelectCommand = command;
-                adapt.Fill(ds, "GRAPE");
+                adapt.Fill(ds, "WINE");
                 GridViewDelete.DataSource = ds;
-                GridViewDelete.DataMember = "GRAPE";
+                GridViewDelete.DataMember = "WINE";
                 GridViewUpdate.DataBind();
+            }
+        }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string[] index = new string[2];
+                index[0] = GridViewDelete.Rows[GridViewDelete.SelectedIndex].Cells[0].ToString();
+                objMain.deleteStock("WINE", index);
+            }
+            catch
+            {
+
             }
         }
     }

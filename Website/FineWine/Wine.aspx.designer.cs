@@ -10,7 +10,7 @@
 namespace FineWine {
     
     
-    public partial class Grapes {
+    public partial class Wine {
         
         /// <summary>
         /// MultiView1 control.
@@ -47,6 +47,15 @@ namespace FineWine {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View View1;
+        
+        /// <summary>
+        /// GridViewInsert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewInsert;
         
         /// <summary>
         /// txtGrapeName control.
