@@ -26,6 +26,7 @@ namespace FineWinesWeb
         //insert data into different stock tables using table name and array with the necessary stock information
         public void insertStock(string tableName, string[] info)
         {
+            connectDatabase();
             connect.Open();
             string primary = "";
             string sqlInsert = "";
@@ -74,6 +75,7 @@ namespace FineWinesWeb
         //add business to the database using arrays to store business information and address information
         public void insertBusiness(string[] info, string[] address)
         {
+            connectDatabase();
             connect.Open();
             //add address to database
             string primaryA = info[0].Substring(0, 4) + address[3].Substring(0,4) + rand.Next('Z', 9) + rand.Next('Z', 9) + rand.Next('Z', 9) + rand.Next('Z', 9);
@@ -97,6 +99,7 @@ namespace FineWinesWeb
         //delete stock from database with paramaters table name and an array id
         public void deleteStock(string tableName, string[] id)
         {
+            connectDatabase();
             connect.Open();
             string sqlDelete = "DELETE FROM " + tableName + " WHERE ";
             if(tableName == "GRAPE")
@@ -133,6 +136,7 @@ namespace FineWinesWeb
         //display all information in tables using sql select statement
         public List<string> displayAll(string tableName)
         {
+            connectDatabase();
             connect.Open();
             string sqlSelect = "SELECT * FROM " + tableName;
             List<string> result = new List<string>();
@@ -185,6 +189,7 @@ namespace FineWinesWeb
         //display all cities in database divided by ,
         public List<string> displayCity()
         {
+            connectDatabase();
             connect.Open();
             List<string> city = new List<string>();
             string sqlCity = "SELECT * FROM CITY_TOWN";
@@ -201,6 +206,7 @@ namespace FineWinesWeb
 
         public List<string> displaySuburb(string cityID)
         {
+            connectDatabase();
             connect.Open();
             string sqlSelect = "SELECT * FROM SUBURB WHERE City_Town_ID = '" + cityID + "'";
             List<string> suburb = new List<string>();
@@ -217,6 +223,7 @@ namespace FineWinesWeb
         //Displays business information based on business name
         public List<string> displayBusinessInfo(string businessName)
         {
+            connectDatabase();
             connect.Open();
             string sqlSelect = "SELECT * FROM Business WHERE Business_Name = '" + businessName + "'";
             List<string> business = new List<string>();
@@ -234,6 +241,7 @@ namespace FineWinesWeb
         //display all records of selected table with condition
         public List<string> displaySelect(string tablename, List<string> id)
         {
+            connectDatabase();
             connect.Open();
             string sqlSelect = "SELECT * FROM " + tablename + " WHERE ";
             List<string> result = new List<string>();

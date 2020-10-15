@@ -27,7 +27,10 @@ namespace FineWine
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            MultiView1.SetActiveView(View4);
+            if (!this.IsPostBack)
+            {
+                MultiView1.SetActiveView(View4);
+            }
             connectDatabase();
         }
 
@@ -37,7 +40,7 @@ namespace FineWine
             {
                 string[] arrWineInfo = new string[4];
                 arrWineInfo[0] = txtGrapeName.Text;
-                arrWineInfo[1] = GridViewInsert.Rows[GridViewInsert.SelectedIndex].Cells[0].ToString();
+                arrWineInfo[1] = lblSelected0.Text;
                 arrWineInfo[2] = txtType.Text;
                 arrWineInfo[3] = txtDescrption.Text;
                 objMain.insertStock("WINE",arrWineInfo);
@@ -90,9 +93,10 @@ namespace FineWine
                 adapt = new SqlDataAdapter();
                 adapt.SelectCommand = command;
                 adapt.Fill(ds, "WINE");
+
                 GridViewDelete.DataSource = ds;
                 GridViewDelete.DataMember = "WINE";
-                GridViewUpdate.DataBind();
+                GridViewDelete.DataBind();
             }
         }
 
@@ -106,13 +110,28 @@ namespace FineWine
             try
             {
                 string[] index = new string[2];
-                index[0] = GridViewDelete.Rows[GridViewDelete.SelectedIndex].Cells[0].ToString();
+                index[0] = GridViewDelete.Rows[GridViewDelete.SelectedIndex].Cells[0].Text.ToString();
                 objMain.deleteStock("WINE", index);
             }
             catch
             {
 
             }
+        }
+
+        protected void GridViewInsert_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblSelected0.Text = GridViewInsert.Rows[GridViewInsert.SelectedIndex].Cells[1].Text.ToString();
+        }
+
+        protected void GridViewUpdate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblSelected.Text = GridViewUpdate.Rows[GridViewUpdate.SelectedIndex].Cells[0].ToString();
+        }
+
+        protected void GridViewDelete_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblSelected1.Text = GridViewDelete.Rows[GridViewDelete.SelectedIndex].Cells[0].ToString();
         }
     }
 }

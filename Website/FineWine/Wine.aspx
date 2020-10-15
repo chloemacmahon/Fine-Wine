@@ -21,8 +21,9 @@
                     <br />
                     <asp:View ID="View1" runat="server">
                         <h2 class="auto-style2">Wines</h2>
-                        <asp:GridView ID="GridViewInsert" runat="server" AutoGenerateSelectButton="True">
+                        <asp:GridView ID="GridViewInsert" runat="server" AutoGenerateSelectButton="True" OnSelectedIndexChanged="GridViewInsert_SelectedIndexChanged" AutoPostback = "Flash">
                         </asp:GridView>
+                        <asp:Label ID="lblSelected0" runat="server" Text="Label"></asp:Label>
                         <br />
                         Please select the grape used to produce this wine
                         <br />
@@ -44,8 +45,9 @@
                     <br />
                     <asp:View ID="View2" runat="server">
                         <div>
-                            <asp:GridView ID="GridViewUpdate" runat="server" AutoGenerateSelectButton="True">
+                            <asp:GridView ID="GridViewUpdate" runat="server" AutoGenerateSelectButton="True" OnSelectedIndexChanged="GridViewUpdate_SelectedIndexChanged">
                             </asp:GridView>
+                            <asp:Label ID="lblSelected" runat="server" Text="Label" Visible="False"></asp:Label>
                         </div>
                         Name:&nbsp;
                         <asp:TextBox ID="txtGrapeName0" runat="server"></asp:TextBox>
@@ -61,8 +63,9 @@
                     </asp:View>
                     <br />
                     <asp:View ID="View3" runat="server">
-                        <asp:GridView ID="GridViewDelete" runat="server" AutoGenerateSelectButton="True">
+                        <asp:GridView ID="GridViewDelete" runat="server" AutoGenerateSelectButton="True" OnSelectedIndexChanged="GridViewDelete_SelectedIndexChanged">
                         </asp:GridView>
+                        <asp:Label ID="lblSelected1" runat="server" Text="Label" Visible="False"></asp:Label>
                         <br />
                         <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" />
                     </asp:View>

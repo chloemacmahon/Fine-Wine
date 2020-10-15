@@ -61,7 +61,7 @@ namespace FineWine
         {
             if(!(GridViewDelete.SelectedIndex < 0))
             {
-                string selectedPrimaryKey = GridViewDelete.Rows[GridViewDelete.SelectedIndex].Cells[0].ToString();
+                string selectedPrimaryKey = GridViewDelete.Rows[GridViewDelete.SelectedIndex].Cells[0].Text.ToString();
                 string[] arrPrimaryKey = new string[2];
                 arrPrimaryKey[0] = selectedPrimaryKey;
                 try

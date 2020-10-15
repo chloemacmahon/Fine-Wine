@@ -58,6 +58,15 @@ namespace FineWine {
         protected global::System.Web.UI.WebControls.GridView GridViewInsert;
         
         /// <summary>
+        /// lblSelected0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSelected0;
+        
+        /// <summary>
         /// txtGrapeName control.
         /// </summary>
         /// <remarks>
@@ -148,6 +157,15 @@ namespace FineWine {
         protected global::System.Web.UI.WebControls.GridView GridViewUpdate;
         
         /// <summary>
+        /// lblSelected control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSelected;
+        
+        /// <summary>
         /// txtGrapeName0 control.
         /// </summary>
         /// <remarks>
@@ -200,6 +218,15 @@ namespace FineWine {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewDelete;
+        
+        /// <summary>
+        /// lblSelected1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSelected1;
         
         /// <summary>
         /// btnDelete control.
