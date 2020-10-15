@@ -1,5 +1,4 @@
-
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -45,6 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -68,12 +68,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\dbo.GRAPE.data.sql" />
+    <Content Include="App_Data\dbo.WINE.data.sql" />
     <Content Include="App_Data\FineWines.mdf" />
     <Content Include="App_Data\FineWines_log.ldf">
       <DependentUpon>FineWines.mdf</DependentUpon>
     </Content>
     <Content Include="BrowseStock.aspx" />
     <Content Include="CSS files\HomePageStyle.css" />
+    <Content Include="App_Data\dbo.CITY_TOWN.data.sql" />
+    <Content Include="App_Data\dbo.COUNTRY.data.sql" />
+    <Content Include="App_Data\dbo.REGION.data.sql" />
     <Content Include="CSS files\LogInSignUp.css" />
     <Content Include="FineWinesDB.sql" />
     <Content Include="Global.asax" />
@@ -97,10 +102,12 @@
     <Content Include="Pictures\WineCorks3.jpg" />
     <Content Include="PlaceOrder.aspx" />
     <Content Include="RegisterBusiness.aspx" />
+    <Content Include="RequestReports.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="WebsiteStyle.css" />
+    <Content Include="Wine.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrowseStock.aspx.cs">
@@ -157,6 +164,20 @@
     <Compile Include="RegisterBusiness.aspx.designer.cs">
       <DependentUpon>RegisterBusiness.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RequestReports.aspx.cs">
+      <DependentUpon>RequestReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RequestReports.aspx.designer.cs">
+      <DependentUpon>RequestReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Wine.aspx.cs">
+      <DependentUpon>Wine.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Wine.aspx.designer.cs">
+      <DependentUpon>Wine.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="FineWines.Master" />
@@ -202,10 +223,4 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+</Project>

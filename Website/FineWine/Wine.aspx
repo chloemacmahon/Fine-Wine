@@ -1,7 +1,7 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/FineWines.Master" AutoEventWireup="true" CodeBehind="Grapes.aspx.cs" Inherits="FineWine.Grapes" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/FineWines.Master" AutoEventWireup="true" CodeBehind="Wine.aspx.cs" Inherits="FineWine.Wine" %>
 
 <asp:Content ID="Content1" runat="server" contentplaceholderid="ContentPlaceHolder1">
-    <h2>Grapes</h2>
+    <h2>&nbsp;</h2>
     <p>&nbsp;</p>
     <table style="width:100%;">
        <tr>
@@ -10,6 +10,7 @@
                 <asp:MultiView ID="MultiView1" runat="server">
                     <br />
                     <asp:View ID="View4" runat="server">
+                        <h2 class="auto-style2">Wines</h2>
                         <asp:RadioButtonList ID="radlistGrapeOptions" runat="server" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged1">
                             <asp:ListItem>Insert</asp:ListItem>
                             <asp:ListItem>Update</asp:ListItem>
@@ -19,6 +20,13 @@
                     <br />
                     <br />
                     <asp:View ID="View1" runat="server">
+                        <h2 class="auto-style2">Wines</h2>
+                        <asp:GridView ID="GridViewInsert" runat="server" AutoGenerateSelectButton="True" OnSelectedIndexChanged="GridViewInsert_SelectedIndexChanged" AutoPostback = "Flash">
+                        </asp:GridView>
+                        <asp:Label ID="lblSelected0" runat="server" Text="Label"></asp:Label>
+                        <br />
+                        Please select the grape used to produce this wine
+                        <br />
                         Name:&nbsp;
                         <asp:TextBox ID="txtGrapeName" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtGrapeName" ErrorMessage="Please enter a grape name"></asp:RequiredFieldValidator>
@@ -37,8 +45,9 @@
                     <br />
                     <asp:View ID="View2" runat="server">
                         <div>
-                            <asp:GridView ID="GridViewUpdate" runat="server" AutoGenerateSelectButton="True">
+                            <asp:GridView ID="GridViewUpdate" runat="server" AutoGenerateSelectButton="True" OnSelectedIndexChanged="GridViewUpdate_SelectedIndexChanged">
                             </asp:GridView>
+                            <asp:Label ID="lblSelected" runat="server" Text="Label" Visible="False"></asp:Label>
                         </div>
                         Name:&nbsp;
                         <asp:TextBox ID="txtGrapeName0" runat="server"></asp:TextBox>
@@ -54,8 +63,9 @@
                     </asp:View>
                     <br />
                     <asp:View ID="View3" runat="server">
-                        <asp:GridView ID="GridViewDelete" runat="server" AutoGenerateSelectButton="True">
+                        <asp:GridView ID="GridViewDelete" runat="server" AutoGenerateSelectButton="True" OnSelectedIndexChanged="GridViewDelete_SelectedIndexChanged">
                         </asp:GridView>
+                        <asp:Label ID="lblSelected1" runat="server" Text="Label" Visible="False"></asp:Label>
                         <br />
                         <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" />
                     </asp:View>
@@ -76,7 +86,7 @@
 <asp:Content ID="Content2" runat="server" contentplaceholderid="head">
     <style type="text/css">
         .auto-style2 {
-            height: 233px;
+            font-weight: normal;
         }
     </style>
 </asp:Content>

@@ -28,6 +28,7 @@ namespace FineWine
         protected void Page_Load(object sender, EventArgs e)
         {
             connectDatabase();
+            MultiView1.SetActiveView(View4);
         }
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,7 +61,7 @@ namespace FineWine
         {
             if(!(GridViewDelete.SelectedIndex < 0))
             {
-                string selectedPrimaryKey = GridViewDelete.Rows[GridViewDelete.SelectedIndex].Cells[0].ToString();
+                string selectedPrimaryKey = GridViewDelete.Rows[GridViewDelete.SelectedIndex].Cells[0].Text.ToString();
                 string[] arrPrimaryKey = new string[2];
                 arrPrimaryKey[0] = selectedPrimaryKey;
                 try
@@ -83,31 +84,32 @@ namespace FineWine
             }
             else if (radlistGrapeOptions.SelectedIndex == 1)
             {
-                MultiView1.SetActiveView(View1);
+                MultiView1.SetActiveView(View2);
                 connect.Open();
-                string sqlSelect = "SELECT * FROM Grapes";
+                string sqlSelect = "SELECT * FROM GRAPE";
                 command = new SqlCommand(sqlSelect, connect);
                 ds = new DataSet();
                 adapt = new SqlDataAdapter();
                 adapt.SelectCommand = command;
                 adapt.Fill(ds, "GRAPE");
-                GridViewUpdate.DataBind();
+                
                 GridViewUpdate.DataSource = ds;
                 GridViewUpdate.DataMember = "GRAPE";
+                GridViewUpdate.DataBind();
             }
             else if (radlistGrapeOptions.SelectedIndex == 2)
             {
-                MultiView1.SetActiveView(View1);
+                MultiView1.SetActiveView(View3);
                 connect.Open();
-                string sqlSelect = "SELECT * FROM Grapes";
+                string sqlSelect = "SELECT * FROM GRAPE";
                 command = new SqlCommand(sqlSelect, connect);
                 ds = new DataSet();
                 adapt = new SqlDataAdapter();
                 adapt.SelectCommand = command;
                 adapt.Fill(ds, "GRAPE");
-                GridViewDelete.DataBind();
                 GridViewDelete.DataSource = ds;
                 GridViewDelete.DataMember = "GRAPE";
+                GridViewUpdate.DataBind();
             }
         }
     }
