@@ -13,6 +13,33 @@ namespace FineWine {
     public partial class LogIn {
         
         /// <summary>
+        /// MultiView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.MultiView MultiView1;
+        
+        /// <summary>
+        /// BusinessView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View BusinessView;
+        
+        /// <summary>
+        /// Image1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image Image1;
+        
+        /// <summary>
         /// txtBusinessName control.
         /// </summary>
         /// <remarks>
@@ -56,5 +83,14 @@ namespace FineWine {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblError;
+        
+        /// <summary>
+        /// AdminView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View AdminView;
     }
 }

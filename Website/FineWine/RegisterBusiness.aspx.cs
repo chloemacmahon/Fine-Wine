@@ -26,7 +26,7 @@ namespace FineWine
                     List<string> suburbs = objMain.displaySuburb(city.Split(',')[0]); //Loads cities into drop down list
                     foreach (string suburb in suburbs)
                     {
-                        ddlSuburb.Items.Add(suburb);
+                        ddlCountry.Items.Add(suburb);
                     }
                 }
             }
@@ -68,7 +68,7 @@ namespace FineWine
                     string cityID = city.Split(',')[0];
 
                     //Suburb ID
-                    string suburb = ddlSuburb.Items[ddlSuburb.SelectedIndex].Text;
+                    string suburb = ddlCountry.Items[ddlCountry.SelectedIndex].Text;
                     string suburbID = suburb.Split(',')[0];
                     //Adding address info 
                     address[0] = suburbID;

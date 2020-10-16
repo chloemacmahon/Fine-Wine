@@ -67,23 +67,33 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\dbo.GRAPE.data.sql" />
+    <Content Include="App_Data\dbo.WINE.data.sql" />
     <Content Include="App_Data\FineWines.mdf" />
+    <Content Include="App_Data\FineWinesDB.sql" />
     <Content Include="App_Data\FineWines_log.ldf">
       <DependentUpon>FineWines.mdf</DependentUpon>
     </Content>
     <Content Include="BrowseStock.aspx" />
     <Content Include="CSS files\HomePageStyle.css" />
-
     <Content Include="App_Data\dbo.CITY_TOWN.data.sql" />
     <Content Include="App_Data\dbo.COUNTRY.data.sql" />
     <Content Include="App_Data\dbo.REGION.data.sql" />
-
     <Content Include="CSS files\LogInSignUp.css" />
-
-    <Content Include="FineWinesDB.sql" />
+    <Content Include="App_Data\dbo.ADMIN.data.sql" />
+    <Content Include="App_Data\dbo.LOGIN.data.sql" />
     <Content Include="Global.asax" />
+    <Content Include="Grapes.aspx" />
     <Content Include="HomePage.aspx" />
     <Content Include="LogIn.aspx" />
+    <Content Include="Pictures\custom-reports-icon.png" />
+    <Content Include="Pictures\exit.png" />
+    <Content Include="Pictures\Grape.gif" />
+    <Content Include="Pictures\Harvest1.gif" />
+    <Content Include="Pictures\padlock.png" />
+    <Content Include="Pictures\Production.gif" />
+    <Content Include="Pictures\user.png" />
+    <Content Include="Pictures\Wine1.gif" />
     <Content Include="Pictures\winecorks.jpg" />
     <Content Include="Pictures\Background1.jpg" />
     <Content Include="Pictures\Background2.jpg" />
@@ -101,10 +111,12 @@
     <Content Include="Pictures\WineCorks3.jpg" />
     <Content Include="PlaceOrder.aspx" />
     <Content Include="RegisterBusiness.aspx" />
+    <Content Include="RequestReports.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="WebsiteStyle.css" />
+    <Content Include="CSS files\WebsiteStyle.css" />
+    <Content Include="Wine.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrowseStock.aspx.cs">
@@ -124,6 +136,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Grapes.aspx.cs">
+      <DependentUpon>Grapes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Grapes.aspx.designer.cs">
+      <DependentUpon>Grapes.aspx</DependentUpon>
     </Compile>
     <Compile Include="HomePage.aspx.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
@@ -153,6 +172,21 @@
     </Compile>
     <Compile Include="RegisterBusiness.aspx.designer.cs">
       <DependentUpon>RegisterBusiness.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExtraClasses\SQLMaintain.cs" />
+    <Compile Include="RequestReports.aspx.cs">
+      <DependentUpon>RequestReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RequestReports.aspx.designer.cs">
+      <DependentUpon>RequestReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Wine.aspx.cs">
+      <DependentUpon>Wine.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Wine.aspx.designer.cs">
+      <DependentUpon>Wine.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

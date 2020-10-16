@@ -11,7 +11,18 @@ namespace FineWine
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            MultiView1.SetActiveView(View1);
+            var qs = Request.QueryString["view"];
+            if (qs != null)
+            {
+                if (qs == "1")
+                {
+                    MultiView1.SetActiveView(AdminHomeView);
+                }
+                else
+                {
+                    MultiView1.SetActiveView(View1);
+                }
+            }
         }
     }
 }

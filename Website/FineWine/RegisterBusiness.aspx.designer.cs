@@ -13,6 +13,15 @@ namespace FineWine {
     public partial class RegisterBusiness {
         
         /// <summary>
+        /// lblBusinessName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBusinessName;
+        
+        /// <summary>
         /// txtBusinessName control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace FineWine {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
+        /// lblBPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBPassword;
+        
+        /// <summary>
         /// txtPassword control.
         /// </summary>
         /// <remarks>
@@ -40,6 +58,15 @@ namespace FineWine {
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
         
         /// <summary>
+        /// lblBConfirmPass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBConfirmPass;
+        
+        /// <summary>
         /// txtRepeatPassword control.
         /// </summary>
         /// <remarks>
@@ -47,6 +74,15 @@ namespace FineWine {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRepeatPassword;
+        
+        /// <summary>
+        /// lblBStreetName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBStreetName;
         
         /// <summary>
         /// txtStreetName control.
@@ -67,6 +103,15 @@ namespace FineWine {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
         
         /// <summary>
+        /// lblBStreetNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBStreetNumber;
+        
+        /// <summary>
         /// txtStreetNumber control.
         /// </summary>
         /// <remarks>
@@ -85,6 +130,51 @@ namespace FineWine {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
         
         /// <summary>
+        /// lblCountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCountry;
+        
+        /// <summary>
+        /// ddlCountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCountry;
+        
+        /// <summary>
+        /// lblBRegion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBRegion;
+        
+        /// <summary>
+        /// ddlRegion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlRegion;
+        
+        /// <summary>
+        /// lblBCityTown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBCityTown;
+        
+        /// <summary>
         /// ddlCityTown control.
         /// </summary>
         /// <remarks>
@@ -94,13 +184,13 @@ namespace FineWine {
         protected global::System.Web.UI.WebControls.DropDownList ddlCityTown;
         
         /// <summary>
-        /// ddlSuburb control.
+        /// lblBZipCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSuburb;
+        protected global::System.Web.UI.WebControls.Label lblBZipCode;
         
         /// <summary>
         /// txtZipCode control.
@@ -128,42 +218,6 @@ namespace FineWine {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRegister;
-        
-        /// <summary>
-        /// ValidationSummary1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
-        
-        /// <summary>
-        /// ValidationSummary2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary2;
-        
-        /// <summary>
-        /// ValidationSummary3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary3;
-        
-        /// <summary>
-        /// ValidationSummary4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary4;
         
         /// <summary>
         /// lblError control.

@@ -5,15 +5,9 @@
 <html>
 <head runat="server">
     <title>Fine Wines Distributors</title>
-    <link href="WebsiteStyle.css" rel="stylesheet" />
+    <link href="CSS%20files/WebsiteStyle.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <style type="text/css">
-        .auto-style1 {
-            left: 8px;
-            top: 22px;
-        }
-    </style>
 </head>
 
 <body>
@@ -24,16 +18,34 @@
         <div id="page-container" class="auto-style1">
             <div id="content-wrap">
                 <ul id ="nav">
-                    <li><a href="HomePage.aspx">HOME</a></li>
-                    <li><a href="LogIn.aspx">LOGIN</a></li>
+                    <li><a href="HomePage.aspx?view=1">HOME</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)">LOGIN</a>
+                        <div class="dropdown-content">
+                         <a href="LogIn.aspx?view=1">BUSINESS LOGIN</a>
+                         <a href="LogIn.aspx?view=2">ADMINISTRATION LOGIN</a>
+                        </div>
+                    </li>
                     <li><a href="RegisterBusiness.aspx">REGISTER BUSINESS</a></li>
                     <li><a href="BrowseStock.aspx">STOCK</a></li>
                 </ul>
-                <div id="content" style="background-image:url('Pictures/Wine bottles 1.jpg')">
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" >
+                <div id="content">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
         </div>
             </div>
+            <div id="pre-footer">
+                <asp:LinkButton ID="LinkButton1" runat="server" Visible="False" OnClick="LinkButton1_Click" ForeColor="White">GRAPES</asp:LinkButton>
+                &nbsp;&nbsp;&nbsp;
+                <asp:LinkButton ID="LinkButton2" runat="server" Visible="False" OnClick="LinkButton2_Click" ForeColor="White">WINES</asp:LinkButton>
+                &nbsp;&nbsp;&nbsp;
+                <asp:LinkButton ID="LinkButton3" runat="server" Visible="False" ForeColor="White" OnClick="LinkButton3_Click">HARVEST</asp:LinkButton>
+                &nbsp;&nbsp;&nbsp;
+                <asp:LinkButton ID="LinkButton4" runat="server" Visible="False" ForeColor="White" OnClick="LinkButton4_Click">WINE PRODUCTION</asp:LinkButton>
+                &nbsp;&nbsp;&nbsp;
+                <asp:LinkButton ID="LinkButton5" runat="server" Visible="False" ForeColor="White" OnClick="LinkButton5_Click">REPORTS</asp:LinkButton>
+            </div>
+            
             <footer id="footer">
                 Fine Wines Distributors PTY(Ltd.)&nbsp;&nbsp;Est.2013
             </footer>
@@ -42,5 +54,8 @@
        
 </body>
 </html>
+
+
+
 
 

@@ -13,7 +13,19 @@ namespace FineWine
         Maintain objMain = new Maintain();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //use query to determine which view to show
+            var qs = Request.QueryString["view"];
+            if (qs != null)
+            {
+                if (qs == "1")
+                {
+                    MultiView1.SetActiveView(BusinessView);
+                }
+                else if(qs == "2")
+                {
+                     MultiView1.SetActiveView(AdminView);
+                }
+            }
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
