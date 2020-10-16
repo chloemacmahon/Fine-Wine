@@ -44,7 +44,7 @@ namespace FineWine
             }
             catch(Exception ex)
             {
-                
+                Response.Write("<script>alert('" + ex.ToString() + "');<script>");
             }
         }
 

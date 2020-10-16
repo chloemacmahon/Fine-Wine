@@ -10,29 +10,19 @@ namespace FineWine
 {
     public partial class RegisterBusiness : System.Web.UI.Page
     {
-        Maintain objMain = new Maintain();
+
+        SQLMaintain maintain = new SQLMaintain();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                List<string> cities = objMain.displayCity(); //Loads cities into drop down list
-                foreach (string city in cities)
-                {
-                    ddlCityTown.Items.Add(city);
-                }
-                if (ddlCityTown.SelectedIndex > -1)
-                {
-                    string city = ddlCityTown.Items[ddlCityTown.SelectedIndex].Text;
-                    List<string> suburbs = objMain.displaySuburb(city.Split(',')[0]); //Loads cities into drop down list
-                    foreach (string suburb in suburbs)
-                    {
-                        ddlCountry.Items.Add(suburb);
-                    }
-                }
+                maintain.connectDatabase();
+                
             }
-            catch
+            catch(Exception ex)
             {
-                lblError.Text = "Problem loading subburbs and cities";
+                Response.Write("<script>alert('" + ex.ToString() + "');<script>");
             }
         }
 
