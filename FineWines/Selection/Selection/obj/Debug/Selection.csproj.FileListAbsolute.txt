@@ -1,0 +1,14 @@
+E:\FineWines\Selection\Selection\bin\Debug\Selection.exe.config
+E:\FineWines\Selection\Selection\bin\Debug\Selection.exe
+E:\FineWines\Selection\Selection\bin\Debug\Selection.pdb
+E:\FineWines\Selection\Selection\obj\Debug\Selection.csprojAssemblyReference.cache
+E:\FineWines\Selection\Selection\obj\Debug\Selection.SelectionPage.resources
+E:\FineWines\Selection\Selection\obj\Debug\Selection.Grapes.resources
+E:\FineWines\Selection\Selection\obj\Debug\Selection.Properties.Resources.resources
+E:\FineWines\Selection\Selection\obj\Debug\Selection.Wines.resources
+E:\FineWines\Selection\Selection\obj\Debug\Selection.csproj.GenerateResource.cache
+E:\FineWines\Selection\Selection\obj\Debug\Selection.csproj.CoreCompileInputs.cache
+E:\FineWines\Selection\Selection\obj\Debug\Selection.exe
+E:\FineWines\Selection\Selection\obj\Debug\Selection.pdb
+E:\FineWines\Selection\Selection\bin\Debug\Wines.mdf
+E:\FineWines\Selection\Selection\bin\Debug\Wines_log.ldf
