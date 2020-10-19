@@ -4,9 +4,9 @@
     <h2>
     <asp:MultiView ID="MultiView1" runat="server">
         <asp:View ID="BusinessView" runat="server">
-            <h2>Login</h2>
+            <h2>Business Login</h2>
             <p>
-                <asp:Image ID="Image1" runat="server" Height="143px" ImageUrl="~/Pictures/user.png" Width="175px" />
+                <asp:Image ID="Image1" runat="server" Height="140px" ImageUrl="~/Pictures/user.png" Width="175px" />
             </p>
             <table class="auto-style1">
                 <tr>
@@ -39,6 +39,18 @@
         </asp:View>
         <br />
         <asp:View ID="AdminView" runat="server">
+            Admin Login<br />
+            <asp:Image ID="Image2" runat="server" Height="140px" Width="175px" />
+            <br />
+            <br />
+            <asp:Label ID="lblAUserName" runat="server" CssClass="lbl" Text="User Name:"></asp:Label>
+            <asp:TextBox ID="txtAUserName" runat="server" CssClass="txt"></asp:TextBox>
+            <br />
+            <asp:Label ID="lblAPassword" runat="server" CssClass="lbl" Text="Password:"></asp:Label>
+            <asp:TextBox ID="txtAPassword" runat="server" CssClass="txt"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Button ID="btnALogIn" runat="server" CssClass="btn" OnClick="btnALogIn_Click" Text="Log In" />
         </asp:View>
     </asp:MultiView>
 </h2>

@@ -8,31 +8,32 @@
             <td>&nbsp;</td>
             <td>
                 <asp:MultiView ID="MultiView1" runat="server">
-                    <br />
                     <asp:View ID="View4" runat="server">
                         <asp:RadioButtonList ID="radlistGrapeOptions" runat="server" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged1">
                             <asp:ListItem>Insert</asp:ListItem>
                             <asp:ListItem>Update</asp:ListItem>
                             <asp:ListItem>Delete</asp:ListItem>
                         </asp:RadioButtonList>
+                        <br />
                     </asp:View>
                     <br />
                     <br />
                     <asp:View ID="View1" runat="server">
-                        Name:&nbsp;
-                        <asp:TextBox ID="txtGrapeName" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtGrapeName" ErrorMessage="Please enter a grape name"></asp:RequiredFieldValidator>
+                        <asp:Label ID="Label1" runat="server" CssClass="lbl" Text="Name"></asp:Label>
+                        &nbsp;
+                        <asp:TextBox ID="txtGrapeName" runat="server" CssClass="txt"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtGrapeName" ErrorMessage="Please enter a grape name" CssClass="validator"></asp:RequiredFieldValidator>
                         <br />
-                        Type:
-                        <asp:TextBox ID="txtType" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtType" ErrorMessage="Please enter a grape type"></asp:RequiredFieldValidator>
+                        <asp:Label ID="Label2" runat="server" CssClass="lbl" Text="Type of Wine:"></asp:Label>
+                        <asp:TextBox ID="txtType" runat="server" CssClass="txt"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtType" ErrorMessage="Please enter a grape type" CssClass="validator"></asp:RequiredFieldValidator>
                         <br />
-                        Description:
-                        <asp:TextBox ID="txtDescrption" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtDescrption" ErrorMessage="Please enter a grape description "></asp:RequiredFieldValidator>
+                        <asp:Label ID="Label3" runat="server" CssClass="lbl" Text="Description"></asp:Label>
+&nbsp;<asp:TextBox ID="txtDescrption" runat="server" CssClass="txt"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtDescrption" ErrorMessage="Please enter a grape description " CssClass="validator"></asp:RequiredFieldValidator>
                         <br />
-                        <asp:Button ID="btnInsert" runat="server" OnClick="btnInsert_Click" Text="Insert" />
-                        &nbsp;<asp:Label ID="lblError" runat="server"></asp:Label>
+                        <asp:Button ID="btnInsert" runat="server" OnClick="btnInsert_Click" Text="Insert" CssClass="btn" />
+                        &nbsp;<asp:Label ID="lblError" runat="server" CssClass="lbl"></asp:Label>
                     </asp:View>
                     <br />
                     <asp:View ID="View2" runat="server">
@@ -40,27 +41,27 @@
                             <asp:GridView ID="GridViewUpdate" runat="server" AutoGenerateSelectButton="True">
                             </asp:GridView>
                         </div>
-                        Name:&nbsp;
-                        <asp:TextBox ID="txtGrapeName0" runat="server"></asp:TextBox>
+                        <asp:Label ID="Label4" runat="server" CssClass="lbl" Text="Name:"></asp:Label>
+&nbsp;
+                        <asp:TextBox ID="txtGrapeName0" runat="server" CssClass="txt"></asp:TextBox>
                         <br />
-                        Type:
-                        <asp:TextBox ID="txtType0" runat="server"></asp:TextBox>
+                        <asp:Label ID="Label5" runat="server" CssClass="lbl" Text="Type:"></asp:Label>
+&nbsp;<asp:TextBox ID="txtType0" runat="server" CssClass="txt"></asp:TextBox>
                         <br />
-                        Description:
-                        <asp:TextBox ID="txtDescrption0" runat="server"></asp:TextBox>
+                        <asp:Label ID="Label6" runat="server" CssClass="lbl" Text="Description:"></asp:Label>
+&nbsp;<asp:TextBox ID="txtDescrption0" runat="server" CssClass="txt"></asp:TextBox>
                         <br />
-                        <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" />
+                        <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" CssClass="btn" />
                         <br />
                     </asp:View>
                     <br />
                     <asp:View ID="View3" runat="server">
-                        <asp:GridView ID="GridViewDelete" runat="server" AutoGenerateSelectButton="True">
+                        <asp:GridView ID="GridViewDelete" runat="server" AutoGenerateSelectButton="True" >
                         </asp:GridView>
                         <br />
                         <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" />
                     </asp:View>
                 </asp:MultiView>
-                <br />
             </td>
             <td>&nbsp;</td>
         </tr>
@@ -74,9 +75,4 @@
 
 </asp:Content>
 <asp:Content ID="Content2" runat="server" contentplaceholderid="head">
-    <style type="text/css">
-        .auto-style2 {
-            height: 233px;
-        }
-    </style>
-</asp:Content>
+    </asp:Content>

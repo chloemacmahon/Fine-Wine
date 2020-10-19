@@ -3,11 +3,11 @@
 <asp:Content ID="Content1" runat="server" contentplaceholderid="ContentPlaceHolder1">
     <h2>Stock</h2>
     <p>
-        <asp:GridView ID="GridView1" runat="server" CssClass="gridview" OnSelectedIndexChanged="GridView1_SelectedIndexChanged"  >
+        <asp:GridView ID="GridView1" runat="server" CssClass="gridview">
             <Columns>
                 <asp:TemplateField HeaderText="Select">
                     <ItemTemplate>
-                        <asp:CheckBox ID="cbSelect" CssClass="gridview" runat="server" AutoPostBack="False" />
+                        <asp:CheckBox ID="cbSelect" CssClass="gridview" runat="server" OnCheckedChanged="cbSelect_CheckedChanged" AutoPostBack="False" />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

@@ -12,23 +12,25 @@ namespace FineWine
 {
     public partial class Grapes : System.Web.UI.Page
     {
-        Maintain objMain = new Maintain();
+        SQLMaintain maintain = new SQLMaintain();
         SqlConnection connect;
         SqlDataAdapter adapt;
         SqlCommand command;
         DataSet ds;
-
-        //Connect to the database
-        public void connectDatabase()
-        {
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\FineWines.mdf;Integrated Security=True;Connect Timeout=30";
-            connect = new SqlConnection(connectionString);
-        }
+        Random rand = new Random();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            connectDatabase();
-            MultiView1.SetActiveView(View4);
+            connect = new SqlConnection(maintain.connectDatabase());
+            //use query to determine which view to show
+            var qs = Request.QueryString["view"];
+            if (qs != null)
+            {
+                if (qs == "1")
+                {
+                    MultiView1.SetActiveView(View4);
+                }
+            }    
         }
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -38,18 +40,19 @@ namespace FineWine
 
         protected void btnInsert_Click(object sender, EventArgs e)
         {//Add grape to database 
-            try
-            {
-                string[] grapeInfo = new string[3];
-                grapeInfo[0] = txtGrapeName.Text;
-                grapeInfo[1] = txtType.Text;
-                grapeInfo[2] = txtDescrption.Text;
-                objMain.insertStock("GRAPE", grapeInfo);
-            }
+         // try
+         // {
+         //create id for grape: first 4 letters of name + random letters/numbers
+            string id = txtGrapeName.Text.Substring(0, 4) + (char)rand.Next(000, 'a') + (char)rand.Next(000, 'a') + (char)rand.Next(000, 'a') + (char)rand.Next(000, 'a');
+                //create sql query for the insert
+                string sqlInsert = "INSERT INTO Grape VALUES('" + id + "', '" + txtGrapeName.Text + "', '" + txtType.Text + "', '" + txtDescrption.Text + "')";
+            //execute sql inser query for grapes
+            maintain.insertData(sqlInsert);
+          /*  }
             catch
             {
                 lblError.Text = "A error occured please try again later";
-            }
+            }  */
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
@@ -61,8 +64,12 @@ namespace FineWine
         {
             if(!(GridViewDelete.SelectedIndex < 0))
             {
+               //retrieve primary key               
                 string selectedPrimaryKey = GridViewDelete.Rows[GridViewDelete.SelectedIndex].Cells[0].Text.ToString();
-                string[] arrPrimaryKey = new string[2];
+                //create sql delete query
+                string sqlDelete = "DELETE FROM Grape WHERE Grape_ID = '" + selectedPrimaryKey + "'";
+                maintain.deleteData(sqlDelete);
+                /*  string[] arrPrimaryKey = new string[2];
                 arrPrimaryKey[0] = selectedPrimaryKey;
                 try
                 {
@@ -71,7 +78,7 @@ namespace FineWine
                 catch
                 {
 
-                }
+                } */
             }
         }
 
@@ -96,6 +103,8 @@ namespace FineWine
                 GridViewUpdate.DataSource = ds;
                 GridViewUpdate.DataMember = "GRAPE";
                 GridViewUpdate.DataBind();
+                command.Dispose();
+                connect.Close();
             }
             else if (radlistGrapeOptions.SelectedIndex == 2)
             {
@@ -109,7 +118,9 @@ namespace FineWine
                 adapt.Fill(ds, "GRAPE");
                 GridViewDelete.DataSource = ds;
                 GridViewDelete.DataMember = "GRAPE";
-                GridViewUpdate.DataBind();
+                GridViewDelete.DataBind();
+                command.Dispose();
+                connect.Close();
             }
         }
     }

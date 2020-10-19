@@ -18,16 +18,17 @@
         <div id="page-container" class="auto-style1">
             <div id="content-wrap">
                 <ul id ="nav">
-                    <li><a href="HomePage.aspx?view=1">HOME</a></li>
+                    <li><asp:LinkButton ID="lnkHomePage" runat="server" OnClick="LinkButton6_Click">HOME PAGE</asp:LinkButton></li>
                     <li class="dropdown">
-                        <a href="javascript:void(0)">LOGIN</a>
+                        <asp:LinkButton ID="lnkLogIn" runat="server" OnClick="lnkLogIn_Click">LOGIN</asp:LinkButton>
                         <div class="dropdown-content">
-                         <a href="LogIn.aspx?view=1">BUSINESS LOGIN</a>
-                         <a href="LogIn.aspx?view=2">ADMINISTRATION LOGIN</a>
+                            <asp:LinkButton ID="lnkBusinessLogin" runat="server" OnClick="LinkButton9_Click">BUSINESS LOGIN</asp:LinkButton>
+                            <asp:LinkButton ID="lnkAdminLogin" runat="server" OnClick="LinkButton10_Click">ADMINISTRATION LOGIN</asp:LinkButton>
                         </div>
                     </li>
-                    <li><a href="RegisterBusiness.aspx">REGISTER BUSINESS</a></li>
-                    <li><a href="BrowseStock.aspx">STOCK</a></li>
+                    <li><asp:LinkButton ID="lnkSignOut" runat="server" OnClick="LinkButton11_Click" Visible="False">SIGN OUT</asp:LinkButton></li>
+                    <li><asp:LinkButton ID="lnkRegisterBusiness" runat="server" OnClick="LinkButton7_Click">REGISTER BUSINESS</asp:LinkButton></li>
+                    <li><asp:LinkButton ID="lnkBrowse" runat="server" OnClick="LinkButton8_Click">BROWSE STOCK</asp:LinkButton></li>
                 </ul>
                 <div id="content">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
@@ -35,15 +36,15 @@
         </div>
             </div>
             <div id="pre-footer">
-                <asp:LinkButton ID="LinkButton1" runat="server" Visible="False" OnClick="LinkButton1_Click" ForeColor="White">GRAPES</asp:LinkButton>
+                <asp:LinkButton ID="lnkGrapes" runat="server" OnClick="LinkButton1_Click" ForeColor="White">GRAPES</asp:LinkButton>
                 &nbsp;&nbsp;&nbsp;
-                <asp:LinkButton ID="LinkButton2" runat="server" Visible="False" OnClick="LinkButton2_Click" ForeColor="White">WINES</asp:LinkButton>
+                <asp:LinkButton ID="lnkWines" runat="server" OnClick="LinkButton2_Click" ForeColor="White">WINES</asp:LinkButton>
                 &nbsp;&nbsp;&nbsp;
-                <asp:LinkButton ID="LinkButton3" runat="server" Visible="False" ForeColor="White" OnClick="LinkButton3_Click">HARVEST</asp:LinkButton>
+                <asp:LinkButton ID="lnkHarvest" runat="server" ForeColor="White" OnClick="LinkButton3_Click">HARVEST</asp:LinkButton>
                 &nbsp;&nbsp;&nbsp;
-                <asp:LinkButton ID="LinkButton4" runat="server" Visible="False" ForeColor="White" OnClick="LinkButton4_Click">WINE PRODUCTION</asp:LinkButton>
+                <asp:LinkButton ID="lnkWineProduction" runat="server" ForeColor="White" OnClick="LinkButton4_Click">WINE PRODUCTION</asp:LinkButton>
                 &nbsp;&nbsp;&nbsp;
-                <asp:LinkButton ID="LinkButton5" runat="server" Visible="False" ForeColor="White" OnClick="LinkButton5_Click">REPORTS</asp:LinkButton>
+                <asp:LinkButton ID="lnkReports" runat="server" ForeColor="White" OnClick="LinkButton5_Click">REPORTS</asp:LinkButton>
             </div>
             
             <footer id="footer">

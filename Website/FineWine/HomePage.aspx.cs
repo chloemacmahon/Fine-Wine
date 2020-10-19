@@ -23,6 +23,35 @@ namespace FineWine
                     MultiView1.SetActiveView(View1);
                 }
             }
+            else
+            {
+                MultiView1.SetActiveView(View1);
+            }
+        }
+
+        protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("Grapes.aspx");
+        }
+
+        protected void ImageButton4_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("Harvest.aspx");
+        }
+
+        protected void ImageButton3_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("WineProduction.aspx");
+        }
+
+        protected void ImageButton5_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("Wine.aspx");
+        }
+
+        protected void ImageButton6_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("RequestReports.aspx");
         }
     }
 }

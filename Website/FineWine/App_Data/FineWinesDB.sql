@@ -2,7 +2,7 @@ CREATE TABLE GRAPE(
 	Grape_ID	varchar(15)	PRIMARY KEY,
 	Name		varchar(20),
 	Grape_Type 	varchar(25),
-	Description varchar(50)
+	Description varchar(MAX)
 	);
 	
 CREATE TABLE WINE(
@@ -10,7 +10,7 @@ CREATE TABLE WINE(
 	Grape_ID 	varchar(15) FOREIGN KEY REFERENCES GRAPE(Grape_ID),
 	Name		varchar(20),
 	Wine_Type	varchar(25),
-	Description varchar(50)
+	Description varchar(MAX)
 	);
 	
 CREATE TABLE HARVEST(
@@ -62,7 +62,8 @@ CREATE TABLE CITY_TOWN(
 
 CREATE TABLE ADDRESS(
 	Address_ID		varchar(15)		PRIMARY KEY,
-	City_Town_ID	int				FOREIGN KEY REFERENCES CITY_TOWN(City_Town_ID),
+	Country_ID		int				FOREIGN KEY REFERENCES COUNTRY(Country_ID),
+	Region_ID		int				FOREIGN KEY REFERENCES REGION(Region_ID),	City_Town_ID	int				FOREIGN KEY REFERENCES CITY_TOWN(City_Town_ID),
 	Street_Number	int,
 	Street_Name		varchar(25),
 	Zip_Code		varchar(15)

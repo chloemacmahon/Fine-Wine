@@ -16,15 +16,9 @@ namespace FineWine
         SqlDataAdapter adapt = new SqlDataAdapter();
         SqlCommand command;
         DataSet ds;
-        SqlDataReader reader;
         Random rand = new Random();
+        SQLMaintain maintain = new SQLMaintain();
         public List<string> selected = new List<string>();
-
-        public void connectDatabase()
-        {
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\FineWines.mdf;Integrated Security=True;Connect Timeout=30";
-            connect = new SqlConnection(connectionString);
-        }
 
         //display all information in tables using sql select statement
         public void displayAll(string sqlSelect)
@@ -42,7 +36,7 @@ namespace FineWine
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            connectDatabase();
+            connect = new SqlConnection(maintain.connectDatabase());
             displayAll("SELECT w.Name, w.Wine_Type, s.Production_Year, s.Stock_On_Hand, s.Selling_Price FROM STOCK s, WINE w WHERE w.Wine_ID = s.Wine_ID");
         }
 
@@ -71,7 +65,7 @@ namespace FineWine
             } 
         }
 
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        protected void cbSelect_CheckedChanged(object sender, EventArgs e)
         {
             string name = GridView1.SelectedRow.Cells[1].Text;
             string type = GridView1.SelectedRow.Cells[2].Text;
@@ -79,7 +73,7 @@ namespace FineWine
             string soh = GridView1.SelectedRow.Cells[4].Text;
             string sellingPrice = GridView1.SelectedRow.Cells[5].Text;
             selected.Add(name + "\t" + type + "\t" + year + "\t" + soh + "\t" + sellingPrice);
-            Response.Write("<script>alert('" + selected.Count + "');</script>");      
+            Response.Write("<script>alert('" + selected.Count + "');</script>");
         }
     }
 }
