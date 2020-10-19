@@ -72,7 +72,6 @@ namespace FineWine
     public partial class RequestReports : System.Web.UI.Page
     {
         SQLMaintain maintain = new SQLMaintain();
-        Maintain objMain = new Maintain();
         SqlConnection connect;
         SqlDataAdapter adapt;
         DataSet ds;
@@ -163,6 +162,7 @@ namespace FineWine
             for (int  i = 0;  i < lines.Count();  i++)
 =======
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             connect = new SqlConnection(maintain.connectDatabase());
@@ -170,7 +170,7 @@ namespace FineWine
         
         protected void Button1_Click(object sender, EventArgs e)
         {
-            List<string> stock = objMain.displayAll("WINE_PRODUCTION");
+            List<string> stock = maintain.wineChart();
             List<wineProduction> production = new List<wineProduction>();
             //Adds wineProduction elements into production list
             for(int i = 0; i < stock.Count(); i++)

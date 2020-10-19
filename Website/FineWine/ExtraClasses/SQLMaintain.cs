@@ -127,9 +127,22 @@ namespace FineWine
             return id;
         }
 
-        public void wineChart()
+        //create list to use to generate reports
+        public List<string> wineChart()
         {
-
+            List<string> result = new List<string>();
+            string sqlSelect = "SELECT w.Wine_ID, w.Name, wp.Harvest_ID, wp.Estimated_Production, wp.Actual_Production FROM WINE w, WINE_PRODUCTION wp, HARVEST h " +
+                                "WHERE w.Wine.ID LIKE wp.Wine_ID AND h.Harvest_ID LIKE wp.Harvest.ID";
+            connect.Open();
+            command = new SqlCommand(sqlSelect, connect);
+            reader = command.ExecuteReader();
+            while(reader.Read())
+            {
+                string line = reader.GetValue(0).ToString() + "," + reader.GetValue(1).ToString() + "," + reader.GetValue(2).ToString() + "," + reader.GetValue(3).ToString() + "," + reader.GetValue(4).ToString();
+                result.Add(line);
+            }
+            connect.Close();
+            return result;
         }
 
     }

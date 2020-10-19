@@ -88,6 +88,7 @@
     <Content Include="App_Data\dbo.LOGIN.data.sql" />
     <Content Include="Global.asax" />
     <Content Include="Grapes.aspx" />
+    <Content Include="Harvest.aspx" />
     <Content Include="HomePage.aspx" />
     <Content Include="LogIn.aspx" />
     <Content Include="Pictures\custom-reports-icon.png" />
@@ -121,6 +122,7 @@
     </Content>
     <Content Include="CSS files\WebsiteStyle.css" />
     <Content Include="Wine.aspx" />
+    <Content Include="WineProduction.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrowseStock.aspx.cs">
@@ -147,6 +149,13 @@
     </Compile>
     <Compile Include="Grapes.aspx.designer.cs">
       <DependentUpon>Grapes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Harvest.aspx.cs">
+      <DependentUpon>Harvest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Harvest.aspx.designer.cs">
+      <DependentUpon>Harvest.aspx</DependentUpon>
     </Compile>
     <Compile Include="HomePage.aspx.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
@@ -191,6 +200,13 @@
     </Compile>
     <Compile Include="Wine.aspx.designer.cs">
       <DependentUpon>Wine.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WineProduction.aspx.cs">
+      <DependentUpon>WineProduction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WineProduction.aspx.designer.cs">
+      <DependentUpon>WineProduction.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
