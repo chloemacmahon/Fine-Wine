@@ -46,7 +46,7 @@ namespace FineWine
                 string[] address = new string[5];
                 info[0] = txtBusinessName.Text;
                 info[1] = txtPassword.Text;
-                List<string> businesses = objMain.displayBusinessInfo(txtBusinessName.Text);
+                List<string> businesses = maintain.displayBusinessInfo(txtBusinessName.Text);
                 if (businesses.Count() > 0)
                 {
                     lblError.Text = "Business is already registered";
@@ -66,8 +66,8 @@ namespace FineWine
                     address[2] = txtStreetNumber.Text;
                     address[3] = txtStreetName.Text;
                     address[4] = txtZipCode.Text;
-                    List<string> business = objMain.displayBusinessInfo(txtBusinessName.Text);
-                    objMain.insertBusiness(info, address); //Adds business into database
+                    List<string> business = maintain.displayBusinessInfo(txtBusinessName.Text);
+                    maintain.insertBusiness(info, address); //Adds business into database
                     HttpCookie userCookie = new HttpCookie("User Information");
                     userCookie["Account type"] = "B";
                     userCookie["Account name"] = txtBusinessName.Text;

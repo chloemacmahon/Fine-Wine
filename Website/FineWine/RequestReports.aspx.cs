@@ -16,12 +16,14 @@ namespace FineWine
         struct wineProduction
         {
             public string wineID;
+            public string harvestID;
             public string wineName;
             public int estimatedProduction;
             public int actualProduction;
             public double percentageProduced;
             public int differenceBetween;
         }
+        
         public bool writeReport(List<string> toWrite, string fileName)//Filename Harvest.txt
         {
             try
@@ -49,7 +51,7 @@ namespace FineWine
                 System.IO.MemoryStream chartActual_Estimated = new System.IO.MemoryStream();
                 string chartPath = Server.MapPath("/Estimated_Actual_Production_Chart.png");
                 Chart1.SaveImage(chartPath, System.Web.UI.DataVisualization.Charting.ChartImageFormat.Png);
-                System.IO.MemoryStream chartActual_Estimated = new System.IO.MemoryStream();
+                System.IO.MemoryStream chartActual_Estimated_1 = new System.IO.MemoryStream();
                 string chartPath1 = Server.MapPath("/Net_Production_Chart.png");
                 Chart1.SaveImage(chartPath1, System.Web.UI.DataVisualization.Charting.ChartImageFormat.Png);
                 return true;
@@ -76,6 +78,7 @@ namespace FineWine
                 newItem.wineID = arrItems[0];
                 List<string> elements = objMain.displaySelect("WINE", arrItems.ToList());
                 newItem.wineName = elements.ElementAt(0).Split(',')[2];
+                newItem.harvestID = arrItems[1];
                 newItem.estimatedProduction = Convert.ToInt32(arrItems[2]);
                 newItem.actualProduction = Convert.ToInt32(arrItems[3]);
                 newItem.percentageProduced = newItem.actualProduction / newItem.estimatedProduction * 100;
@@ -83,7 +86,9 @@ namespace FineWine
                 production.Add(newItem);
             }
             Chart1.Series.Add("Wine 1");
+            Chart1.Series[0].ChartType = System.Web.UI.DataVisualization.Charting.SeriesChartType.StackedColumn100;
             Chart1.Series.Add("Wine 2");
+            Chart1.Series[1].ChartType = System.Web.UI.DataVisualization.Charting.SeriesChartType.StackedColumn100;
             for (int i = 0; i < production.Count(); i++)
             {
                 Chart1.Series[0].Points.AddY(production[i].actualProduction);
@@ -91,12 +96,16 @@ namespace FineWine
                 Chart1.Series[1].Points.AddY(production[i].estimatedProduction);
                 Chart1.Series[1].Points[i].AxisLabel = production[i].wineName + "Estimated";
             }
-            Chart2.Series.Add("Difference between");
+
+
+            Chart2.Series.Add("Net Production");
             for (int i = 0; i < production.Count(); i++)
             {
                 Chart2.Series[0].Points.AddY(production[i].differenceBetween);
-                Chart2.Series[0].Points.AxisLabel = production[i].wineName;
+                Chart2.Series[0].Points[i].AxisLabel = production[i].wineName;
             }
+
+
             List<string> lines = sortProduction(production);
             for (int  i = 0;  i < lines.Count();  i++)
             {
@@ -176,11 +185,11 @@ namespace FineWine
                   }
 
             }
-            List<string> lines = new List<string>;
+            List<string> lines = new List<string>();
             lines.Add("Code \t Wine Name \t Actual Production \t Estimated Production \t Percentage produced \t Net production");
             for (int i = 0; i < productions.Count(); i++)
             {
-                lines.Add(productions[i].wineID + "\t" + productions[i].wineName + "\t" + productions[i].actualProduction + "\t" + productions[i].estimatedProduction + "\t" + productions[i].percentageProduced + "%\t" + productions[i].differenceBetween);
+                lines.Add(productions[i].wineID + "\t" + productions[i].harvestID +"\t" + productions[i].wineName + "\t" + productions[i].actualProduction + "\t" + productions[i].estimatedProduction + "\t" + productions[i].percentageProduced + "%\t" + productions[i].differenceBetween);
             }
             return lines;
         }
@@ -201,6 +210,11 @@ namespace FineWine
             {
                 MultiView1.SetActiveView(View1);
             }
+        }
+
+        protected void btnGenerateHarvestReports_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

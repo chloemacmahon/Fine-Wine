@@ -67,13 +67,13 @@ namespace FineWine {
         protected global::System.Web.UI.WebControls.RadioButtonList radSortBy;
         
         /// <summary>
-        /// Button1 control.
+        /// btnGenerateProductionReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnGenerateProductionReport;
         
         /// <summary>
         /// ListBoxReport control.
@@ -110,5 +110,23 @@ namespace FineWine {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View View3;
+        
+        /// <summary>
+        /// radSortBy0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList radSortBy0;
+        
+        /// <summary>
+        /// btnGenerateHarvestReports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGenerateHarvestReports;
     }
 }
