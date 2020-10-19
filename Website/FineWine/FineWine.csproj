@@ -68,7 +68,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\dbo.GRAPE.data.sql" />
+    <Content Include="App_Data\dbo.HARVEST.data.sql" />
     <Content Include="App_Data\dbo.WINE.data.sql" />
+    <Content Include="App_Data\dbo.WINE_PRODUCTION.data.sql" />
     <Content Include="App_Data\FineWines.mdf" />
     <Content Include="App_Data\FineWinesDB.sql" />
     <Content Include="App_Data\FineWines_log.ldf">

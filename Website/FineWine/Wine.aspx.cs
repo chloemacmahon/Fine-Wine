@@ -157,5 +157,4 @@ namespace FineWine
         {
             MultiView1.SetActiveView(View4);
         }      */
-    }            
-}
+    }     
