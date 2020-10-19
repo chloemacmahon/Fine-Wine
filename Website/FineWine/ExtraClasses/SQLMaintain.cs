@@ -144,6 +144,21 @@ namespace FineWine
             connect.Close();
             return result;
         }
+        public List<string> salesChart()
+        {
+            List<string> result = new List<string>();
+            string sqlSelect = "SELECT * FROM SALES_ORDER ";
+            connect.Open();
+            command = new SqlCommand(sqlSelect, connect);
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                string line = reader.GetValue(0).ToString() + "," + reader.GetValue(2).ToString() +  "," + reader.GetValue(4).ToString() + "," + reader.GetValue(5).ToString();
+                result.Add(line);
+            }
+            connect.Close();
+            return result;
+        }
 
     }
 }
