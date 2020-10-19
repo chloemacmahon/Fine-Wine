@@ -7,15 +7,15 @@
                             <br />
                             <br />
                             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br />
-                            <asp:ImageButton ID="ImageButton2" runat="server" CssClass="img" ImageUrl="~/Pictures/Grape.gif" />
+                            <asp:ImageButton ID="ImageButton2" runat="server" CssClass="img" ImageUrl="~/Pictures/Grape.gif" OnClick="ImageButton2_Click" />
                             &nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:ImageButton ID="ImageButton4" runat="server" CssClass="img" ImageUrl="~/Pictures/Harvest1.gif" />
-                            <asp:ImageButton ID="ImageButton3" runat="server" CssClass="img" ImageUrl="~/Pictures/Wine1.gif" />
+                            <asp:ImageButton ID="ImageButton4" runat="server" CssClass="img" ImageUrl="~/Pictures/Harvest1.gif" OnClick="ImageButton4_Click" />
+                            <asp:ImageButton ID="ImageButton3" runat="server" CssClass="img" ImageUrl="~/Pictures/Wine1.gif" OnClick="ImageButton3_Click" />
                             <br />
                             <br />
-                            <asp:ImageButton ID="ImageButton5" runat="server" CssClass="img" ImageUrl="~/Pictures/Production.gif" />
+                            <asp:ImageButton ID="ImageButton5" runat="server" CssClass="img" ImageUrl="~/Pictures/Production.gif" OnClick="ImageButton5_Click" />
 &nbsp;
-                            <asp:ImageButton ID="ImageButton6" runat="server" CssClass="img" ImageUrl="~/Pictures/custom-reports-icon.png" />
+                            <asp:ImageButton ID="ImageButton6" runat="server" CssClass="img" ImageUrl="~/Pictures/custom-reports-icon.png" OnClick="ImageButton6_Click" />
                             <br />
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <br />

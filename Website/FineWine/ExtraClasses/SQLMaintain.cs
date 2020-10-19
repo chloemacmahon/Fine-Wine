@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
 
 namespace FineWine
 {
@@ -15,15 +14,14 @@ namespace FineWine
         SqlDataAdapter adapt;
         SqlCommand command;
         SqlDataReader reader;
-        RegisterBusiness register = new RegisterBusiness();
+        
 
         //Connect to the database  - implement on relevant pageloads
-        public void connectDatabase()
+        public string connectDatabase()
         {
-            //string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\App_Data\FineWines.mdf;Integrated Security=True;Connect Timeout=30";
-            //use relative connectionString that is defined in web.config
-            string connectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\FineWines.mdf;Integrated Security=True;Connect Timeout=30";
             connect = new SqlConnection(connectionString);
+            return connectionString;
         }
 
         //sql query to insert new data into tables  
@@ -50,20 +48,89 @@ namespace FineWine
             connect.Close();
         }
 
-        //sql query to display countries in ddlCountry on RegisterBusiness form
-        public void displayCountry()
+        //sql query to edit table data
+        public void updateData(string sqlUpdate)
         {
             connect.Open();
-            string sqlSelect = "SELECT Name FROM COUNTRY ORDER BY ASC";
-            command = new SqlCommand(sqlSelect, connect);
+            command = new SqlCommand(sqlUpdate, connect);
             adapt = new SqlDataAdapter();
-            adapt.SelectCommand = command;
-            reader = command.ExecuteReader();
-            while(reader.Read())
-            {
-                register.ddlCountry.Items.Add(reader.GetValue(1).ToString());
-            }
+            adapt.UpdateCommand = command;
+            adapt.UpdateCommand.ExecuteNonQuery();
+            command.Dispose();
             connect.Close();
         }
+        
+        //sql query to verify login
+        public bool verifyLogin(string sqlCompare)
+        {
+            //open connection to database and execute sql query
+            connect.Open();
+            command = new SqlCommand(sqlCompare, connect);
+            reader = command.ExecuteReader();
+            if(reader != null)
+            {
+                connect.Close();
+                return true;
+            }
+            else
+            {
+                connect.Close();
+                return false;
+            }    
+        }
+
+        //get the business id
+        public string getBusinessID(string bName)
+        {
+            string sqlSelect = "SELECT Business_ID FROM BUSINESS WHERE Business_Name LIKE '" + bName + "'";
+            string id = "";
+            connect.Open();
+            command = new SqlCommand(sqlSelect, connect);
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                id = reader.GetValue(0).ToString();
+            }
+            connect.Close();
+            return id;
+        }
+
+        //get the grape id
+        public string getGrapeID(string gName)
+        {
+            string sqlSelect = "SELECT Grape_ID FROM GRAPE WHERE Name LIKE '" + gName + "'";
+            string id = "";
+            connect.Open();
+            command = new SqlCommand(sqlSelect, connect);
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                id = reader.GetValue(0).ToString();
+            }
+            connect.Close();
+            return id;
+        }
+
+        //get the wine id
+        public string getWineID(string wName)
+        {
+            string sqlSelect = "SELECT Wine_ID FROM WINE WHERE Name LIKE '" + wName + "'";
+            string id = "";
+            connect.Open();
+            command = new SqlCommand(sqlSelect, connect);
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                id = reader.GetValue(0).ToString();
+            }
+            connect.Close();
+            return id;
+        }
+
+        public void wineChart()
+        {
+
+        }
+
     }
 }

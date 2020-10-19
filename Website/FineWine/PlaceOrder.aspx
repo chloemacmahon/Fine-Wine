@@ -6,7 +6,7 @@
     <asp:MultiView ID="MultiView1" runat="server" OnActiveViewChanged="MultiView1_ActiveViewChanged">
         <asp:View ID="ConfirmOrderView" runat="server">
             <h2>Confirm Order Details</h2>
-            <asp:ListBox ID="ListBox1" runat="server" Height="68px" Width="690px"></asp:ListBox>
+            <asp:ListBox ID="ListBox1" runat="server" Height="68px" Width="796px"></asp:ListBox>
             <br />
             <br />
             <asp:Button ID="Button1" runat="server" CssClass="btn" OnClick="Button1_Click" Text="Confirm Order" />

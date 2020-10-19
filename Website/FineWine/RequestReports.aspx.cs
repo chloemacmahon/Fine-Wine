@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,12 +55,64 @@ namespace FineWine
                 System.IO.MemoryStream chartActual_Estimated_1 = new System.IO.MemoryStream();
                 string chartPath1 = Server.MapPath("/Net_Production_Chart.png");
                 Chart1.SaveImage(chartPath1, System.Web.UI.DataVisualization.Charting.ChartImageFormat.Png);
+=======
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using FineWinesWeb;
+using System.IO;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace FineWine
+{
+    public partial class RequestReports : System.Web.UI.Page
+    {
+        SQLMaintain maintain = new SQLMaintain();
+        Maintain objMain = new Maintain();
+        SqlConnection connect;
+        SqlDataAdapter adapt;
+        DataSet ds;
+
+        public void displayWine()
+        {
+            
+        }
+
+        //Struct for wine production
+        struct wineProduction
+        {
+            public string wineID;
+            public string wineName;
+            public int estimatedProduction;
+            public int actualProduction;
+            public double percentageProduced;
+        }
+
+        public bool writeReport(List<string> toWrite, string fileName)//Filename Harvest.txt
+        {
+            try
+            {
+                string filepath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                using (StreamWriter outputFile = new StreamWriter(Path.Combine(filepath, fileName)))
+                {
+                    foreach(string line in toWrite)
+                    {
+                        outputFile.WriteLine(line);
+                    }
+                }
+
+>>>>>>> Liza
                 return true;
             }
             catch
             {
                 return false;
             }
+<<<<<<< HEAD
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -108,20 +161,44 @@ namespace FineWine
 
             List<string> lines = sortProduction(production);
             for (int  i = 0;  i < lines.Count();  i++)
+=======
+        }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            connect = new SqlConnection(maintain.connectDatabase());
+        }
+        
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            List<string> stock = objMain.displayAll("WINE_PRODUCTION");
+            List<wineProduction> production = new List<wineProduction>();
+            //Adds wineProduction elements into production list
+            for(int i = 0; i < stock.Count(); i++)
+>>>>>>> Liza
             {
-                ListBoxReport.Items.Add(lines.ElementAt(i));
+                string[] arrItems = stock.ElementAt(i).Split(','); //Splits string into seperate elements 
+                wineProduction newItem = new wineProduction();
+                newItem.wineID = arrItems[0];
+                List<string> elements = objMain.displaySelect("WINE", arrItems.ToList());
+                newItem.wineName = elements.ElementAt(0).Split(',')[2];
+                newItem.estimatedProduction = Convert.ToInt32(arrItems[2]);
+                newItem.actualProduction = Convert.ToInt32(arrItems[3]);
+                newItem.percentageProduced = newItem.actualProduction / newItem.estimatedProduction * 100;
+                production.Add(newItem);
             }
-            if (writeReport(lines,"Production report"))
+            Chart1.Series.Add("Wine 1");
+            Chart1.Series.Add("Wine 2");
+            for (int i = 0; i < production.Count(); i++)
             {
-                ListBoxReport.Items.Add("Succesfully written to file");
+                Chart1.Series[0].Points.AddY(production[i].actualProduction);
+                Chart1.Series[0].Points[i].AxisLabel = production[i].wineName + "Actual ";
+                Chart1.Series[1].Points.AddY(production[i].estimatedProduction);
+                Chart1.Series[1].Points[i].AxisLabel = production[i].wineName + "Estimated";
             }
-            else
-            {
-                ListBoxReport.Items.Add("Unsuccesfully written to file");
-            }
+            
         } 
 
-        private List<string> sortProduction(List<wineProduction> productions)
+        private List<wineProduction> sortProduction(List<wineProduction> productions)
         {
             for (int i = 0; i < productions.Count(); i++)
             {
@@ -169,22 +246,11 @@ namespace FineWine
                                 }
                                 break;
                             }
-                            case 4:
-                            {
-                                if (productions[i].differenceBetween.CompareTo(productions[j].differenceBetween) < 0)
-                                {
-                                    wineProduction temp = productions[i];
-                                    productions[i] = productions[j];
-                                    productions[j] = temp;
-                                }
-                                break;
-                            }
-
-                    }
+                        }
                         
                   }
-
             }
+<<<<<<< HEAD
             List<string> lines = new List<string>();
             lines.Add("Code \t Wine Name \t Actual Production \t Estimated Production \t Percentage produced \t Net production");
             for (int i = 0; i < productions.Count(); i++)
@@ -202,19 +268,30 @@ namespace FineWine
         protected void Chart1_Load(object sender, EventArgs e)
         {
 
+=======
+                     
+            
+            return productions;
+>>>>>>> Liza
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(radReport.SelectedIndex == 0)
-            {
-                MultiView1.SetActiveView(View1);
-            }
+
         }
+
+        protected void Chart1_Load(object sender, EventArgs e)
+        {
+
+        }
+<<<<<<< HEAD
 
         protected void btnGenerateHarvestReports_Click(object sender, EventArgs e)
         {
 
         }
     }
+=======
+    }
+>>>>>>> Liza
 }
