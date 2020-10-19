@@ -42,19 +42,7 @@ namespace FineWine
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-           /* foreach (GridViewRow row in GridView1.Rows)
-            {
-                 if(Convert.ToBoolean(cbSelect.Checked))
-                 {
-                     string name = GridView1.SelectedRow.Cells[1].Text;
-                     string type = GridView1.SelectedRow.Cells[2].Text;
-                     string year = GridView1.SelectedRow.Cells[3].Text;
-                     string soh = GridView1.SelectedRow.Cells[4].Text;
-                     string sellingPrice = GridView1.SelectedRow.Cells[5].Text;
-                     selected.Add(name + "\t" + type + "\t" + year + "\t" + soh + "\t" + sellingPrice);
-                 }  
-                Response.Write("<script>alert('" + row.Cells[1].Text + "');</script>");
-            }     */
+    
             if (selected.Count == 0)
             {
                 Response.Write("<script>alert('No items were selected.');</script>");
