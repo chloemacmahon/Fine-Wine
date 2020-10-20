@@ -1,0 +1,28 @@
+﻿body {
+    margin: 4px;
+    background-image: url('Pictures/Background1.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 723px;
+}
+h1 {
+    font-family: 'Freestyle Script';
+    color: floralwhite;
+    align-content:center;
+    font-size: 100px;
+}
+div {
+    background-image: url('Pictures/Background1.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.buttonstyle {
+    font-family: Century;
+    font-size: large;
+    background-color: white;
+    text-align: right;
+}
+.backwhite {
+    background-color:floralwhite;
+    font-size: large;
+}

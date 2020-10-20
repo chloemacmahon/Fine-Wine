@@ -1,0 +1,67 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="FineWines.master.cs" Inherits="FineWinesWeb.FineWines" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Fine Wines Distributors</title>
+    <link href="CSS%20files/WebsiteStyle.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <header id="header">
+            <h1>Fine Wines Distributors</h1>
+        </header> 
+        <div id="subheading">
+            
+            <asp:Label ID="lblWelcome" runat="server" Visible="False"></asp:Label>
+            
+        </div>
+        <div id="page-container" class="auto-style1">
+            <div id="content-wrap">
+                <ul id ="nav">
+                    <li><asp:LinkButton ID="lnkHomePage" runat="server" OnClick="LinkButton6_Click" CausesValidation="False">HOME PAGE</asp:LinkButton></li>
+                    <li class="dropdown">
+                        <asp:LinkButton ID="lnkLogIn" runat="server" OnClick="lnkLogIn_Click" CausesValidation="False">LOGIN</asp:LinkButton>
+                        <div class="dropdown-content">
+                            <asp:LinkButton ID="lnkBusinessLogin" runat="server" OnClick="LinkButton9_Click">BUSINESS LOGIN</asp:LinkButton>
+                            <asp:LinkButton ID="lnkAdminLogin" runat="server" OnClick="LinkButton10_Click">ADMINISTRATION LOGIN</asp:LinkButton>
+                        </div>
+                    </li>
+                    <li><asp:LinkButton ID="lnkSignOut" runat="server" OnClick="LinkButton11_Click" Visible="False" CausesValidation="False">SIGN OUT</asp:LinkButton></li>
+                    <li><asp:LinkButton ID="lnkRegisterBusiness" runat="server" OnClick="LinkButton7_Click" CausesValidation="False">REGISTER BUSINESS</asp:LinkButton></li>
+                    <li><asp:LinkButton ID="lnkBrowse" runat="server" OnClick="LinkButton8_Click" CausesValidation="False">BROWSE STOCK</asp:LinkButton></li>
+                </ul>
+                <div id="content">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+        </div>
+            </div>
+            <div id="pre-footer">
+                <asp:LinkButton ID="lnkGrapes" runat="server" OnClick="LinkButton1_Click" ForeColor="White" CausesValidation="False">GRAPES</asp:LinkButton>
+                &nbsp;&nbsp;&nbsp;
+                <asp:LinkButton ID="lnkWines" runat="server" OnClick="LinkButton2_Click" ForeColor="White" CausesValidation="False">WINES</asp:LinkButton>
+                &nbsp;&nbsp;&nbsp;
+                <asp:LinkButton ID="lnkHarvest" runat="server" ForeColor="White" OnClick="LinkButton3_Click" CausesValidation="False">HARVEST</asp:LinkButton>
+                &nbsp;&nbsp;&nbsp;
+                <asp:LinkButton ID="lnkWineProduction" runat="server" ForeColor="White" OnClick="LinkButton4_Click" CausesValidation="False">WINE PRODUCTION</asp:LinkButton>
+                &nbsp;&nbsp;&nbsp;
+                <asp:LinkButton ID="lnkReports" runat="server" ForeColor="White" OnClick="LinkButton5_Click" CausesValidation="False">REPORTS</asp:LinkButton>
+            </div>
+            
+            <footer id="footer">
+                Fine Wines Distributors PTY(Ltd.)&nbsp;&nbsp;Est.2013
+            </footer>
+            </div> 
+    </form> 
+       
+</body>
+</html>
+
+
+
+
+
