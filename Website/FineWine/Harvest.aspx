@@ -30,7 +30,7 @@
             <br />
             <br />
             <asp:Label ID="lblPlantedAmount" runat="server" Text="Enter The Amount Planted:" ForeColor="Black" CssClass="lbl"></asp:Label>
-            &nbsp;<asp:TextBox ID="txtAmountPlanted" runat="server" TextMode="Number" CssClass="txt"></asp:TextBox>
+            &nbsp;<asp:TextBox ID="txtAmountPlanted" runat="server" TextMode="Number" CssClass="txt">10000</asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtAmountPlanted" CssClass="validator" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator>
             <br />
             <br />
@@ -45,7 +45,7 @@
             <br />
             &nbsp; Enter Actual Harvest<br />
             <br />
-            <asp:GridView ID="gvHarvests" runat="server" HorizontalAlign="Center">
+            <asp:GridView ID="gvHarvests" runat="server" HorizontalAlign="Center" OnSelectedIndexChanged="gvHarvests_SelectedIndexChanged">
                 <Columns>
                     <asp:CommandField ButtonType="Button" CausesValidation="False" HeaderText="Select" ShowSelectButton="True">
                      <ControlStyle BackColor="#CCCCCC" BorderStyle="None" />
@@ -54,7 +54,7 @@
             </asp:GridView>
             <br />
             <asp:Label ID="Label1" runat="server" CssClass="lbl" Text="Select Field to Update:"></asp:Label>
-            <asp:DropDownList ID="ddlField" runat="server" CssClass="txt">
+            <asp:DropDownList ID="ddlField" runat="server" CssClass="txt" AutoPostBack="True" OnSelectedIndexChanged="ddlField_SelectedIndexChanged">
                 <asp:ListItem></asp:ListItem>
                 <asp:ListItem Value="Amount_Planted">Amount Planted</asp:ListItem>
                 <asp:ListItem Value="Date_Planted">Date Planted</asp:ListItem>

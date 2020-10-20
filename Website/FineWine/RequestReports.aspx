@@ -29,7 +29,7 @@
                 <asp:Button ID="btnGenerateReports" runat="server" OnClick="Button1_Click" Text="Generate reports" CssClass="btn" />
                 <br />
                 <br />
-                <asp:ListBox ID="ListBox1" runat="server" Height="160px" Width="829px"></asp:ListBox>
+                <asp:ListBox ID="ListBox1" runat="server" Height="308px" Width="869px"></asp:ListBox>
                 <br />
                 <br />
                 <asp:Chart ID="Chart1" runat="server" OnLoad="Chart1_Load" Width="681px">
@@ -62,11 +62,11 @@
             <br />
             <asp:View ID="View3" runat="server">
                 <br />
+                <h1>Top 10 Sales</h1>
                 <br />
-                <asp:ListBox ID="ListBox2" runat="server" Width="796px" Height="121px" OnSelectedIndexChanged="ListBox2_SelectedIndexChanged"></asp:ListBox>
+                <asp:ListBox ID="ListBox2" runat="server" Width="796px" Height="257px" OnSelectedIndexChanged="ListBox2_SelectedIndexChanged" CssClass="txt"></asp:ListBox>
                 <br />
                 <br />
-                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" />
             </asp:View>
             <br />
         </asp:MultiView>

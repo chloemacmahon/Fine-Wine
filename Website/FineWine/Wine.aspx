@@ -38,18 +38,29 @@
                         <br />
                         <asp:Button ID="btnInsert" runat="server" CssClass="btn" OnClick="btnInsert_Click1" Text="Insert" />
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="btnMainDelete1" runat="server" CssClass="btn" OnClick="btnMainUpdate_Click" Text="Back to Main View" />
+                        <asp:Button ID="btnMainDelete1" runat="server" CssClass="btn" OnClick="btnMainUpdate_Click" Text="Back to Main View" CausesValidation="False" />
                     </asp:View>
                     <br />
                     <asp:View ID="View2" runat="server">
                         <div>
                             <br />
-                            Select wine record to update:<asp:GridView ID="GridViewUpdate" runat="server" HorizontalAlign="Center">
+                            Select wine record to update:<asp:GridView ID="GridViewUpdate" runat="server" HorizontalAlign="Center" OnSelectedIndexChanged="GridViewUpdate_SelectedIndexChanged" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                <AlternatingRowStyle BackColor="White" />
                                 <Columns>
                                    <asp:CommandField ButtonType="Button" CausesValidation="False" HeaderText="Select" ShowSelectButton="True">
                                     <ControlStyle BackColor="#CCCCCC" BorderStyle="None" />
                                     </asp:CommandField>
                                 </Columns>
+                                <EditRowStyle BackColor="#7C6F57" />
+                                <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                                <RowStyle BackColor="#E3EAEB" />
+                                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                                <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                                <SortedAscendingHeaderStyle BackColor="#246B61" />
+                                <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                                <SortedDescendingHeaderStyle BackColor="#15524A" />
                             </asp:GridView>
                         </div>
                         &nbsp;<br />&nbsp;<asp:Label ID="Label4" runat="server" CssClass="lbl" Text="Select Field to Update:"></asp:Label>
@@ -62,21 +73,32 @@
                         <br />
                         <asp:Label ID="Label5" runat="server" CssClass="lbl" Text="Enter Changes:"></asp:Label>
                         &nbsp;<asp:TextBox ID="txtChange" runat="server" CssClass="txt"></asp:TextBox>
-                        &nbsp;<br />&nbsp;&nbsp;<br />&nbsp;<asp:Button ID="btnUpdate" runat="server" CssClass="btn" OnClick="btnUpdate_Click" Text="Update" Visible="False" />
-                        &nbsp;&nbsp;&nbsp;<asp:Button ID="btnMainDelete0" runat="server" CssClass="btn" OnClick="btnMainUpdate_Click" Text="Back to Main View" />
+                        &nbsp;<br />&nbsp;&nbsp;<br />&nbsp;<asp:Button ID="btnUpdate" runat="server" CssClass="btn" OnClick="btnUpdate_Click" Text="Update" />
+                        &nbsp;&nbsp;&nbsp;<asp:Button ID="btnMainDelete0" runat="server" CssClass="btn" OnClick="btnMainUpdate_Click" Text="Back to Main View" CausesValidation="False" />
                     </asp:View>
                      <asp:View ID="View3" runat="server">
                          <br />
-                         Select wine record to delete:<asp:GridView ID="GridViewDelete" runat="server" HorizontalAlign="Center" >
+                         Select wine record to delete:<asp:GridView ID="GridViewDelete" runat="server" HorizontalAlign="Center" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridViewDelete_SelectedIndexChanged" >
+                             <AlternatingRowStyle BackColor="White" />
                             <Columns>
                                 <asp:CommandField ButtonType="Button" CausesValidation="False" HeaderText="Select" ShowSelectButton="True">
                                     <ControlStyle BackColor="#CCCCCC" BorderStyle="None" />
                                 </asp:CommandField>
                             </Columns>
+                             <EditRowStyle BackColor="#7C6F57" />
+                             <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                             <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                             <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                             <RowStyle BackColor="#E3EAEB" />
+                             <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                             <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                             <SortedAscendingHeaderStyle BackColor="#246B61" />
+                             <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                             <SortedDescendingHeaderStyle BackColor="#15524A" />
                         </asp:GridView>
                         <br />
                         <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" CssClass="btn" />
-                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnMainDelete" runat="server" CssClass="btn" OnClick="btnMainUpdate_Click" Text="Back to Main View" />
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnMainDelete" runat="server" CssClass="btn" OnClick="btnMainUpdate_Click" Text="Back to Main View" CausesValidation="False" />
                     </asp:View>
 
                     <asp:View ID="Summary" runat="server">

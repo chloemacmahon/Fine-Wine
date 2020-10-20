@@ -18,10 +18,6 @@ namespace FineWine
                 {
                     MultiView1.SetActiveView(AdminHomeView);
                 }
-                else
-                {
-                    MultiView1.SetActiveView(View1);
-                }
             }
             else
             {
@@ -52,6 +48,11 @@ namespace FineWine
         protected void ImageButton6_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("RequestReports.aspx");
+        }
+
+        protected void ImageButton7_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("RegisterBusiness.aspx?view=1");
         }
     }
 }

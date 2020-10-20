@@ -59,6 +59,28 @@ namespace FineWine
             command.Dispose();
             connect.Close();
         }
+
+        //sql query to check if id is already used
+        public bool isUsed(string sql, string id)
+        {
+            connect.Open();
+            string tempid = "";
+            command = new SqlCommand(sql, connect);
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                tempid = reader.GetValue(0).ToString();
+            }
+            connect.Close();
+            if(id == tempid)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         
         //sql query to verify login
         public bool verifyLogin(string sqlRetrieve, string pass)
@@ -81,7 +103,6 @@ namespace FineWine
             {
                 return false;
             }
-
         }
 
         public bool checkForeignKey(string sqlCheck)
@@ -121,6 +142,20 @@ namespace FineWine
             return id;
         }
 
+        public int getEstimatedHarvest(string sqlSelect)
+        {
+            int result = 0;
+            connect.Open();
+            command = new SqlCommand(sqlSelect, connect);
+            reader = command.ExecuteReader();
+            while(reader.Read())
+            {
+                result = int.Parse(reader.GetValue(0).ToString());
+            }
+            connect.Close();
+            result /= 5000;
+            return result;
+        }
 
         //create list to use to generate reports
         public List<string> wineChart()
@@ -143,7 +178,7 @@ namespace FineWine
         public List<string> salesChart()
         {
             List<string> result = new List<string>();
-            string sqlSelect = "SELECT TOP 10(*) FROM STOCK ORDER BY Stock_Sold DESC";
+            string sqlSelect = "SELECT TOP 10* FROM STOCK ORDER BY Stock_Sold DESC";
             connect.Open();
             command = new SqlCommand(sqlSelect, connect);
             reader = command.ExecuteReader();

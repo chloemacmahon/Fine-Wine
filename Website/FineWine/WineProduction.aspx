@@ -3,7 +3,8 @@
 
 <asp:Content ID="Content1" runat="server" contentplaceholderid="ContentPlaceHolder1">
     <asp:MultiView ID="MultiView1" runat="server">
-        <asp:View ID="SelectView" runat="server">Wine Production<br />
+        <asp:View ID="SelectView" runat="server">
+            <h1>Wine Production</h1> 
             <br />
             <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged" RepeatDirection="Horizontal" RepeatLayout="Flow">
                 <asp:ListItem>Insert</asp:ListItem>
@@ -24,23 +25,34 @@
             <asp:Label ID="Label3" runat="server" Text="Enter Maturation Period (in months):"></asp:Label>
             <asp:TextBox ID="txtMaturation" runat="server" CssClass="txt" TextMode="Number"></asp:TextBox>
             <br />
-            <asp:Button ID="btnInsert" runat="server" CssClass="btn" Text="Add" />
+            <asp:Button ID="btnInsert" runat="server" CssClass="btn" Text="Add" OnClick="btnInsert_Click" />
             &nbsp;&nbsp;
             <asp:Button ID="btnGoEdit" runat="server" CssClass="auto-style1" Text="Go To Update Records" OnClick="btnGoEdit_Click" Width="219px" />
             &nbsp; &nbsp;<asp:Button ID="btnSummaryGo" runat="server" CssClass="btn" Text="Go To Summary" OnClick="btnSummaryGo_Click" />
         </asp:View>
         <asp:View ID="Editview" runat="server">
             Select Wine Production Record to be Update:<br />
-            <asp:GridView ID="gvWineProduction" runat="server" OnSelectedIndexChanged="gvWineProduction_SelectedIndexChanged" HorizontalAlign="Center">
+            <asp:GridView ID="gvWineProduction" runat="server" OnSelectedIndexChanged="gvWineProduction_SelectedIndexChanged" HorizontalAlign="Center" CellPadding="4" ForeColor="#333333" GridLines="None">
+                <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:CommandField ButtonType="Button" CausesValidation="False" HeaderText="Select" ShowSelectButton="True">
                         <ControlStyle BackColor="#CCCCCC" BorderStyle="None" />
                     </asp:CommandField>
                 </Columns>
+                <EditRowStyle BackColor="#7C6F57" />
+                <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#E3EAEB" />
+                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                <SortedAscendingHeaderStyle BackColor="#246B61" />
+                <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                <SortedDescendingHeaderStyle BackColor="#15524A" />
                 </asp:GridView>
             <br />
             <asp:Label ID="lblField" runat="server" CssClass="lbl" Text="Select Field to Update:"></asp:Label>
-            <asp:DropDownList ID="ddlField" runat="server" CssClass="txt" OnSelectedIndexChanged="ddlField_SelectedIndexChanged">
+            <asp:DropDownList ID="ddlField" runat="server" CssClass="txt" OnSelectedIndexChanged="ddlField_SelectedIndexChanged" AutoPostBack="True">
                 <asp:ListItem></asp:ListItem>
                 <asp:ListItem Value="Wine_ID">Wine ID</asp:ListItem>
                 <asp:ListItem Value="Harvest_ID">Harvest ID</asp:ListItem>

@@ -58,12 +58,23 @@
                     <asp:View ID="View2" runat="server">
                         <div>
                             <br />
-                            Select grape record to update:<asp:GridView ID="GridViewUpdate" runat="server" HorizontalAlign="Center" OnSelectedIndexChanged="GridViewUpdate_SelectedIndexChanged">
+                            Select grape record to update:<asp:GridView ID="GridViewUpdate" runat="server" HorizontalAlign="Center" OnSelectedIndexChanged="GridViewUpdate_SelectedIndexChanged" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                <AlternatingRowStyle BackColor="White" />
                                 <Columns>
                                     <asp:CommandField ButtonType="Button" CausesValidation="False" HeaderText="Select" ShowSelectButton="True">
                                      <ControlStyle BackColor="#CCCCCC" BorderStyle="None" />
                             </asp:CommandField>
                         </Columns>
+                                <EditRowStyle BackColor="#7C6F57" />
+                                <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                                <RowStyle BackColor="#E3EAEB" />
+                                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                                <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                                <SortedAscendingHeaderStyle BackColor="#246B61" />
+                                <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                                <SortedDescendingHeaderStyle BackColor="#15524A" />
                             </asp:GridView>
                             <br />
                         </div>
@@ -81,18 +92,29 @@
                         <br />
                         &nbsp;<br />
                         <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" CssClass="btn" />
-                        &nbsp;<asp:Button ID="btnMainSummary1" runat="server" CausesValidation="False" CssClass="btn" OnClick="btnMainSummary0_Click" Text="Back to Main View" />
+                        &nbsp;<asp:Button ID="btnMainSummary1" runat="server" CausesValidation="False" CssClass="btn" OnClick="btnMainSummary0_Click" Text="Back to Main View" style="height: 35px" />
                         <br />
                     </asp:View>
                     <br />
                     <asp:View ID="View3" runat="server">
                         <br />
-                        Select grape record to delete:<asp:GridView ID="GridViewDelete" runat="server" HorizontalAlign="Center" OnSelectedIndexChanged="GridViewDelete_SelectedIndexChanged" >
+                        Select grape record to delete:<asp:GridView ID="GridViewDelete" runat="server" HorizontalAlign="Center" OnSelectedIndexChanged="GridViewDelete_SelectedIndexChanged" CellPadding="4" ForeColor="#333333" GridLines="None" >
+                            <AlternatingRowStyle BackColor="White" />
                             <Columns>
                                     <asp:CommandField ButtonType="Button" CausesValidation="False" HeaderText="Select" ShowSelectButton="True">
                                      <ControlStyle BackColor="#CCCCCC" BorderStyle="None" />
                             </asp:CommandField>
                         </Columns>
+                            <EditRowStyle BackColor="#7C6F57" />
+                            <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                            <RowStyle BackColor="#E3EAEB" />
+                            <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                            <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                            <SortedAscendingHeaderStyle BackColor="#246B61" />
+                            <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                            <SortedDescendingHeaderStyle BackColor="#15524A" />
                         </asp:GridView>
                         <br />
                         <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" CssClass="btn" />

@@ -1,4 +1,4 @@
-﻿SET IDENTITY_INSERT [dbo].[REGION] ON
+SET IDENTITY_INSERT [dbo].[REGION] ON
 INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (1, 49, N'Gauteng')
 INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (2, 49, N'North West')
 INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (3, 49, N'Eastern Cape')
@@ -91,4 +91,132 @@ INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (91, 1, N'
 INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (92, 1, N'Salekhard')
 INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (93, 1, N'Simferopol')
 INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (94, 1, N'Sevastopol')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (95, 2, N'Baden-Württemberg
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (98, 2, N'Bavaria
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (99, 2, N'Berlin
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (100, 2, N'Brandenburg
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (102, 2, N'Bremen
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (103, 2, N'Hamburg
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (104, 2, N'Hesse
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (105, 2, N'Lower Saxony
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (106, 2, N'North Rhine-Westphalia
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (107, 2, N' Rhineland-Palatinate
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (108, 2, N'Saarland
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (109, 2, N'Saxony
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (110, 2, N'Saxony-Anhalt
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (111, 2, N'Schleswig-Holstein
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (112, 2, N'Thuringia
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (113, 4, N'Alsace
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (114, 4, N'Aquitaine
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (115, 4, N'Auvergne
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (116, 4, N'Basse-Normandie
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (117, 4, N'Bourgogne
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (119, 4, N'Bretagne
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (120, 4, N'Centre
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (121, 4, N'Champagne-Ardenne
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (122, 4, N'Corse
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (124, 4, N'Franche-Comté
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (125, 4, N'Haut-Normandie
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (126, 4, N'Ile-de-France
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (127, 5, N'Abruzzo
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (128, 5, N'Aosto
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (129, 5, N'Basilicata
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (131, 5, N'Calabria
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (132, 5, N'Campania
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (133, 5, N'Emilia-Romagna
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (134, 5, N'Friuli-Venezia Giulia
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (135, 5, N'Lazio
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (136, 5, N'Liguria
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (139, 5, N'Lombardo
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (140, 5, N'Marche
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (141, 5, N'Molise
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (142, 5, N'Piedmont
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (143, 5, N'Puglia
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (144, 5, N'Sardinia
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (145, 5, N'Sicily
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (146, 5, N'Trentino-Alto-Adige
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (147, 5, N'Tuscany
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (148, 5, N'Umbria
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (150, 5, N'Veneto
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (151, 6, N'Andalusia
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (152, 6, N'Aragon
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (153, 6, N'Asturias
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (154, 6, N'Balearic islands
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (155, 6, N'Paiz Vasco
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (156, 6, N'Canary islands
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (157, 6, N'Cantabria
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (158, 6, N'Castilla La-Mancha
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (159, 6, N'Castilla y Leon
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (160, 6, N'Catalonia
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (161, 6, N'Extremadura
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (162, 6, N'Galicia
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (163, 6, N'Madrid
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (164, 6, N'Murcia
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (165, 6, N'Navarre
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (166, 6, N'La Rioja
+')
+INSERT INTO [dbo].[REGION] ([Region_ID], [Country_ID], [Name]) VALUES (167, 6, N'Valencia
+')
 SET IDENTITY_INSERT [dbo].[REGION] OFF

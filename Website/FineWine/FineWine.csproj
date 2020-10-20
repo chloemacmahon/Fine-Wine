@@ -99,6 +99,7 @@
     <Content Include="Pictures\Harvest1.gif" />
     <Content Include="Pictures\padlock.png" />
     <Content Include="Pictures\Production.gif" />
+    <Content Include="Pictures\sign-up.png" />
     <Content Include="Pictures\user.png" />
     <Content Include="Pictures\Wine1.gif" />
     <Content Include="Pictures\winecorks.jpg" />
@@ -116,7 +117,6 @@
     <Content Include="Pictures\WineCorks2.jfif" />
     <Content Include="Pictures\WineCorks2.jpg" />
     <Content Include="Pictures\WineCorks3.jpg" />
-    <Content Include="PlaceOrder.aspx" />
     <Content Include="RegisterBusiness.aspx" />
     <Content Include="RequestReports.aspx" />
     <Content Include="Web.config">
@@ -171,13 +171,6 @@
     </Compile>
     <Compile Include="LogIn.aspx.designer.cs">
       <DependentUpon>LogIn.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="PlaceOrder.aspx.cs">
-      <DependentUpon>PlaceOrder.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PlaceOrder.aspx.designer.cs">
-      <DependentUpon>PlaceOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterBusiness.aspx.cs">

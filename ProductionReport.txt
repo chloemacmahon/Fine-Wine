@@ -1,0 +1,9 @@
+Code 	 Wine Name 	 Actual Production 	 Estimated Production 	 Percentage produced 	 Net production
+PinoKy6f	Merl20205861	Pinot Noir	20	21	0%	-1
+PinoKy6f	Char20205368	Pinot Noir	55	27	200%	28
+OakeRF95	Nebb20205224	Oaked Chardonnay	654	999	0%	-345
+ffff8583	Cham20205810	QFAFWA	974	973	100%	1
+Cabe9hnQ	Conc20202560	Cabernet Franc	10000	9500	100%	500
+Bany5J		Kyoh20209382	Banylus	17500	20000	0%	-2500
+Bany5J		Cott20205358	Banylus	27000	30000	0%	-3000
+Cabe9hnQ	Lemb20208861	Cabernet Franc	36500	3600	1000%	32900

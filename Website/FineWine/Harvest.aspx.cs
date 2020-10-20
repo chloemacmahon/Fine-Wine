@@ -117,14 +117,15 @@ namespace FineWine
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             //create sql query for update
-            string sqlUpdate = "UPDATE HARVEST SET " + ddlField.SelectedValue + " = '" + txtChange.Text + "' WHERE Grape_ID LIKE '" + gvHarvests.SelectedRow.Cells[1].Text + "'";
+            string sqlUpdate = "UPDATE HARVEST SET " + ddlField.SelectedValue + " = '" + txtChange.Text + "' WHERE Harvest_ID LIKE '" + gvHarvests.SelectedRow.Cells[1].Text + "'";
             string line = gvHarvests.SelectedRow.Cells[1].Text + "\t" + gvHarvests.SelectedRow.Cells[2].Text + "\t" + gvHarvests.SelectedRow.Cells[3].Text + "\t" + gvHarvests.SelectedRow.Cells[4].Text + 
                 "\t" + gvHarvests.SelectedRow.Cells[5].Text + "\t" + gvHarvests.SelectedRow.Cells[6].Text;
             harvestUpdate.Add(line);
             maintain.updateData(sqlUpdate);
             txtChange.Text = "";
             ddlField.Text = "";
-            //MultiView1.SetActiveView(Review);
+            gvHarvests.Dispose();
+            MultiView1.SetActiveView(Addview);
         }
 
         protected void btnAdd0_Click(object sender, EventArgs e)
@@ -133,7 +134,7 @@ namespace FineWine
             string id = ddlGrape.Text.Substring(0, 4) + date.Year + rand.Next(1000, 9999);
             int estimate = (int)(int.Parse(txtAmountPlanted.Text) * 1.5);
             string sqlSelect = "SELECT Grape_ID FROM GRAPE WHERE Name LIKE '" + ddlGrape.Text + "'";
-            string sqlInert = "INSERT INTO HARVEST VALUES('"+ id + "', '" + maintain.getID(sqlSelect) + "', '" + int.Parse(txtAmountPlanted.Text) + "', '" + date.ToShortDateString() + "', " + estimate + "', 0)";
+            string sqlInert = "INSERT INTO HARVEST VALUES('"+ id + "', '" + maintain.getID(sqlSelect) + "', '" + int.Parse(txtAmountPlanted.Text) + "', '" + date.ToShortDateString() + "', " + estimate + ", 0)";
             string line = id + "\t" + maintain.getID(sqlSelect) + "\t" + int.Parse(txtAmountPlanted.Text) + "\t" + date.ToShortDateString() + "\t" + estimate;
             harvestInsert.Add(line);
             maintain.insertData(sqlInert);
@@ -148,6 +149,8 @@ namespace FineWine
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
+            string sqlSelect = "SELECT * FROM HARVEST";
+            display(sqlSelect);
             MultiView1.SetActiveView(Editview);
         }
 
@@ -155,6 +158,24 @@ namespace FineWine
         {
             displayRecords();
             MultiView1.SetActiveView(Review);
+        }
+
+        protected void gvHarvests_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MultiView1.SetActiveView(Editview);
+        }
+
+        protected void ddlField_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(ddlField.SelectedIndex == 2)
+            {
+                txtChange.TextMode = TextBoxMode.Date;
+            }
+            else
+            {
+                txtChange.TextMode = TextBoxMode.Number;
+            }
+            MultiView1.SetActiveView(Editview);
         }
     }
 }

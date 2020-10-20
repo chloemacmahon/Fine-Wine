@@ -10,7 +10,6 @@ namespace FineWinesWeb
     public partial class FineWines : System.Web.UI.MasterPage
     {
 
-        HttpCookie viewCookie = new HttpCookie("viewInfo");
         HttpCookie userCookie;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -34,7 +33,7 @@ namespace FineWinesWeb
                      lblWelcome.Visible = true;
                      lblWelcome.Text = "Welcome, " + userCookie["Account name"];
                  }
-                 else
+                 else if (userCookie["Account name"] != "")
                  {
                      lnkGrapes.Visible = false;
                      lnkWines.Visible = false;
@@ -128,21 +127,11 @@ namespace FineWinesWeb
 
         protected void LinkButton11_Click(object sender, EventArgs e)
         {
-           // userCookie.Expires = DateTime.Now;
-            //Response.Cookies.Remove("User Information");
-            lnkGrapes.Visible = false;
-            lnkWines.Visible = false;
-            lnkWineProduction.Visible = false;
-            lnkHarvest.Visible = false;
-            lnkReports.Visible = false;
-            lnkSignOut.Visible = false;
-            lnkLogIn.Visible = true;
-            lnkBusinessLogin.Visible = true;
-            lnkAdminLogin.Visible = true;
-            lnkBrowse.Visible = false;
-            lnkRegisterBusiness.Visible = true;
-            lblWelcome.Visible = false;
-            Response.Redirect("HomePage.aspx?view=2");
+            userCookie["Account type"] = "B";
+            userCookie["Account name"] = "";
+            userCookie["Account ID"] = "";
+            Response.Cookies.Add(userCookie);
+             Response.Redirect("HomePage.aspx");
         }
 
         protected void lnkLogIn_Click(object sender, EventArgs e)

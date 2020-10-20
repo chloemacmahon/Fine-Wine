@@ -81,10 +81,12 @@ namespace FineWine
             if (radlistWineOptions.SelectedIndex == 0)
             {
                 displayGrapeName();
+                radlistWineOptions.ClearSelection();
                 MultiView1.SetActiveView(InsertView);
             }
             else if (radlistWineOptions.SelectedIndex == 1)
             {
+                radlistWineOptions.ClearSelection();
                 MultiView1.SetActiveView(View2);
                 connect.Open();
                 string sqlSelect = "SELECT * FROM WINE";
@@ -100,6 +102,7 @@ namespace FineWine
             }
             else if (radlistWineOptions.SelectedIndex == 2)
             {
+                radlistWineOptions.ClearSelection();
                 MultiView1.SetActiveView(View3);
                 connect.Open();
                 string sqlSelect = "SELECT * FROM WINE";
@@ -134,7 +137,7 @@ namespace FineWine
             maintain.updateData(sqlUpdate);
             //add line to update list
             wineUpdate.Add(line);
-            Response.Write("<script>alert('The wine was updated.');</script>");
+            GridViewUpdate.Dispose();
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
@@ -160,6 +163,7 @@ namespace FineWine
                     wineDelete.Add(line);
                     maintain.deleteData(sqlDelete);
                 }
+                GridViewDelete.Dispose();
             }
             else
             {
@@ -180,14 +184,13 @@ namespace FineWine
                 //create id for wine: first 4 letters of wine name + 4 random numbers
                 string id = txtInsertName.Text.Substring(0, 4) + rand.Next(1000, 9999);
             //retrieve the grapeID by using the SQLMaintain method
-            string sqlSelect = "SELECT Grape_ID FROM GRAPE WHERE Business_Name LIKE '" + ddlGrapeName.Text + "'";
-            string grapeID = maintain.getID(ddlGrapeName.Text);
+            string sqlSelect = "SELECT Grape_ID FROM GRAPE WHERE Name LIKE '" + ddlGrapeName.Text + "'";
+            string grapeID = maintain.getID(sqlSelect);
                 //create sql insert query
                 string sqlInsert = "INSERT INTO WINE VALUES('" + id + "', '" + grapeID + "', '" + txtInsertName.Text + "', '" + txtInsertType.Text + "', '" + txtInsertDescription.Text + "')";
                 //create insert string to add to List
                 string line = id + "\t" + grapeID + "\t" + txtInsertName.Text + "\t" + txtInsertType.Text + "\t" + txtInsertDescription.Text;
                 wineInsert.Add(line);
-                Response.Write("<script>alert('" + line + "');</script>");
                 //use insert method to add wine to database
                 maintain.insertData(sqlInsert);
             txtInsertDescription.Text = "";
@@ -203,6 +206,8 @@ namespace FineWine
 
         protected void btnMainUpdate_Click(object sender, EventArgs e)
         {
+            GridViewUpdate.Dispose();
+            GridViewDelete.Dispose();
             MultiView1.SetActiveView(View4);
         }
 
@@ -221,6 +226,16 @@ namespace FineWine
         protected void btnMainSummary_Click(object sender, EventArgs e)
         {
             MultiView1.SetActiveView(View4);
+        }
+
+        protected void GridViewUpdate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MultiView1.SetActiveView(View2);
+        }
+
+        protected void GridViewDelete_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MultiView1.SetActiveView(View3);
         }
 
         protected void btnUpdateSummary_Click(object sender, EventArgs e)

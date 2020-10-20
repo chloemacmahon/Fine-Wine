@@ -111,7 +111,17 @@ namespace FineWine
             try
             {
                 connect = new SqlConnection(maintain.connectDatabase());
-                displayCountry();
+                
+                var qs = Request.QueryString["view"];
+                if (qs != null && qs == "1")
+                {
+                        MultiView1.SetActiveView(AdminView);
+                }
+                else
+                {
+                    MultiView1.SetActiveView(BusinessView);
+                    displayCountry();
+                }
             }
             catch
             {
@@ -131,18 +141,31 @@ namespace FineWine
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            /* try
-             {          */
+             try
+             {          
             getCountryID();
             getRegionID();
                 getCityTownID();
-                //Create Address_ID: first 4 letters of street name + street number + 4 random numbers
-                string addressId = txtStreetName.Text.Substring(0, 4) + txtStreetNumber.Text + rand.Next(1000, 9999);
+                string sqlId = "";
+                string addressId = "";
+                string businessId = "";
+                do
+                {
+                    //Create Address_ID: first 4 letters of street name + street number + 4 random numbers
+                    addressId = txtStreetName.Text.Substring(0, 4) + txtStreetNumber.Text + rand.Next(1000, 9999);
+                    sqlId = "SELECT Address_ID FROM ADDRESS WHERE Address_ID LIKE '" + addressId + "'";
+                } while (maintain.isUsed(sqlId,addressId));
+                
                 string sqlInsertAddress = "INSERT INTO Address VALUES('" + addressId + "', '" + int.Parse(countryID) + "', '" + int.Parse(regionID) + "', '" + 
                                             int.Parse(cityTownID) + "', '" + int.Parse(txtStreetNumber.Text) + "', '" + txtStreetName.Text + "', '" + txtZipCode.Text + "')";
                 maintain.insertData(sqlInsertAddress);
-                //Create Business_ID: first 4 letters of business name + 4 random numbers
-                string businessId = txtBusinessName.Text.Substring(0, 4) + rand.Next(1000, 9999);
+                do
+                {
+                    //Create Business_ID: first 4 letters of business name + 4 random numbers
+                    businessId = txtBusinessName.Text.Substring(0, 4) + rand.Next(1000, 9999);
+                    sqlId = "SELECT Business_ID FROM BUSINESS WHERE Business_ID LIKE '" + businessId + "'";
+                } while (maintain.isUsed(sqlId,businessId));
+                
                 string sqlInsertBusiness =  "INSERT INTO Business VALUES('" + businessId + "', '" + addressId + "', '" + txtBusinessName.Text + "', '" + txtPassword.Text + "')";
                 maintain.insertData(sqlInsertBusiness);
                 //Insert details into login table
@@ -154,11 +177,49 @@ namespace FineWine
                 userCookie["Account ID"] = businessId;
                 Response.Cookies.Add(userCookie);
             Response.Redirect("HomePage.aspx");
-          /*  }
+            }
             catch
             {
                 lblError.Text ="There was a problem registering business";
-            }     */
+            }     
+        }
+
+        protected void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void txtRepeatPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnARegister_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string adminId = "";
+                do
+                {
+                    //Create Admin_ID: first 4 letters of user name + 4 random numbers
+                    adminId = txtAUserName.Text.Substring(0, 4) + txtStreetNumber.Text + rand.Next(1000, 9999);
+                } while (maintain.isUsed("SELELECT Admin_ID FROM ADMIN WHERE Admin_ID LIKE '" + adminId + "'",adminId));
+                
+                string sqlInsert = "INSERT INTO ADMIN VALUES('" + adminId + "', '" + txtAUserName.Text + "', '" + txtAConfirm.Text + "')";
+                maintain.insertData(sqlInsert);
+                string sqlLogin = "INSERT INTO LOGIN VALUES('" + adminId + "', null, 'A')";
+                maintain.insertData(sqlLogin);
+                Response.Redirect("HomePage.aspx?view=1");
+            }
+            catch
+            {
+
+            }
+        }
+
+        protected void MultiView1_ActiveViewChanged(object sender, EventArgs e)
+        {
+
         }
 
         protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)

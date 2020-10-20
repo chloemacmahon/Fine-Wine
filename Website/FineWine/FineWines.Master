@@ -27,8 +27,8 @@
                     <li class="dropdown">
                         <asp:LinkButton ID="lnkLogIn" runat="server" OnClick="lnkLogIn_Click" CausesValidation="False">LOGIN</asp:LinkButton>
                         <div class="dropdown-content">
-                            <asp:LinkButton ID="lnkBusinessLogin" runat="server" OnClick="LinkButton9_Click">BUSINESS LOGIN</asp:LinkButton>
-                            <asp:LinkButton ID="lnkAdminLogin" runat="server" OnClick="LinkButton10_Click">ADMINISTRATION LOGIN</asp:LinkButton>
+                            <asp:LinkButton ID="lnkBusinessLogin" runat="server" OnClick="LinkButton9_Click" CausesValidation="false">BUSINESS LOGIN</asp:LinkButton>
+                            <asp:LinkButton ID="lnkAdminLogin" runat="server" OnClick="LinkButton10_Click" CausesValidation="false">ADMINISTRATION LOGIN</asp:LinkButton>
                         </div>
                     </li>
                     <li><asp:LinkButton ID="lnkSignOut" runat="server" OnClick="LinkButton11_Click" Visible="False" CausesValidation="False">SIGN OUT</asp:LinkButton></li>

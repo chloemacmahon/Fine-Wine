@@ -3,6 +3,16 @@
 <asp:Content ID="Content1" runat="server" contentplaceholderid="ContentPlaceHolder1">
     <h2>
         <asp:MultiView ID="MultiView1" runat="server">
+            <asp:View ID="ConfirmationView" runat="server">
+                <asp:Label ID="lblConfirmation" runat="server" Text=""></asp:Label>  
+
+                <br />
+                <asp:ListBox ID="ListBox2" runat="server" Height="297px" Width="808px"></asp:ListBox>
+                <br />
+                <br />
+                Have a Fine Wine Day!  
+
+            </asp:View>
             <asp:View ID="Browse" runat="server">
                 <h2>Stock</h2>
                 <p>
@@ -26,19 +36,22 @@
                     </asp:GridView>
                 </p>
                 <p>
+                    <asp:Label ID="Label1" runat="server" CssClass="lbl" Text="Please enter units:" Visible="False"></asp:Label>
+                    <asp:TextBox ID="txtUnits" runat="server" TextMode="Number" Visible="False">0</asp:TextBox>
+                </p>
+                <p>
+                    <asp:Button ID="btnAddToCart" runat="server" CssClass="btn" OnClick="btnAddToCart_Click" Text="Add To Cart" Visible="False" />
+                    &nbsp;
                     <asp:Button ID="Button1" runat="server" CssClass="btn" OnClick="Button1_Click" Text="View Cart" />
                 </p>
             </asp:View>
             <asp:View ID="ConfirmOrderView" runat="server">
                 <h2>Confirm Order Details</h2>
-                <asp:ListBox ID="ListBox1" runat="server" Height="160px" Width="864px"></asp:ListBox>
-                <br />
-                <br />
-                <asp:Table ID="Table1" runat="server" Height="69px" HorizontalAlign="Center" Width="664px">
-                </asp:Table>
+                <asp:ListBox ID="ListBox1" runat="server" Height="181px" Width="864px"></asp:ListBox>
                 <br />
                 <br />
                 <asp:Button ID="Button2" runat="server" CssClass="btn" OnClick="Button1_Click" Text="Confirm Order" />
+                <br />
             </asp:View>
         </asp:MultiView>
     </h2>

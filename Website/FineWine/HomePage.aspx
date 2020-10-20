@@ -7,15 +7,16 @@
                             <br />
                             <br />
                             &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br />
-                            <asp:ImageButton ID="ImageButton2" runat="server" CssClass="img" ImageUrl="~/Pictures/Grape.gif" OnClick="ImageButton2_Click" />
+                            <asp:ImageButton ID="ImageButton2" runat="server" CssClass="img" ImageUrl="~/Pictures/Grape.gif" OnClick="ImageButton2_Click" AlternateText="Harvest" ToolTip="Grapes" />
                             &nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:ImageButton ID="ImageButton4" runat="server" CssClass="img" ImageUrl="~/Pictures/Harvest1.gif" OnClick="ImageButton4_Click" />
-                            <asp:ImageButton ID="ImageButton3" runat="server" CssClass="img" ImageUrl="~/Pictures/Wine1.gif" OnClick="ImageButton3_Click" />
+                            <asp:ImageButton ID="ImageButton4" runat="server" CssClass="img" ImageUrl="~/Pictures/Harvest1.gif" OnClick="ImageButton4_Click" ToolTip="Harvest" />
+                            <asp:ImageButton ID="ImageButton3" runat="server" CssClass="img" ImageUrl="~/Pictures/Wine1.gif" OnClick="ImageButton3_Click" ToolTip="Wine Production" />
                             <br />
                             <br />
-                            <asp:ImageButton ID="ImageButton5" runat="server" CssClass="img" ImageUrl="~/Pictures/Production.gif" OnClick="ImageButton5_Click" />
+                            <asp:ImageButton ID="ImageButton5" runat="server" CssClass="img" ImageUrl="~/Pictures/Production.gif" OnClick="ImageButton5_Click" ToolTip="Wine" />
 &nbsp;
-                            <asp:ImageButton ID="ImageButton6" runat="server" CssClass="img" ImageUrl="~/Pictures/custom-reports-icon.png" OnClick="ImageButton6_Click" />
+                            <asp:ImageButton ID="ImageButton6" runat="server" CssClass="img" ImageUrl="~/Pictures/custom-reports-icon.png" OnClick="ImageButton6_Click" ToolTip="Reports" />
+                            &nbsp;<asp:ImageButton ID="ImageButton7" runat="server" CssClass="img" ImageUrl="~/Pictures/sign-up.png" OnClick="ImageButton7_Click" ToolTip="Register Admin" />
                             <br />
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <br />

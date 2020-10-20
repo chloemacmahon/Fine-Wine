@@ -44,8 +44,9 @@ header {
 
 #subheading {
     background-color: olive;
-    font-size: 20px;
+    font-size: 22px;
     font-family: 'Bradley Hand ITC';
+    font:bold;
     text-align:right;
 }
 
@@ -127,14 +128,6 @@ li .dropdown {
 .dropdown:hover .dropdown-content {
     display: inline-block;
 }
-
-.gridview {
-    background-color: olivedrab;
-}
-
-    .gridview:hover {
-        background-color: lightgray;
-    }
 
 .td {
     font-size: 20px;

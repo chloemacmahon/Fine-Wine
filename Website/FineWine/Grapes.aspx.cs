@@ -132,6 +132,7 @@ namespace FineWine
             ddlField.Text = "";
             txtChange.Text = "";
             MultiView1.SetActiveView(View4);
+            GridViewUpdate.Dispose();
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
@@ -155,6 +156,7 @@ namespace FineWine
                     grapeDelete.Add(line);
                     maintain.deleteData(sqlDelete);
                 }
+                GridViewDelete.Dispose();
             }
             else
             {
@@ -192,6 +194,8 @@ namespace FineWine
 
         protected void btnMainSummary0_Click(object sender, EventArgs e)
         {
+            GridViewUpdate.Dispose();
+            GridViewDelete.Dispose();
             MultiView1.SetActiveView(View4);
         }
 
@@ -207,6 +211,7 @@ namespace FineWine
 
         protected void btnMainSummary_Click(object sender, EventArgs e)
         {
+            lbxGrapeSummary.Dispose();
             MultiView1.SetActiveView(View4);
         }
     }

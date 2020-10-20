@@ -153,6 +153,7 @@ namespace FineWine
             {
                 ListBox1.Items.Add(lines.ElementAt(i));
             }
+            writeReport(lines, "ProductionReport.txt");
             radSortBy.ClearSelection();
             MultiView1.SetActiveView(View2);
             
@@ -243,7 +244,7 @@ namespace FineWine
 
         protected void Button1_Click1(object sender, EventArgs e)
         {
-           /* List<string> elements = objMain.salesChart();
+            List<string> elements = objMain.salesChart();
             List<sales> sold = new List<sales>();
             for (int i = 0; i < elements.Count(); i++)
             {
@@ -265,7 +266,7 @@ namespace FineWine
             if (writeReport(lines.ToList(), "Top10.txt"))
                 ListBox2.Items.Add("Succesfully written to file");
             else
-                ListBox2.Items.Add("Error writing to file");         */
+                ListBox2.Items.Add("Error writing to file");         
         }
 
         private string[] sortSales(List<sales> sold)
