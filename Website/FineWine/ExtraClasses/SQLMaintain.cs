@@ -61,28 +61,54 @@ namespace FineWine
         }
         
         //sql query to verify login
-        public bool verifyLogin(string sqlCompare)
+        public bool verifyLogin(string sqlRetrieve, string pass)
         {
             //open connection to database and execute sql query
             connect.Open();
-            command = new SqlCommand(sqlCompare, connect);
+            string dbpass = "";
+            command = new SqlCommand(sqlRetrieve, connect);
             reader = command.ExecuteReader();
-            if(reader != null)
+            while(reader.Read())
             {
-                connect.Close();
+                dbpass = reader.GetValue(0).ToString();
+            }
+            connect.Close();
+            if (pass == dbpass)
+            {
                 return true;
             }
             else
             {
-                connect.Close();
                 return false;
-            }    
+            }
+
         }
 
-        //get the business id
-        public string getBusinessID(string bName)
+        public bool checkForeignKey(string sqlCheck)
         {
-            string sqlSelect = "SELECT Business_ID FROM BUSINESS WHERE Business_Name LIKE '" + bName + "'";
+            connect.Open();
+            command = new SqlCommand(sqlCheck, connect);
+            reader = command.ExecuteReader();
+            int count = 0;
+            while(reader.Read())
+            {
+                count++;
+            }
+            connect.Close();
+            if (count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+
+        //get id of different entities
+        public string getID(string sqlSelect)
+        {
             string id = "";
             connect.Open();
             command = new SqlCommand(sqlSelect, connect);
@@ -95,44 +121,13 @@ namespace FineWine
             return id;
         }
 
-        //get the grape id
-        public string getGrapeID(string gName)
-        {
-            string sqlSelect = "SELECT Grape_ID FROM GRAPE WHERE Name LIKE '" + gName + "'";
-            string id = "";
-            connect.Open();
-            command = new SqlCommand(sqlSelect, connect);
-            reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                id = reader.GetValue(0).ToString();
-            }
-            connect.Close();
-            return id;
-        }
-
-        //get the wine id
-        public string getWineID(string wName)
-        {
-            string sqlSelect = "SELECT Wine_ID FROM WINE WHERE Name LIKE '" + wName + "'";
-            string id = "";
-            connect.Open();
-            command = new SqlCommand(sqlSelect, connect);
-            reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                id = reader.GetValue(0).ToString();
-            }
-            connect.Close();
-            return id;
-        }
 
         //create list to use to generate reports
         public List<string> wineChart()
         {
             List<string> result = new List<string>();
             string sqlSelect = "SELECT w.Wine_ID, w.Name, wp.Harvest_ID, wp.Estimated_Production, wp.Actual_Production FROM WINE w, WINE_PRODUCTION wp, HARVEST h " +
-                                "WHERE w.Wine.ID LIKE wp.Wine_ID AND h.Harvest_ID LIKE wp.Harvest.ID";
+                                "WHERE w.Wine_ID LIKE wp.Wine_ID AND h.Harvest_ID LIKE wp.Harvest_ID";
             connect.Open();
             command = new SqlCommand(sqlSelect, connect);
             reader = command.ExecuteReader();
@@ -144,16 +139,17 @@ namespace FineWine
             connect.Close();
             return result;
         }
+
         public List<string> salesChart()
         {
             List<string> result = new List<string>();
-            string sqlSelect = "SELECT * FROM SALES_ORDER ";
+            string sqlSelect = "SELECT TOP 10(*) FROM STOCK ORDER BY Stock_Sold DESC";
             connect.Open();
             command = new SqlCommand(sqlSelect, connect);
             reader = command.ExecuteReader();
             while (reader.Read())
             {
-                string line = reader.GetValue(0).ToString() + "," + reader.GetValue(2).ToString() +  "," + reader.GetValue(4).ToString() + "," + reader.GetValue(5).ToString();
+                string line = reader.GetValue(0).ToString() + "," + reader.GetValue(2).ToString() + "," + reader.GetValue(4).ToString() + "," + reader.GetValue(5).ToString();
                 result.Add(line);
             }
             connect.Close();

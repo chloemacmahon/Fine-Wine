@@ -40,6 +40,51 @@ namespace FineWine {
         protected global::System.Web.UI.WebControls.RadioButtonList radlistGrapeOptions;
         
         /// <summary>
+        /// Summary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View Summary;
+        
+        /// <summary>
+        /// lblSuccess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSuccess;
+        
+        /// <summary>
+        /// lbxGrapeSummary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbxGrapeSummary;
+        
+        /// <summary>
+        /// lblExit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblExit;
+        
+        /// <summary>
+        /// btnMainSummary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMainSummary;
+        
+        /// <summary>
         /// View1 control.
         /// </summary>
         /// <remarks>
@@ -112,13 +157,13 @@ namespace FineWine {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// txtDescrption control.
+        /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescrption;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription;
         
         /// <summary>
         /// RequiredFieldValidator3 control.
@@ -139,13 +184,13 @@ namespace FineWine {
         protected global::System.Web.UI.WebControls.Button btnInsert;
         
         /// <summary>
-        /// lblError control.
+        /// btnMainSummary0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblError;
+        protected global::System.Web.UI.WebControls.Button btnMainSummary0;
         
         /// <summary>
         /// View2 control.
@@ -175,13 +220,13 @@ namespace FineWine {
         protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// txtGrapeName0 control.
+        /// ddlField control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGrapeName0;
+        protected global::System.Web.UI.WebControls.DropDownList ddlField;
         
         /// <summary>
         /// Label5 control.
@@ -193,31 +238,13 @@ namespace FineWine {
         protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
-        /// txtType0 control.
+        /// txtChange control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtType0;
-        
-        /// <summary>
-        /// Label6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label6;
-        
-        /// <summary>
-        /// txtDescrption0 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescrption0;
+        protected global::System.Web.UI.WebControls.TextBox txtChange;
         
         /// <summary>
         /// btnUpdate control.
@@ -227,6 +254,15 @@ namespace FineWine {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUpdate;
+        
+        /// <summary>
+        /// btnMainSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMainSummary1;
         
         /// <summary>
         /// View3 control.
@@ -254,5 +290,14 @@ namespace FineWine {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDelete;
+        
+        /// <summary>
+        /// btnMainSummary2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMainSummary2;
     }
 }

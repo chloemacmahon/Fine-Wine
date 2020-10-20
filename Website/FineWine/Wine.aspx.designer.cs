@@ -31,13 +31,13 @@ namespace FineWine {
         protected global::System.Web.UI.WebControls.View View4;
         
         /// <summary>
-        /// radlistGrapeOptions control.
+        /// radlistWineOptions control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList radlistGrapeOptions;
+        protected global::System.Web.UI.WebControls.RadioButtonList radlistWineOptions;
         
         /// <summary>
         /// InsertView control.
@@ -157,13 +157,13 @@ namespace FineWine {
         protected global::System.Web.UI.WebControls.Button btnInsert;
         
         /// <summary>
-        /// btnInsertSummary control.
+        /// btnMainDelete1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnInsertSummary;
+        protected global::System.Web.UI.WebControls.Button btnMainDelete1;
         
         /// <summary>
         /// View2 control.
@@ -184,58 +184,40 @@ namespace FineWine {
         protected global::System.Web.UI.WebControls.GridView GridViewUpdate;
         
         /// <summary>
-        /// lblUpdateName control.
+        /// Label4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUpdateName;
+        protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// txtGrapeName0 control.
+        /// ddlField control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGrapeName0;
+        protected global::System.Web.UI.WebControls.DropDownList ddlField;
         
         /// <summary>
-        /// lblUpdateType control.
+        /// Label5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUpdateType;
+        protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
-        /// txtType0 control.
+        /// txtChange control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtType0;
-        
-        /// <summary>
-        /// lblUpdateDescription control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUpdateDescription;
-        
-        /// <summary>
-        /// txtDescription0 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescription0;
+        protected global::System.Web.UI.WebControls.TextBox txtChange;
         
         /// <summary>
         /// btnUpdate control.
@@ -247,22 +229,13 @@ namespace FineWine {
         protected global::System.Web.UI.WebControls.Button btnUpdate;
         
         /// <summary>
-        /// btnUpdateSummary control.
+        /// btnMainDelete0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdateSummary;
-        
-        /// <summary>
-        /// btnMainUpdate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMainUpdate;
+        protected global::System.Web.UI.WebControls.Button btnMainDelete0;
         
         /// <summary>
         /// View3 control.
@@ -292,13 +265,13 @@ namespace FineWine {
         protected global::System.Web.UI.WebControls.Button btnDelete;
         
         /// <summary>
-        /// btnDeleteSummary control.
+        /// btnMainDelete control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDeleteSummary;
+        protected global::System.Web.UI.WebControls.Button btnMainDelete;
         
         /// <summary>
         /// Summary control.
@@ -317,15 +290,6 @@ namespace FineWine {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSuccess;
-        
-        /// <summary>
-        /// lblInsert control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblInsert;
         
         /// <summary>
         /// lbxWineSummary control.

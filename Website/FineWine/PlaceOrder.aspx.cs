@@ -19,8 +19,8 @@ namespace FineWine
         protected void Page_Load(object sender, EventArgs e)
         {
             string name = "";
-            ListBox1.Items.Add("");
-            MultiView1.SetActiveView(ConfirmOrderView);
+
+            MultiView1.SetActiveView(ReviewOrder);
         }
 
         protected void Button1_Click(object sender, EventArgs e)

@@ -15,57 +15,62 @@ namespace FineWinesWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           /* userCookie = Request.Cookies["User Information"];
-            if(userCookie != null)
-            {
-                if (userCookie["Account type"] == "A")
-                {
-                    lnkGrapes.Visible = true;
-                    lnkWines.Visible = true;
-                    lnkWineProduction.Visible = true;
-                    lnkHarvest.Visible = true;
-                    lnkReports.Visible = true;
-                    lnkSignOut.Visible = true;
-                    lnkLogIn.Visible = false;
-                    lnkBusinessLogin.Visible = false;
-                    lnkAdminLogin.Visible = false;
-                    lnkRegisterBusiness.Visible = false;
-                    lnkBrowse.Visible = false;
-                }
-                else
-                {
-                    lnkGrapes.Visible = false;
-                    lnkWines.Visible = false;
-                    lnkWineProduction.Visible = false;
-                    lnkHarvest.Visible = false;
-                    lnkReports.Visible = false;
-                    lnkSignOut.Visible = true;
-                    lnkLogIn.Visible = false;
-                    lnkBusinessLogin.Visible = false;
-                    lnkAdminLogin.Visible = false;
-                    lnkRegisterBusiness.Visible = false;
-                    lnkBrowse.Visible = true;
-                }
-            }
-            else if(userCookie == null)
-            {
-                lnkGrapes.Visible = false;
-                lnkWines.Visible = false;
-                lnkWineProduction.Visible = false;
-                lnkHarvest.Visible = false;
-                lnkReports.Visible = false;
-                lnkSignOut.Visible = false;
-                lnkLogIn.Visible = true;
-                lnkBusinessLogin.Visible = true;
-                lnkAdminLogin.Visible = true;
-                lnkBrowse.Visible = false;
-                lnkRegisterBusiness.Visible = true;
-            }          */
+             userCookie = Request.Cookies["User Information"];
+             if(userCookie != null)
+             {
+                 if (userCookie["Account type"] == "A")
+                 {
+                     lnkGrapes.Visible = true;
+                     lnkWines.Visible = true;
+                     lnkWineProduction.Visible = true;
+                     lnkHarvest.Visible = true;
+                     lnkReports.Visible = true;
+                     lnkSignOut.Visible = true;
+                     lnkLogIn.Visible = false;
+                     lnkBusinessLogin.Visible = false;
+                     lnkAdminLogin.Visible = false;
+                     lnkRegisterBusiness.Visible = false;
+                     lnkBrowse.Visible = false;
+                     lblWelcome.Visible = true;
+                     lblWelcome.Text = "Welcome, " + userCookie["Account name"];
+                 }
+                 else
+                 {
+                     lnkGrapes.Visible = false;
+                     lnkWines.Visible = false;
+                     lnkWineProduction.Visible = false;
+                     lnkHarvest.Visible = false;
+                     lnkReports.Visible = false;
+                     lnkSignOut.Visible = true;
+                     lnkLogIn.Visible = false;
+                     lnkBusinessLogin.Visible = false;
+                     lnkAdminLogin.Visible = false;
+                     lnkRegisterBusiness.Visible = false;
+                     lnkBrowse.Visible = true;
+                     lblWelcome.Visible = true;
+                     lblWelcome.Text = "Welcome, " + userCookie["Account name"];
+                 }
+             }
+             else if(userCookie == null)
+             {
+                 lnkGrapes.Visible = false;
+                 lnkWines.Visible = false;
+                 lnkWineProduction.Visible = false;
+                 lnkHarvest.Visible = false;
+                 lnkReports.Visible = false;
+                 lnkSignOut.Visible = false;
+                 lnkLogIn.Visible = true;
+                 lnkBusinessLogin.Visible = true;
+                 lnkAdminLogin.Visible = true;
+                 lnkBrowse.Visible = false;
+                 lnkRegisterBusiness.Visible = true;
+                 lblWelcome.Visible = false;
+             }          
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Grapes.aspx?view=1");
+            Response.Redirect("Grapes.aspx");
         }
 
         protected void LinkButton2_Click(object sender, EventArgs e)
@@ -75,12 +80,12 @@ namespace FineWinesWeb
 
         protected void LinkButton3_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Harvest.aspx?view=1");
+            Response.Redirect("Harvest.aspx");
         }
 
         protected void LinkButton4_Click(object sender, EventArgs e)
         {
-            Response.Redirect("WineProduction.aspx?view=1");
+            Response.Redirect("WineProduction.aspx");
         }
 
         protected void LinkButton5_Click(object sender, EventArgs e)
@@ -90,7 +95,15 @@ namespace FineWinesWeb
 
         protected void LinkButton6_Click(object sender, EventArgs e)
         {
-
+            // userCookie = Request.Cookies["User Information"];
+            if (userCookie != null && userCookie["Account type"] == "A")
+            {
+                Response.Redirect("HomePage.aspx?view=1");
+            }
+            else
+            {
+                Response.Redirect("HomePage.aspx?view=2");
+            }
         }
 
         protected void LinkButton9_Click(object sender, EventArgs e)
@@ -115,7 +128,20 @@ namespace FineWinesWeb
 
         protected void LinkButton11_Click(object sender, EventArgs e)
         {
-            Response.Cookies.Remove("User Information");
+           // userCookie.Expires = DateTime.Now;
+            //Response.Cookies.Remove("User Information");
+            lnkGrapes.Visible = false;
+            lnkWines.Visible = false;
+            lnkWineProduction.Visible = false;
+            lnkHarvest.Visible = false;
+            lnkReports.Visible = false;
+            lnkSignOut.Visible = false;
+            lnkLogIn.Visible = true;
+            lnkBusinessLogin.Visible = true;
+            lnkAdminLogin.Visible = true;
+            lnkBrowse.Visible = false;
+            lnkRegisterBusiness.Visible = true;
+            lblWelcome.Visible = false;
             Response.Redirect("HomePage.aspx?view=2");
         }
 

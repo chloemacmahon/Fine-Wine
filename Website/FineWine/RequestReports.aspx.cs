@@ -58,10 +58,34 @@ namespace FineWine
                 return false;
             }
         }
-        public void displayWine()
+        
+        public void displayTop10()
         {
+            List<string> elements = objMain.salesChart();
+            List<sales> sold = new List<sales>();
+            for (int i = 0; i < elements.Count(); i++)
+            {
+                string[] items = elements.ElementAt(i).Split(',');
+                sales newElement = new sales();
+                newElement.salesOrderID = items[0];
+                newElement.orderDate = Convert.ToDateTime(items[1]);
+                newElement.quantity = Convert.ToInt32(items[2]);
+                newElement.total = Convert.ToDouble(items[3]);
+                sold.Add(newElement);
+            }
 
+            string[] lines = sortSales(sold);
+            for (int i = 0; i < 11; i++)
+            {
+                ListBox2.Items.Add(lines[i]);
+            }
+
+            if (writeReport(lines.ToList(), "Top10.txt"))
+                ListBox2.Items.Add("Succesfully written to file");
+            else
+                ListBox2.Items.Add("Error writing to file");
         }
+
         public bool productionChartsSave()
         {
             try
@@ -129,6 +153,8 @@ namespace FineWine
             {
                 ListBox1.Items.Add(lines.ElementAt(i));
             }
+            radSortBy.ClearSelection();
+            MultiView1.SetActiveView(View2);
             
         } 
 
@@ -217,7 +243,7 @@ namespace FineWine
 
         protected void Button1_Click1(object sender, EventArgs e)
         {
-            List<string> elements = objMain.salesChart();
+           /* List<string> elements = objMain.salesChart();
             List<sales> sold = new List<sales>();
             for (int i = 0; i < elements.Count(); i++)
             {
@@ -239,7 +265,7 @@ namespace FineWine
             if (writeReport(lines.ToList(), "Top10.txt"))
                 ListBox2.Items.Add("Succesfully written to file");
             else
-                ListBox2.Items.Add("Error writing to file");
+                ListBox2.Items.Add("Error writing to file");         */
         }
 
         private string[] sortSales(List<sales> sold)
@@ -263,6 +289,33 @@ namespace FineWine
                 lines[i + 1] = sold.ElementAt(i).salesOrderID + "\t " + sold.ElementAt(i).orderDate.ToString() + "\t " + sold.ElementAt(i).quantity.ToString() + "\t " + sold.ElementAt(i).total.ToString();
             }
             return lines;
+        }
+
+        protected void RadioButtonList1_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+            if(RadioButtonList1.SelectedIndex == 0)
+            {
+                RadioButtonList1.ClearSelection();
+                MultiView1.SetActiveView(View2);
+            }
+            else
+            {
+                RadioButtonList1.ClearSelection();
+                displayTop10();
+                MultiView1.SetActiveView(View3);
+            }
+        }
+
+        protected void ListBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            ListBox1.Items.Clear();
+            displayTop10();
+            MultiView1.SetActiveView(View3);
         }
     }
 }

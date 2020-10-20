@@ -18,7 +18,7 @@ namespace FineWine
         DataSet ds;
         Random rand = new Random();
         SQLMaintain maintain = new SQLMaintain();
-        public List<string> selected = new List<string>();
+        static List<string> selected = new List<string>();
 
         //display all information in tables using sql select statement
         public void displayAll(string sqlSelect)
@@ -38,10 +38,12 @@ namespace FineWine
         {
             connect = new SqlConnection(maintain.connectDatabase());
             displayAll("SELECT w.Name, w.Wine_Type, s.Production_Year, s.Stock_On_Hand, s.Selling_Price FROM STOCK s, WINE w WHERE w.Wine_ID = s.Wine_ID");
+            MultiView1.SetActiveView(Browse);
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+         
     
             if (selected.Count == 0)
             {
@@ -49,19 +51,35 @@ namespace FineWine
             }
             else
             {
-                Response.Redirect("PlaceOrder.aspx");
+                Table1.Caption.Insert(0, "Units");
+
+                foreach (string line in selected)
+                {
+                    ListBox1.Items.Add(line);
+                }
+                MultiView1.SetActiveView(ConfirmOrderView);
             } 
         }
 
-        protected void cbSelect_CheckedChanged(object sender, EventArgs e)
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string name = GridView1.SelectedRow.Cells[1].Text;
             string type = GridView1.SelectedRow.Cells[2].Text;
             string year = GridView1.SelectedRow.Cells[3].Text;
-            string soh = GridView1.SelectedRow.Cells[4].Text;
             string sellingPrice = GridView1.SelectedRow.Cells[5].Text;
-            selected.Add(name + "\t" + type + "\t" + year + "\t" + soh + "\t" + sellingPrice);
-            Response.Write("<script>alert('" + selected.Count + "');</script>");
+            selected.Add(name + "\t" + type + "\t" + year + "\t" + "\t" + sellingPrice);     
         }
+     
+
+        /* protected void cbSelect_CheckedChanged(object sender, EventArgs e)
+         {
+             string name = GridView1.SelectedRow.Cells[1].Text;
+             string type = GridView1.SelectedRow.Cells[2].Text;
+             string year = GridView1.SelectedRow.Cells[3].Text;
+             string soh = GridView1.SelectedRow.Cells[4].Text;
+             string sellingPrice = GridView1.SelectedRow.Cells[5].Text;
+             selected.Add(name + "\t" + type + "\t" + year + "\t" + soh + "\t" + sellingPrice);
+             Response.Write("<script>alert('" + selected.Count + "');</script>");
+         }             */
     }
 }

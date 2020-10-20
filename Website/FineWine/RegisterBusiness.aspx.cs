@@ -66,10 +66,36 @@ namespace FineWine
             connect.Close();
         }
 
-        public void getCityTown()
+        public void getCountryID()
         {
             connect.Open();
-            string sqlSelect = "SELECT City_Town_ID FROM City_Town WHERE Name LIKE '" + ddlCityTown.Text + "'";
+            string sqlSelect = "SELECT Country_ID FROM COUNTRY WHERE Name LIKE '" + ddlCountry.Text + "'";
+            command = new SqlCommand(sqlSelect, connect);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                countryID = reader.GetValue(0).ToString();
+            }
+            connect.Close();
+        }
+
+        public void getRegionID()
+        {
+            connect.Open();
+            string sqlSelect = "SELECT Region_ID FROM REGION WHERE Name LIKE '" + ddlRegion.Text + "'";
+            command = new SqlCommand(sqlSelect, connect);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                regionID = reader.GetValue(0).ToString();
+            }
+            connect.Close();
+        }
+
+        public void getCityTownID()
+        {
+            connect.Open();
+            string sqlSelect = "SELECT City_Town_ID FROM CITY_TOWN WHERE Name LIKE '" + ddlCityTown.Text + "'";
             command = new SqlCommand(sqlSelect, connect);
             SqlDataReader reader = command.ExecuteReader();
             while(reader.Read())
@@ -105,26 +131,34 @@ namespace FineWine
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            try
-            {
-                getCityTown();
-                //Create Address_ID: first 4 letters of street name + street number + 4 random letters/numbers
-                string addressId = txtStreetName.Text.Substring(0, 4) + txtStreetNumber.Text + (char)rand.Next(000, 'a') + (char)rand.Next(000, 'a') + (char)rand.Next(000, 'a') + (char)rand.Next(000, 'a');
+            /* try
+             {          */
+            getCountryID();
+            getRegionID();
+                getCityTownID();
+                //Create Address_ID: first 4 letters of street name + street number + 4 random numbers
+                string addressId = txtStreetName.Text.Substring(0, 4) + txtStreetNumber.Text + rand.Next(1000, 9999);
                 string sqlInsertAddress = "INSERT INTO Address VALUES('" + addressId + "', '" + int.Parse(countryID) + "', '" + int.Parse(regionID) + "', '" + 
                                             int.Parse(cityTownID) + "', '" + int.Parse(txtStreetNumber.Text) + "', '" + txtStreetName.Text + "', '" + txtZipCode.Text + "')";
                 maintain.insertData(sqlInsertAddress);
-                //Create Business_ID: first 4 letters of business name + 4 random letters/numbers
-                string businessId = txtBusinessName.Text.Substring(0, 4) + (char)rand.Next(000, 'a') + (char)rand.Next(000, 'a') + (char)rand.Next(000, 'a') + (char)rand.Next(000, 'a');
+                //Create Business_ID: first 4 letters of business name + 4 random numbers
+                string businessId = txtBusinessName.Text.Substring(0, 4) + rand.Next(1000, 9999);
                 string sqlInsertBusiness =  "INSERT INTO Business VALUES('" + businessId + "', '" + addressId + "', '" + txtBusinessName.Text + "', '" + txtPassword.Text + "')";
                 maintain.insertData(sqlInsertBusiness);
                 //Insert details into login table
-                string sqlInsertLogin =  "INSERT INTO Login(@Business_ID,@Account_Type) VALUES('" + businessId + "', 'B')";
+                string sqlInsertLogin =  "INSERT INTO Login VALUES(null, '" + businessId + "', 'B')";
                 maintain.insertData(sqlInsertLogin);
-            }
+                HttpCookie userCookie = new HttpCookie("User Information");
+                userCookie["Account type"] = "B";
+                userCookie["Account name"] = txtBusinessName.Text;
+                userCookie["Account ID"] = businessId;
+                Response.Cookies.Add(userCookie);
+            Response.Redirect("HomePage.aspx");
+          /*  }
             catch
             {
                 lblError.Text ="There was a problem registering business";
-            }
+            }     */
         }
 
         protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)

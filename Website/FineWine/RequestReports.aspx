@@ -6,27 +6,27 @@
 
     
     <p>
-        <br />
-    </p>
-    <p>
-        &nbsp;</p>
-    <p>
-        &nbsp;</p>
-    <p>
         <asp:MultiView ID="MultiView1" runat="server" OnActiveViewChanged="MultiView1_ActiveViewChanged">
             <br />
             <asp:View ID="View1" runat="server">
+                <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged1" RepeatDirection="Horizontal" RepeatLayout="Flow">
+                    <asp:ListItem>Production</asp:ListItem>
+                    <asp:ListItem>Top 10 Sales</asp:ListItem>
+                </asp:RadioButtonList>
             </asp:View>
             <br />
             <asp:View ID="View2" runat="server">
-                <asp:RadioButtonList ID="radSortBy" runat="server" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
+                Choose report format:<br />
+                <br />
+                <asp:RadioButtonList ID="radSortBy" runat="server" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged" RepeatLayout="Flow">
                     <asp:ListItem>Alphabetically</asp:ListItem>
                     <asp:ListItem>Actual Production</asp:ListItem>
                     <asp:ListItem>Estimated Production</asp:ListItem>
                     <asp:ListItem>Percentage produced</asp:ListItem>
                 </asp:RadioButtonList>
                 <br />
-                <asp:Button ID="btnGenerateReports" runat="server" OnClick="Button1_Click" Text="Generate reports" />
+                <br />
+                <asp:Button ID="btnGenerateReports" runat="server" OnClick="Button1_Click" Text="Generate reports" CssClass="btn" />
                 <br />
                 <br />
                 <asp:ListBox ID="ListBox1" runat="server" Height="160px" Width="829px"></asp:ListBox>
@@ -55,12 +55,18 @@
                     </ChartAreas>
                 </asp:Chart>
                 <br />
+                <br />
+                <asp:Button ID="Button2" runat="server" CssClass="btn" OnClick="Button2_Click" Text="Top 10 Sales Report" />
+                <br />
             </asp:View>
             <br />
             <asp:View ID="View3" runat="server">
-                <asp:ListBox ID="ListBox2" runat="server" Width="600px"></asp:ListBox>
                 <br />
-                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Button" />
+                <br />
+                <asp:ListBox ID="ListBox2" runat="server" Width="796px" Height="121px" OnSelectedIndexChanged="ListBox2_SelectedIndexChanged"></asp:ListBox>
+                <br />
+                <br />
+                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" />
             </asp:View>
             <br />
         </asp:MultiView>
