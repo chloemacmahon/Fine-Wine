@@ -4,7 +4,7 @@
     <h1>Register Business</h1>
     <p>
         <asp:Label ID="lblBusinessName" runat="server" CssClass="lbl" Text="Business Name:"></asp:Label>
-                <asp:TextBox ID="txtBusinessName" runat="server" CssClass="txt"></asp:TextBox>
+                <asp:TextBox ID="txtBusinessName" runat="server" CssClass="txt" ToolTip="This will be your account name used to log in "></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" BackColor="#FFCCCC" ControlToValidate="txtBusinessName" ErrorMessage="Please enter business name" ForeColor="Maroon" CssClass="validator"></asp:RequiredFieldValidator>
             </p>
     <p>
@@ -19,17 +19,17 @@
             </p>
     <p>
         <asp:Label ID="lblCountry" runat="server" CssClass="lbl" Text="Country:"></asp:Label>
-                <asp:DropDownList ID="ddlCountry" runat="server" CssClass="txt" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged" AutoPostBack="True">
+                <asp:DropDownList ID="ddlCountry" runat="server" CssClass="txt" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged" AutoPostBack="True" ToolTip="Please select a country where you reside">
                 </asp:DropDownList>
             </p>
     <p>
         <asp:Label ID="lblBRegion" runat="server" CssClass="lbl" Text="Region/State/Province:"></asp:Label>
-        <asp:DropDownList ID="ddlRegion" runat="server" CssClass="txt" OnSelectedIndexChanged="ddlRegion_SelectedIndexChanged" AutoPostBack="True">
+        <asp:DropDownList ID="ddlRegion" runat="server" CssClass="txt" OnSelectedIndexChanged="ddlRegion_SelectedIndexChanged" AutoPostBack="True" ToolTip="After selecting your country please select the region where your business operates ">
         </asp:DropDownList>
     </p>
     <p>
         <asp:Label ID="lblBCityTown" runat="server" CssClass="lbl" Text="City/Town:"></asp:Label>
-                <asp:DropDownList ID="ddlCityTown" runat="server" CssClass="txt">
+                <asp:DropDownList ID="ddlCityTown" runat="server" CssClass="txt" ToolTip="Please select your city after you have selectedd your country and region">
                 </asp:DropDownList>
             </p>
     <p>
@@ -39,7 +39,7 @@
             </p>
 <p>
         <asp:Label ID="lblBPassword" runat="server" CssClass="lbl" Text="Password:"></asp:Label>
-                <asp:TextBox ID="txtPassword" runat="server" CssClass="txt" TextMode="Password" BorderStyle="Inset"></asp:TextBox>
+                <asp:TextBox ID="txtPassword" runat="server" CssClass="txt" TextMode="Password" BorderStyle="Inset" ToolTip="Please enter a strong password that unique to this account"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPassword" CssClass="validator" ErrorMessage="Please enter a password"></asp:RequiredFieldValidator>
             </p>
 <p>
